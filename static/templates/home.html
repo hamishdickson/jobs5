@@ -6,5 +6,55 @@ home.html extension
 
 -->
 <div id="homeTest">
-  <p>This is a test</p>
+    <div class="jobsForm">
+        <div class="panel panel-default">
+            <div class="jobsFormTitle panel-heading">
+                <h3 class="jobsFormTitle panel-title">Jobs summary</h3>
+            </div>
+            <div class="panel-body">
+                <div class="col-sm-4">
+                    <div class="whodo"><i class="fa fa-child" title="Well .. I'm me .."> Who am I?</i>
+                        <input type="text" name="whodo" autofocus>
+                        <button type="button" class="btn btn-sm btn-primary">Go</button>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="progress" title="35% success ... 20% today ... 10% (1) late">
+                        <div class="progress-bar progress-bar-success" style="width: 35%">
+                            <span class="sr-only">35% Complete (success)</span>
+                        </div>
+                        <div class="progress-bar progress-bar-warning" style="width: 20%">
+                            <span class="sr-only">20% Complete (warning)</span>
+                        </div>
+                        <div class="progress-bar progress-bar-danger" style="width: 10%">
+                            <span class="sr-only">10% Complete (danger)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="list-group">
+                        <p class="list-group-item">You have {{jobs.length}} jobs assigined to you</p>
+                        <a href="#" class="list-group-item active">5 in progress</a>
+                        <a href="#" class="list-group-item">6 on wait</a>
+                        <a href="#" class="list-group-item">2 on hold</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>This is a test</p>
+    <p>There are {{jobs.length}} jobs assigined to you</p>
+    <div class="col-sm-4">
+        {{#jobs}}
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Job number: {{jobNumber}}</h3>
+            </div>
+            <div class="panel-body">Description</div>
+        </div>
+        {{/jobs}}
+        {{^jobs}}
+        <div class="panel panel-default">No soup for you!</div>
+        {{/jobs}}
+    </div>
 </div>
