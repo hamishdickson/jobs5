@@ -1,0 +1,13 @@
+{{#jobs}}
+<div class="col-sm-4 jobsPanelDetail">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Job number: {{jobNumber}}</h3>
+        </div>
+        <div class="panel-body">{{description}}</div>
+    </div>
+</div>
+{{/jobs}}
+{{^jobs}}
+<div class="panel panel-default">No soup for you!</div>
+{{/jobs}}

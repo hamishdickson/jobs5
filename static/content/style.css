@@ -77,3 +77,31 @@ p {
   padding-left: 15px;
   padding-right: 15px;
 }
+
+.progressBar {
+  padding-top: 10px;
+}
+
+.greenJobs {
+  background-image: linear-gradient(to bottom,#5cb85c 0,#449d44 100%);
+}
+
+a.list-group-item.greenJobs {
+  color: white;
+}
+
+.orangeJobs {
+  background-image: linear-gradient(to bottom,#f0ad4e 0,#ec971f 100%);
+}
+
+a.list-group-item.orangeJobs {
+  color: white;
+}
+
+.redJobs {
+  background-image: linear-gradient(to bottom,#d9534f 0,#c9302c 100%);
+}
+
+a.list-group-item.redJobs {
+  color: white;
+}
