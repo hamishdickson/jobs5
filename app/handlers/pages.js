@@ -17,8 +17,8 @@ exports.generate = function (req, res) {
 		'basic.html',
 		function (err, contents) {
 		    if (err) {
-			send_failure(res, err);
-			return;
+			    send_failure(res, err);
+			    return;
 		    }
 
 		    contents = contents.toString('utf8');

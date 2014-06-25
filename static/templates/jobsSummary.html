@@ -1,3 +1,11 @@
+<div class="col-sm-6">
+    <div class="list-group">
+        <p class="list-group-item">You have {{jobs.length}} jobs assigined to you</p>
+        <a href="#" class="list-group-item active">5 in progress</a>
+        <a href="#" class="list-group-item">6 on wait</a>
+        <a href="#" class="list-group-item">2 on hold</a>
+    </div>
+</div>
 <div class="progressBar col-sm-6">
     <div class="progress" title="35% success ... 20% today ... 10% (1) late">
         <div class="progress-bar progress-bar-success" style="width: 35%">
@@ -11,17 +19,9 @@
         </div>
     </div>
     <div class="list-group">
-        <a href="#" class="list-group-item greenJobs">5 in progress</a>
-        <a href="#" class="list-group-item orangeJobs">6 on wait</a>
-        <a href="#" class="list-group-item redJobs">2 on hold</a>
-    </div>
-</div>
-<div class="col-sm-6">
-    <div class="list-group">
-        <p class="list-group-item">You have {{jobs.length}} jobs assigined to you</p>
-        <a href="#" class="list-group-item active">5 in progress</a>
-        <a href="#" class="list-group-item">6 on wait</a>
-        <a href="#" class="list-group-item">2 on hold</a>
+        <a href="#" class="list-group-item greenJobs">5 deliverables all ok (3 in the next 7 days)</a>
+        <a href="#" class="list-group-item orangeJobs">1 deliverable due today</a>
+        <a href="#" class="list-group-item redJobs">2 late jobs</a>
     </div>
 </div>
 {{^jobs}}

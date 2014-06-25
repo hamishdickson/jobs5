@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   $("#whoDoButton").click(function(){
-    var tmpl, tmpl2,
+    var tmpl, tmpl2, tmpl3,
         tdata = {}; // JSON data object that feeds the template
 
     var whosJobsToGet = $("input[name=whosJobs]").val();
@@ -18,6 +18,9 @@ $(document).ready(function() {
 		    tmpl2 = d;
 	    });
 
+      $.get("/templates/personSummary.html", function(d) {
+		    tmpl3 = d;
+	    });
 
       // get the jobs3 data
       //$.getJSON("http://localhost:8070/jobs3/job/user/" + whosJobsToGet, function(d) {
@@ -31,8 +34,11 @@ $(document).ready(function() {
 	    $(document).ajaxStop(function() {
 		    var renderedPage = Mustache.to_html( tmpl, tdata );
         var renderedPage2 = Mustache.to_html( tmpl2, tdata );
+        var renderedPage3 = Mustache.to_html( tmpl3, tdata );
+
 		    $("#whosJobsSummary").html( renderedPage );
         $("#whosJobsDetail").html( renderedPage2 );
+        $("#personSummary").html( renderedPage3 );
 	    })
 	  }();
   });
