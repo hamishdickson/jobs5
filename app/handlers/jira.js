@@ -2,8 +2,8 @@ var jira = require('./jira-api');
 
 var options = {
     config: {
-        "username": "dicksonh",
-        "passowrd": "Pi3adaei",
+        "username": "username
+        "password": "password
         "host": "https://jira.jhc.co.uk"
     },
     issueIdOrKey: "JOBS-39"
