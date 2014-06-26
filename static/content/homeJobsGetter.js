@@ -23,7 +23,7 @@ $(document).ready(function() {
 	    });
 
       // get the jobs3 data
-      $.getJSON("http://localhost:8070/jobs3/jobtest", function(d) {
+      $.getJSON("http://172.24.24.233:8070/jobs3/job/user/" + whosJobsToGet, function(d) {
         $.extend(tdata, d);
         console.log(tdata);
       });
@@ -44,6 +44,14 @@ $(document).ready(function() {
         $("#whosJobsDetail").html( renderedPage2 );
         $("#personSummary").html( renderedPage3 );
 	    })
+	  }();
+  });
+
+  $("#bobButton").click(function(){
+      $.getJSON("/job/user/" + whosJobsToGet, function(d) {
+        $.extend(tdata, d);
+        console.log(tdata);
+      });
 	  }();
   });
 });

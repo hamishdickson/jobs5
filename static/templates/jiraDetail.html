@@ -1,0 +1,13 @@
+
+<div class="col-sm-4 jiraPanelDetail">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">JIRA issue: {{total}}</h3>
+        </div>
+        <div class="panel-body">{{summary}}</div>
+    </div>
+</div>
+
+{{^issues}}
+<div class="panel panel-default">No soup for you!</div>
+{{/issues}}
