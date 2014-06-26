@@ -23,11 +23,15 @@ $(document).ready(function() {
 	    });
 
       // get the jobs3 data
-      //$.getJSON("http://localhost:8070/jobs3/job/user/" + whosJobsToGet, function(d) {
       $.getJSON("http://localhost:8070/jobs3/jobtest", function(d) {
         $.extend(tdata, d);
         console.log(tdata);
       });
+
+      //$.getJSON("/jobs/jobtest", function(d) {
+      //  $.extend(tdata, d);
+      //  console.log(tdata);
+      //});
 
       // when AJAX calls are complete parse the template
       // replacing Mustache tags with vars
