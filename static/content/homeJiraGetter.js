@@ -25,7 +25,7 @@ $(document).ready(function() {
 	    $(document).ajaxStop(function() {
 		    var renderedPage = Mustache.to_html( tmpl, tdata );
 
-        $("#whosJiraDetail").html( renderedPage );
+        $("#users-jira-detail").html( renderedPage );
 	    })
 	  }();
   });

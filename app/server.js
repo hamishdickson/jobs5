@@ -8,7 +8,6 @@ var app = express();
 var page_hdlr = require('./handlers/pages.js');
 var helpers = require('./handlers/helpers.js');
 var jobs_hdlr = require('./handlers/jobs.js');
-var jira_hdlr = require('./handlers/jira.js');
 
 app.use(express.logger('dev'));
 app.use(express.bodyParser({ keepExtensions: true }));
@@ -16,8 +15,7 @@ app.use(express.static(__dirname + "/../static"));
 
 app.get('/pages/:page_name', page_hdlr.generate);
 app.get('/pages/:page_name/:sub_page', page_hdlr.generate);
-app.get('/jobs/:request', jobs_hdlr.getUserJobs)
-app.get('/jira/:request', jira_hdlr.getUserJira)
+app.get('/jobs/:request', jobs_hdlr.get_users_jobs)
 
 app.get("/", function (req, res) {
 	res.redirect("/pages/home");

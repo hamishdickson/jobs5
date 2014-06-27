@@ -1,24 +1,34 @@
-var helpers = require('./helpers.js'),
-    fs = require('fs'),
-    async = require('async');
-
 var http = require('http');
-var url = "localhost";
 
-exports.getUserJobs = function(req, res) {
-  var whodo = req.params.request;
+exports.get_users_jobs = function(res, data) {
 
   var options = {
-    host: url,
+    host: "localhost",
     port: 8070,
     path: '/jobs3/jobtest',
-    method: 'GET'
+    headers: {
+        accept: 'application/json'
+    }
   };
 
-  var output = http.request(options, function(res) {
-    console.log("got this far 2");
-    console.log("output: " + res.statusCode);
-  }).on();
+  http.get(options, function(res) {
+    var data = "";
 
-  return output;
+    res.on("data", function(chunk) {
+      data += chunk;
+    });
+
+    res.on("end", function() {
+      console.log(data);
+    });
+  });
+
+  //http.request(options, function(res) {
+  //  console.log('STATUS: ' + res.statusCode);
+  //  console.log('HEADERS: ' + JSON.stringify(res.headers));
+  //  res.setEncoding('utf8');
+  //  res.on('data', function (chunk) {
+  //    console.log('BODY: ' + chunk);
+  //  });
+  //}).end();
 }
