@@ -1,22 +1,19 @@
-# nodejs-template
+# Jobs5
 
-This is a totally stripped down template for a node.js webapp. It's designed to be forked and built on
+A pretty light webapp based for jobs3
 
-There is no database in this version. This is a point-and-clicker
+## Differences between jobs5 and jobs4
 
-## Prerequisites
+This is a prototype and doesn't aim to offer the functionality of jobs4.
 
-- [Node.js](http://nodejs.org/)
+## technologies
 
-## Running Locally
+This webapp runs off an express [http://expressjs.com/] (node.js) server. It uses mustache.js [http://mustache.github.io/] as a template engine.
 
-```sh
-git clone git@github.com:hamishdickson/nodejs-template.git # or clone your own fork
-cd nodejs-template/app
-npm install
-node server.js
-```
+## How to run
 
-Your app should now be running on [localhost:8080](http://localhost:3000/).
+First, ensure you have node.js up and running on your machine. Then go to jobs5/app and run 'npm install'
+
+Your app should now be running on [localhost:3000](http://localhost:3000/).
 
 The port can be changed in app/server.js
