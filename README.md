@@ -1,14 +1,14 @@
 # Jobs5
 
-A pretty light webapp based for jobs3
+A very light webapp based for jobs3
 
 ## Differences between jobs5 and jobs4
 
-This is a prototype and doesn't aim to offer the functionality of jobs4.
+This is a prototype and doesn't aim to offer the functionality of jobs4. Please use jobs4 if you have a choice.
 
 ## technologies
 
-This webapp runs off an express [http://expressjs.com/] (node.js) server. It uses mustache.js [http://mustache.github.io/] as a template engine.
+This webapp runs off an express (http://expressjs.com/) (a node.js) server. It uses mustache.js (http://mustache.github.io/ as a template engine.
 
 ## How to run
 
