@@ -22,6 +22,11 @@ app.get("/", function (req, res) {
 	res.end();
 });
 
+app.get("/jobs5", function (req, res) {
+	res.redirect("/pages/home");
+	res.end();
+});
+
 app.get('*', four_oh_four);
 
 function four_oh_four(req, res) {

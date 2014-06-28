@@ -106,3 +106,12 @@ a.list-group-item.orangeJobs {
 a.list-group-item.redJobs {
   color: white;
 }
+
+.border-me {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.another-job {
+  color: blue;
+}

@@ -5,14 +5,13 @@ exports.get_users_jobs = function(res, data) {
   var options = {
     host: "localhost",
     port: 8070,
-    path: '/jobs3/jobtest',
-    headers: {
-        accept: 'application/json'
-    }
+    path: '/jobs3/jobtest'
   };
 
-  http.get(options, function(res) {
+  http.get('http://localhost:8070/jobs3/jobtest', function(res) {
     var data = "";
+
+    console.log('Response is: ' + res.statusCode);
 
     res.on("data", function(chunk) {
       data += chunk;

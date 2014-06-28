@@ -23,16 +23,16 @@ $(document).ready(function() {
 	    });
 
       // get the jobs3 data
-      $.getJSON("http://172.24.24.233:8070/jobs3/job/user?userId=" + whosJobsToGet + '&status=A', function(d) {
-        $.extend(tdata, d);
-        console.log(tdata);
-      });
-
-      // get the jobs3 data
-      //$.getJSON("http://localhost:8070/jobs3/jobtest", function(d) {
+      //$.getJSON("http://172.24.24.233:8070/jobs3/job/user?userId=" + whosJobsToGet + '&status=A', function(d) {
       //  $.extend(tdata, d);
       //  console.log(tdata);
       //});
+
+      // get the jobs3 data
+      $.getJSON("http://localhost:8070/jobs3/jobtest", function(d) {
+        $.extend(tdata, d);
+        console.log(tdata);
+      });
 
 
       // when AJAX calls are complete parse the template
@@ -49,5 +49,7 @@ $(document).ready(function() {
 	    })
 	  }();
   });
+
+  $('#users-jobs-detail').sortable();
 
 });
