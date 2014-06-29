@@ -115,3 +115,8 @@ a.list-group-item.redJobs {
 .another-job {
   color: blue;
 }
+
+.alpha {
+  float: right;
+  color: #67EB46;
+}

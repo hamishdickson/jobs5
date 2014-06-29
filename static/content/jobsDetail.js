@@ -1,10 +1,6 @@
 $(document).ready(function() {
-  $(".hide-job").click(function(){
-    $(this.parentNode.parentNode.parentNode.parentNode).fadeOut('slow');
-  });
-
-  $('.another-job').click(function() {
-    alert("another-job");
+  $(".convert-to-jira").click(function(){
+    $("#jobsPanelDetail").attr('class', 'col-sm-6');
   });
 
   $(".expand-job").click(function() {
@@ -13,7 +9,23 @@ $(document).ready(function() {
 		    tmpl = d;
 	  });
     $(document).ajaxStop(function() {
-      $('.jobsPanelDetail').html(tmpl);
+      $('#jobsPanelDetail').html(tmpl);
     })
+  });
+
+  $(".hide-job").click(function(){
+    $(this.parentNode.parentNode.parentNode.parentNode).fadeOut('slow');
+  });
+
+  $('.another-job').click(function() {
+    alert("another-job");
+  });
+
+  $(".jobs-on-wait").click(function(){
+    alert("jobs on wait");
+  });
+
+  $(".jobs-on-hold").click(function(){
+    alert("jobs on hold");
   });
 });

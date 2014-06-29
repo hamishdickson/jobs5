@@ -15,17 +15,16 @@ $(document).ready(function() {
 	    });
 
       // get the jobs3 data
-      $.getJSON("https://jira.jhc.co.uk/rest/api/2/search?jql=assignee=dicksonh", function(d) {
+      $.getJSON("http://localhost:8070/jobs3/jobtest/" + whosJobsToGet, function(d) {
         $.extend(tdata, d);
-        console.log(tdata);
       });
 
       // when AJAX calls are complete parse the template
       // replacing Mustache tags with vars
 	    $(document).ajaxStop(function() {
-		    var renderedPage = Mustache.to_html( tmpl, tdata );
+          var renderedPage = Mustache.to_html( tmpl, tdata );
 
-        $("#users-jira-detail").html( renderedPage );
+          $("#users-jira-detail").append( renderedPage );
 	    })
 	  }();
   });

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $("#whoDoButton").click(function(){
+  $("#who-do-button").click(function(){
     var tmpl, tmpl2, tmpl3,
         tdata = {}; // JSON data object that feeds the template
 
@@ -22,18 +22,10 @@ $(document).ready(function() {
 		    tmpl3 = d;
 	    });
 
-      // get the jobs3 data
-      //$.getJSON("http://172.24.24.233:8070/jobs3/job/user?userId=" + whosJobsToGet + '&status=A', function(d) {
-      //  $.extend(tdata, d);
-      //  console.log(tdata);
-      //});
-
-      // get the jobs3 data
-      $.getJSON("http://localhost:8070/jobs3/jobtest", function(d) {
-        $.extend(tdata, d);
-        console.log(tdata);
+      $.getJSON("/jobs/test", function(d) {
+        var out = $.parseJSON(d);
+        $.extend(tdata, out);
       });
-
 
       // when AJAX calls are complete parse the template
       // replacing Mustache tags with vars

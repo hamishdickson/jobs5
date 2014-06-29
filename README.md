@@ -1,14 +1,16 @@
 # Jobs5
 
-A very light webapp based for jobs3
+A very light webapp for jobs3 and jira
 
 ## Differences between jobs5 and jobs4
 
-This is a prototype and doesn't aim to offer the functionality of jobs4. Please use jobs4 if you have a choice.
+Note, this is not considered stable and only used for prototyping/proof of concept. Please use jobs4 for production
 
-## technologies
+## Technologies
 
-This webapp runs off an express (http://expressjs.com/) (a node.js) server. It uses mustache.js (http://mustache.github.io/ as a template engine.
+This webapp runs off an express (http://expressjs.com/) (a node.js) server. It uses mustache.js (http://mustache.github.io/ as a template engine
+
+This webapp doesn't communicate with the iSeries directly, instead it requires a rest server to do the heavy lifting
 
 ## How to run
 
@@ -16,4 +18,4 @@ First, ensure you have node.js up and running on your machine. Then go to jobs5/
 
 Your app should now be running on [localhost:3000](http://localhost:3000/).
 
-The port can be changed in app/server.js
+The port can be changed in app/config.js
