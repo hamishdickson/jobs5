@@ -11,17 +11,15 @@ exports.get_test_jira = function(res, data) {
   };
 
   var reqGet = http.request(optionsget, function(res) {
-    res.setEncoding('utf-8');
+    //res.setEncoding('utf-8');
 
     res.on('data', function(d) {
-      data.json(d);
+      console.log(d);
     });
-  });
-
-  reqGet.end();
-  reqGet.on('error', function(e) {
-    console.error(e);
-  });
+  }).end();
+  //reqGet.on('error', function(e) {
+  //  console.error(e);
+  //});
 }
 
 exports.get_users_jira = function(res, data) {

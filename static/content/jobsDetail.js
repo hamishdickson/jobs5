@@ -16,7 +16,7 @@ $(document).ready(function() {
   });
 
   $(".hide-job").click(function(){
-    $(this.parentNode.parentNode.parentNode).fadeOut('slow');
+    $(this.parentNode.parentNode.parentNode).fadeOut('fast');
   });
 
   $('.another-job').click(function() {

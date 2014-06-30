@@ -22,22 +22,28 @@ $(document).ready(function() {
 		    tmpl3 = d;
 	    });
 
-      $.getJSON("/jobs/test", function(d) {
-        var out = $.parseJSON(d);
-        $.extend(tdata, out);
+      //$.getJSON("/jobs/user/" + whosJobsToGet, function(d) {
+      //  var out = $.parseJSON(d);
+      //  $.extend(tdata, out);
+      //});
+      $.getJSON("http://172.24.24.217:8070/jobs3/job/user/" + whosJobsToGet + "?status=Z", function(d) {
+        $.extend(tdata, d);
       });
 
       // when AJAX calls are complete parse the template
       // replacing Mustache tags with vars
 	    $(document).ajaxStop(function() {
 
-		    var renderedPage = Mustache.to_html( tmpl, tdata );
-        var renderedPage2 = Mustache.to_html( tmpl2, tdata );
-        var renderedPage3 = Mustache.to_html( tmpl3, tdata );
+        if (tdata != {}) {
 
-		    $("#users-jobs-summary").html( renderedPage );
-        $("#users-jobs-detail").html( renderedPage2 );
-        $("#person-summary").html( renderedPage3 );
+		      var renderedPage = Mustache.to_html( tmpl, tdata );
+          var renderedPage2 = Mustache.to_html( tmpl2, tdata );
+          var renderedPage3 = Mustache.to_html( tmpl3, tdata );
+
+		      $("#users-jobs-summary").html( renderedPage );
+          $("#users-jobs-detail").html( renderedPage2 );
+          $("#person-summary").html( renderedPage3 );
+        }
 	    })
 	  }();
   });

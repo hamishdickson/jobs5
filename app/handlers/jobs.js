@@ -24,11 +24,11 @@ exports.get_test_jobs = function(res, data) {
   });
 }
 
-exports.get_users_jobs = function(res, data) {
+exports.get_users_jobs = function(req, data) {
 
-  var user = res.params.user;
+  var user = req.params.user;
 
-  console.log("Get jobs for use: " + user);
+  console.log("Get jobs for user: " + user);
 
   var optionsget = {
     host: config.jobs_rest_host,
@@ -38,17 +38,18 @@ exports.get_users_jobs = function(res, data) {
   };
 
   var reqGet = http.request(optionsget, function(res) {
+
     res.setEncoding('utf-8');
 
     res.on('data', function(d) {
       data.json(d);
     });
-  });
+  }).end();
 
-  reqGet.end();
-  reqGet.on('error', function(e) {
-    console.error(e);
-  });
+  //reqGet.end();
+  //reqGet.on('error', function(e) {
+  //  console.error(e);
+  //});
 }
 
 exports.get_users_jobs_for_status = function(res, data) {
@@ -56,7 +57,7 @@ exports.get_users_jobs_for_status = function(res, data) {
   var user = res.params.user;
   var user = res.params.status;
 
-  console.log("Get jobs for use: " + user + " and status: " + status);
+  console.log("Get jobs for user: " + user + " and status: " + status);
 
   var optionsget = {
     host: config.jobs_rest_host,
