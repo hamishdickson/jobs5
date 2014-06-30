@@ -14,8 +14,9 @@ exports.get_test_jobs = function(res, data) {
     res.setEncoding('utf-8');
 
     res.on('data', function(d) {
-      data.json(d);
+      data.send(d);
     });
+
   });
 
   reqGet.end();
@@ -42,14 +43,15 @@ exports.get_users_jobs = function(req, data) {
     res.setEncoding('utf-8');
 
     res.on('data', function(d) {
-      data.json(d);
+      data.send(d);
     });
-  }).end();
 
-  //reqGet.end();
-  //reqGet.on('error', function(e) {
-  //  console.error(e);
-  //});
+  });
+
+  reqGet.end();
+  reqGet.on('error', function(e) {
+    console.error(e);
+  });
 }
 
 exports.get_users_jobs_for_status = function(res, data) {
@@ -70,7 +72,7 @@ exports.get_users_jobs_for_status = function(res, data) {
     res.setEncoding('utf-8');
 
     res.on('data', function(d) {
-      data.json(d);
+      data.send(d);
     });
   });
 
