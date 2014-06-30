@@ -42,6 +42,6 @@ $(document).ready(function() {
 	  }();
   });
 
-  $('#users-jobs-detail').sortable();
 
+  $('#users-jobs-detail').sortable();
 });

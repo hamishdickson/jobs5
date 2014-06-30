@@ -1,6 +1,7 @@
 $(document).ready(function() {
   $(".convert-to-jira").click(function(){
-    $("#jobsPanelDetail").attr('class', 'col-sm-6');
+    $(".jobsPanelDetail").attr('class', 'col-sm-6');
+    alert("convert to jira issue (test)");
   });
 
   $(".expand-job").click(function() {
@@ -9,12 +10,13 @@ $(document).ready(function() {
 		    tmpl = d;
 	  });
     $(document).ajaxStop(function() {
-      $('#jobsPanelDetail').html(tmpl);
+      $('.jobsPanelDetail').html(tmpl);
+      alert("expand for more details (test)");
     })
   });
 
   $(".hide-job").click(function(){
-    $(this.parentNode.parentNode.parentNode.parentNode).fadeOut('slow');
+    $(this.parentNode.parentNode.parentNode).fadeOut('slow');
   });
 
   $('.another-job').click(function() {
@@ -28,4 +30,5 @@ $(document).ready(function() {
   $(".jobs-on-hold").click(function(){
     alert("jobs on hold");
   });
+
 });

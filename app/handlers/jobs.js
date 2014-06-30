@@ -26,7 +26,9 @@ exports.get_test_jobs = function(res, data) {
 
 exports.get_users_jobs = function(res, data) {
 
-  var user = req.params.user;
+  var user = res.params.user;
+
+  console.log("Get jobs for use: " + user);
 
   var optionsget = {
     host: config.jobs_rest_host,
@@ -51,8 +53,10 @@ exports.get_users_jobs = function(res, data) {
 
 exports.get_users_jobs_for_status = function(res, data) {
 
-  var user = req.params.user;
-  var user = req.params.status;
+  var user = res.params.user;
+  var user = res.params.status;
+
+  console.log("Get jobs for use: " + user + " and status: " + status);
 
   var optionsget = {
     host: config.jobs_rest_host,
