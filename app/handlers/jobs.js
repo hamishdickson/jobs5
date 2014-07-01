@@ -2,31 +2,42 @@ var http = require('http');
 var config = require('../config.js');
 var async = require('async');
 
-exports.get_test_jobs = function(res, data) {
+exports.get_test_jobs = function(options, onResult) {
 
   var optionsget = {
     host: config.jobs_rest_host,
     port: config.jobs_rest_port,
     path: "/jobs3/jobtest",
-    method: "GET"
+    method: "GET",
+    headers: {
+        'Content-Type': 'application/json'
+    }
   };
 
   var reqGet = http.request(optionsget, function(res) {
+    var output = '';
+
     res.setEncoding('utf-8');
 
-    res.on('data', function(d) {
-      return data.send(d);
+    res.on('data', function(chunk) {
+      output += chunk;
+    });
+
+    res.on('end', function() {
+      var obj = JSON.parse(output);
+      onResult.send(res.statusCode, obj);
     });
 
   });
 
   reqGet.end();
+
   reqGet.on('error', function(e) {
-    console.error(e);
+    console.error('error: ' + e.message);
   });
 }
 
-exports.get_users_jobs = function(req, data) {
+exports.get_users_jobs = function(options, onResult) {
 
   var user = req.params.user;
 
@@ -36,22 +47,32 @@ exports.get_users_jobs = function(req, data) {
     host: config.jobs_rest_host,
     port: config.jobs_rest_port,
     path: "/jobs3/job/user/" + user,
-    method: "GET"
+    method: "GET",
+    headers: {
+        'Content-Type': 'application/json'
+    }
   };
 
   var reqGet = http.request(optionsget, function(res) {
+    var output = '';
 
     res.setEncoding('utf-8');
 
-    res.on('data', function(d) {
-      data.send(d);
+    res.on('data', function(chunk) {
+      output += chunk;
+    });
+
+    res.on('end', function() {
+      var obj = JSON.parse(output);
+      onResult.send(res.statusCode, obj);
     });
 
   });
 
   reqGet.end();
+
   reqGet.on('error', function(e) {
-    console.error(e);
+    console.error('error: ' + e.message);
   });
 }
 
