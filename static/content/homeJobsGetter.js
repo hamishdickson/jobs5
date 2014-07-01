@@ -25,10 +25,17 @@ $(document).ready(function() {
 		    tmpl3 = d;
 	    });
 
+      // get the jobs (test) data
       $.getJSON("/jobs/test", function(d) {
-      //  var out = $.parseJSON(d);
         $.extend(tdata, d);
       });
+
+      // get the jobs (test) data
+      $.getJSON("/jobs/user/" + whosJobsToGet, function(d) {
+        $.extend(tdata, d);
+      });
+
+      // silly call
       //$.getJSON("http://172.24.24.217:8070/jobs3/job/user/" + whosJobsToGet + "?status=Z", function(d) {
       //  $.extend(tdata, d);
       //});
