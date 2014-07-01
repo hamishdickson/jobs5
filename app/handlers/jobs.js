@@ -1,5 +1,6 @@
 var http = require('http');
 var config = require('../config.js');
+var async = require('async');
 
 exports.get_test_jobs = function(res, data) {
 
@@ -14,7 +15,7 @@ exports.get_test_jobs = function(res, data) {
     res.setEncoding('utf-8');
 
     res.on('data', function(d) {
-      data.send(d);
+      return data.send(d);
     });
 
   });
