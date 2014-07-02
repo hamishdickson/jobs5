@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+  $("#who-do-text-box").keyup(function(event){
+    if(event.which == 13){
+        $("#who-do-button").click();
+    }
+  });
+
   $("#who-do-button").click(function(){
     $(this).attr('disabled');
     $(this).addClass('fa-spin').removeClass('fa-child');
@@ -27,35 +33,36 @@ $(document).ready(function() {
 
       // get the jobs (test) data
       $.getJSON("/jobs/test", function(d) {
-        $.extend(tdata, d);
+        //$.extend(tdata, d);
       });
 
-      // get the jobs (test) data
-      $.getJSON("/jobs/user/" + whosJobsToGet, function(d) {
+      // get the jobs data
+      /*$.getJSON("/jobs/user/" + whosJobsToGet, function(d) {
         $.extend(tdata, d);
-      });
+      });*/
 
-      // silly call
-      //$.getJSON("http://172.24.24.217:8070/jobs3/job/user/" + whosJobsToGet + "?status=Z", function(d) {
-      //  $.extend(tdata, d);
-      //});
+      // get the jobs data - status W
+      /*$.getJSON("/jobs/user/" + whosJobsToGet + "/W", function(d) {
+        $.extend(tdata-w, d);
+      });*/
+
+      // get the jobs data - status H
+      /*$.getJSON("/jobs/user/" + whosJobsToGet + "/H", function(d) {
+        $.extend(tdata-h, d);
+      });*/
 
       // when AJAX calls are complete parse the template
       // replacing Mustache tags with vars
 	    $(document).ajaxStop(function() {
+        var renderedPage = Mustache.to_html( tmpl, tdata );
+        var renderedPage2 = Mustache.to_html( tmpl2, tdata );
+        var renderedPage3 = Mustache.to_html( tmpl3, tdata );
 
-        if (tdata != {}) {
+		    $("#users-jobs-summary").html( renderedPage );
+        $("#users-jobs-detail").html( renderedPage2 );
+        $("#person-summary").html( renderedPage3 );
 
-		      var renderedPage = Mustache.to_html( tmpl, tdata );
-          var renderedPage2 = Mustache.to_html( tmpl2, tdata );
-          var renderedPage3 = Mustache.to_html( tmpl3, tdata );
-
-		      $("#users-jobs-summary").html( renderedPage );
-          $("#users-jobs-detail").html( renderedPage2 );
-          $("#person-summary").html( renderedPage3 );
-
-          $('.fa-spin').addClass('fa-child').removeClass('fa-spin');
-        }
+        $('.fa-spin').addClass('fa-child').removeClass('fa-spin');
 	    })
 	  }();
 
