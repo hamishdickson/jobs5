@@ -3,6 +3,7 @@
 //
 
 $(function() {
+
 	var tmpl, // main template HTML
         tdata = {}; // JSON data object that feeds the template
 
@@ -21,5 +22,6 @@ $(function() {
 		    $("#data").html( renderedPage );
 	    });
 	}();
+
 });
 

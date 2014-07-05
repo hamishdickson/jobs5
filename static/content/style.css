@@ -124,3 +124,11 @@ a.list-group-item.redJobs {
 .jobsPanelDetail {
   overflow:auto;
 }
+
+.no-soup-image, .no-soup-text {
+  float: left;
+}
+
+.no-soup-text {
+  margin-left: 10px;
+}

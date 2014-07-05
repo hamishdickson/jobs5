@@ -10,7 +10,8 @@ $(document).ready(function() {
     $(this).attr('disabled');
     $(this).addClass('fa-spin').removeClass('fa-child');
 
-    var tmpl, tmpl2, tmpl3,
+    var tmpl, tmpl2, tmpl3, tmpl4,
+        tdataPerson = {},
         tdata = {}; // JSON data object that feeds the template
 
     var whosJobsToGet = $("input[name=users-jobs-button]").val();
@@ -31,9 +32,13 @@ $(document).ready(function() {
 		    tmpl3 = d;
 	    });
 
+      $.get("/templates/warnings/user-not-found.html", function(d) {
+		    tmpl4 = d;
+	    });
+
       // get the jobs (test) data
       $.getJSON("/jobs/test", function(d) {
-        //$.extend(tdata, d);
+        $.extend(tdata, d);
       });
 
       // get the jobs data
@@ -51,16 +56,28 @@ $(document).ready(function() {
         $.extend(tdata-h, d);
       });*/
 
+      // get the user information
+      $.getJSON("/persons/test", function(d) {
+        $.extend(tdataPerson, d);
+      });
+
       // when AJAX calls are complete parse the template
       // replacing Mustache tags with vars
 	    $(document).ajaxStop(function() {
-        var renderedPage = Mustache.to_html( tmpl, tdata );
         var renderedPage2 = Mustache.to_html( tmpl2, tdata );
-        var renderedPage3 = Mustache.to_html( tmpl3, tdata );
 
-		    $("#users-jobs-summary").html( renderedPage );
-        $("#users-jobs-detail").html( renderedPage2 );
-        $("#person-summary").html( renderedPage3 );
+		    $("#users-jobs-detail").html( renderedPage2 );
+
+        if (!jQuery.isEmptyObject(tdata)) {
+          var renderedPage = Mustache.to_html( tmpl, tdata );
+          var renderedPage3 = Mustache.to_html( tmpl3, tdataPerson );
+
+          $("#users-jobs-summary").html( renderedPage );
+          $("#person-summary").html( renderedPage3 );
+
+        } else {
+          $("#user-message-panel").html( tmpl4 );
+        }
 
         $('.fa-spin').addClass('fa-child').removeClass('fa-spin');
 	    })
