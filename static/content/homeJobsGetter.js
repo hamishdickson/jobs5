@@ -86,5 +86,41 @@ $(document).ready(function() {
   });
 
 
+  $("#specific-text-box").keyup(function(event){
+    if(event.which == 13){
+        $("#specific-job-button").click();
+    }
+  });
+
+  $("#specific-job-button").click(function(){
+    var tmplSpecific,
+        tdataSpecific = {}; // JSON data object that feeds the template
+
+    var jobNumber = $("input[name=job-number]").val();
+
+	  // Initialise page
+	  var initPage = function() {
+
+	    // Load the HTML template
+      $.get("/templates/jiraDetail.html", function(d) {
+		    tmplSpecific = d;
+	    });
+
+      // get the jobs3 data
+      $.getJSON("http://localhost:8070/jobs3/jobtest/" + jobNumber, function(d) {
+        $.extend(tdataSpecific, d);
+      });
+
+      // when AJAX calls are complete parse the template
+      // replacing Mustache tags with vars
+	    $(document).ajaxStop(function() {
+          var renderedPage = Mustache.to_html( tmplSpecific, tdataSpecific );
+
+          $("#specific-job").append( renderedPage );
+	    })
+	  }();
+  });
+
   $('#users-jobs-detail').sortable();
+
 });

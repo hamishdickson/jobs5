@@ -10,9 +10,9 @@ $(document).ready(function() {
     var kiddies = this.childNodes;
 
     addToPage(1, function() {
-      /*$(sizeClass).attr('class', 'col-sm-6');
-      $(me).removeClass('expand-job').addClass('shrink-job');
-      $(kiddies).removeClass('fa-arrows').addClass('fa-compress');*/
+      /*$(this.parentNode.parentNode.parentNode.parentNode).attr('class', 'col-sm-6');
+      $(this).removeClass('expand-job').addClass('shrink-job');
+      $(this.childNodes).removeClass('fa-arrows').addClass('fa-compress');*/
     });
 
   });

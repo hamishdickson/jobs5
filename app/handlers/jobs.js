@@ -76,30 +76,80 @@ exports.get_users_jobs = function(options, onResult) {
   });
 }
 
-exports.get_users_jobs_for_status = function(res, data) {
 
-  var user = res.params.user;
-  var user = res.params.status;
+exports.get_specific_job = function(options, onResult) {
 
-  console.log("Get jobs for user: " + user + " and status: " + status);
+  var user = req.params.jobNumber;
+
+  console.log("Get jobs for user: " + user);
 
   var optionsget = {
     host: config.jobs_rest_host,
     port: config.jobs_rest_port,
-    path: "/jobs3/job/" + user + "?status=" + status,
-    method: "GET"
+    path: "/jobs3/job/" + jobNumber,
+    method: "GET",
+    headers: {
+        'Content-Type': 'application/json'
+    }
   };
 
   var reqGet = http.request(optionsget, function(res) {
+    var output = '';
+
     res.setEncoding('utf-8');
 
-    res.on('data', function(d) {
-      data.send(d);
+    res.on('data', function(chunk) {
+      output += chunk;
     });
+
+    res.on('end', function() {
+      var obj = JSON.parse(output);
+      onResult.send(res.statusCode, obj);
+    });
+
   });
 
   reqGet.end();
+
   reqGet.on('error', function(e) {
-    console.error(e);
+    console.error('error: ' + e.message);
+  });
+}
+
+exports.get_users_jobs_for_status = function(res, data) {
+
+  var user = res.params.user;
+  var status = res.params.status;
+
+  var optionsget = {
+    host: config.jobs_rest_host,
+    port: config.jobs_rest_port,
+    path: "/jobs3/job/" + user + '?status=' + status,
+    method: "GET",
+    headers: {
+        'Content-Type': 'application/json'
+    }
+  };
+
+  var reqGet = http.request(optionsget, function(res) {
+    var output = '';
+
+    res.setEncoding('utf-8');
+
+    res.on('data', function(chunk) {
+      output += chunk;
+    });
+
+    res.on('end', function() {
+      var obj = JSON.parse(output);
+      onResult.send(res.statusCode, obj);
+    });
+
+  });
+
+  reqGet.end();
+
+  reqGet.on('error', function(e) {
+    console.error('error: ' + e.message);
   });
 }
