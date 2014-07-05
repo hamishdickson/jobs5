@@ -22,5 +22,5 @@ $(function() {
 		    $("#data").html( renderedPage );
 	    });
 	}();
-
 });
+

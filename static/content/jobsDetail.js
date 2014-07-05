@@ -1,7 +1,6 @@
 $(document).ready(function() {
   $(".convert-to-jira").click(function(){
-    $(".jobsPanelDetail").attr('class', 'col-sm-6');
-    alert("convert to jira issue (test)");
+    $(this.parentNode.parentNode.parentNode.parentNode).attr('class', 'col-sm-6');
   });
 
   $(".expand-job").click(function() {
@@ -9,11 +8,7 @@ $(document).ready(function() {
     var me = this;
     var kiddies = this.childNodes;
 
-    addToPage(1, function() {
-      /*$(this.parentNode.parentNode.parentNode.parentNode).attr('class', 'col-sm-6');
-      $(this).removeClass('expand-job').addClass('shrink-job');
-      $(this.childNodes).removeClass('fa-arrows').addClass('fa-compress');*/
-    });
+    addToPage(1);
 
   });
 

@@ -122,7 +122,7 @@ a.list-group-item.redJobs {
 }
 
 .jobsPanelDetail {
-  overflow:auto;
+  overflow: auto;
 }
 
 .no-soup-image, .no-soup-text {
@@ -131,4 +131,9 @@ a.list-group-item.redJobs {
 
 .no-soup-text {
   margin-left: 10px;
+}
+
+.jobs-notes {
+  height: 200px;
+  overflow: auto;
 }

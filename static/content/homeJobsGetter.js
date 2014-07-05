@@ -107,7 +107,7 @@ $(document).ready(function() {
 	    });
 
       // get the jobs3 data
-      $.getJSON("http://localhost:8070/jobs3/jobtest/" + jobNumber, function(d) {
+      $.getJSON("/jobs/test" + jobNumber, function(d) {
         $.extend(tdataSpecific, d);
       });
 
