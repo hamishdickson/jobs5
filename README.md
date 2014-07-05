@@ -16,6 +16,6 @@ This webapp doesn't communicate with the iSeries directly, instead it requires a
 
 First, ensure you have node.js up and running on your machine. Then go to jobs5/app and run 'npm install'
 
-Your app should now be running on [localhost:3000](http://localhost:3000/).
+Run node server.js and the app should now be running on [localhost:3000](http://localhost:3000/).
 
 The port can be changed in app/config.js
