@@ -5,30 +5,15 @@ $(document).ready(function() {
   });
 
   $(".expand-job").click(function() {
+    var sizeClass = this.parentNode.parentNode.parentNode.parentNode;
+    var me = this;
+    var kiddies = this.childNodes;
 
-
-      $(this.parentNode.parentNode.parentNode.parentNode).attr('class', 'col-sm-6');
-      $(this).removeClass('expand-job').addClass('shrink-job');
-      $(this.childNodes).removeClass('fa-arrows').addClass('fa-compress');
-
-
-    var tmpl, tdata = {};
-
-    $.get("/templates/jobsFullDetail.html", function(d) {
-		  tmpl = d;
-	  });
-
-    // get the jobs notes
-    $.getJSON("http://localhost:8070/jobs3/jobtest/jobNotes/1", function(d) {
-      $.extend(tdata, d);
-      console.log("output: " + tdata);
+    addToPage(1, function() {
+      /*$(sizeClass).attr('class', 'col-sm-6');
+      $(me).removeClass('expand-job').addClass('shrink-job');
+      $(kiddies).removeClass('fa-arrows').addClass('fa-compress');*/
     });
-
-    $(document).ajaxStop(function() {
-      var renderedPage = Mustache.to_html( tmpl, tdata );
-      $("#more-detail").html( renderedPage );
-
-    })
 
   });
 
@@ -49,3 +34,22 @@ $(document).ready(function() {
   });
 
 });
+
+function addToPage(jobNumber, callback) {
+  var tmpl, tdata = {};
+
+  $.get("/templates/jobsFullDetail.html", function(d) {
+	  tmpl = d;
+  });
+
+  // get the jobs notes
+  $.getJSON("http://localhost:8070/jobs3/jobtest/jobNotes/" + jobNumber, function(d) {
+    $.extend(tdata, d);
+  });
+
+  $(document).ajaxStop(function() {
+    var renderedPage = Mustache.to_html( tmpl, tdata );
+    $("#more-detail").html( renderedPage );
+  })
+  callback();
+}
