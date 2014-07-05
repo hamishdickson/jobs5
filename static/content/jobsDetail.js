@@ -5,14 +5,31 @@ $(document).ready(function() {
   });
 
   $(".expand-job").click(function() {
-    var tmpl;
+
+
+      $(this.parentNode.parentNode.parentNode.parentNode).attr('class', 'col-sm-6');
+      $(this).removeClass('expand-job').addClass('shrink-job');
+      $(this.childNodes).removeClass('fa-arrows').addClass('fa-compress');
+
+
+    var tmpl, tdata = {};
+
     $.get("/templates/jobsFullDetail.html", function(d) {
-		    tmpl = d;
+		  tmpl = d;
 	  });
+
+    // get the jobs notes
+    $.getJSON("http://localhost:8070/jobs3/jobtest/jobNotes/1", function(d) {
+      $.extend(tdata, d);
+      console.log("output: " + tdata);
+    });
+
     $(document).ajaxStop(function() {
-      $('.jobsPanelDetail').html(tmpl);
-      alert("expand for more details (test)");
+      var renderedPage = Mustache.to_html( tmpl, tdata );
+      $("#more-detail").html( renderedPage );
+
     })
+
   });
 
   $(".hide-job").click(function(){
