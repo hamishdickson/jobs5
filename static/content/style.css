@@ -137,3 +137,11 @@ a.list-group-item.redJobs {
   height: 200px;
   overflow: auto;
 }
+/* new styling
+html, body, #data {
+  background: #3a3a3a;
+}
+
+.page-header {
+background: #03899c;
+}*/

@@ -19,6 +19,8 @@ app.use(express.static(__dirname + "/../static"));
 app.get('/pages/:page_name', page_hdlr.generate);
 app.get('/pages/:page_name/:sub_page', page_hdlr.generate);
 
+app.get('/jobs/test/post', jobs_hdlr.post_job);
+
 app.get('/jobs/test', jobs_hdlr.get_test_jobs);
 app.get('/jobs/:jobNumber', jobs_hdlr.get_specific_job);
 app.get('/jobs/user/:user', jobs_hdlr.get_users_jobs);

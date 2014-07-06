@@ -79,9 +79,9 @@ exports.get_users_jobs = function(options, onResult) {
 
 exports.get_specific_job = function(options, onResult) {
 
-  var user = req.params.jobNumber;
+  var jobNumber = options.params.jobNumber;
 
-  console.log("Get jobs for user: " + user);
+  console.log("Get jobs for user: " + jobNumber);
 
   var optionsget = {
     host: config.jobs_rest_host,
@@ -150,6 +150,67 @@ exports.get_users_jobs_for_status = function(res, data) {
   reqGet.end();
 
   reqGet.on('error', function(e) {
+    console.error('error: ' + e.message);
+  });
+}
+
+exports.post_job = function(res, data) {
+
+  var post_data = {
+      "jobNumber": 121,
+      "description": "first description",
+      "whoDo": "HD",
+      "status": "A",
+      "client": "JHC",
+      "importance": 3,
+      "whoPay": "JHC",
+      "contact": "Hamish",
+      "workorder": 2,
+      "jobType": "J",
+      "enteredBy": "HD",
+      "functionalArea": "WEBWEB",
+      "system": "TRACEY",
+      "invoiceText": "Test Job 1",
+      "enteredDate": 20140624,
+      "enteredTime": 900,
+      "defect": "N",
+      "liveUat": "L",
+      "releaseVersion": "F63",
+      "project": "JOBS",
+      "urgent": "Y"
+  };
+
+  var options = {
+    host: config.jobs_rest_host,
+    port: config.jobs_rest_port,
+    path: "/jobs3/jobtest",
+    method: "POST",
+    headers: {
+        'Content-Type': 'application/json'
+    }
+  };
+
+  var reqPost = http.request(options, function(res) {
+    var output = '';
+
+    res.setEncoding('utf-8');
+
+    res.on('data', function(chunk) {
+      output += chunk;
+    });
+
+    res.on('end', function() {
+      var obj = JSON.parse(output);
+      onResult.send(res.statusCode, obj);
+    });
+
+  });
+
+  reqPost.write(post_data);
+
+  reqPost.end();
+
+  reqPost.on('error', function(e) {
     console.error('error: ' + e.message);
   });
 }
