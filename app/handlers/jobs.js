@@ -35,7 +35,7 @@ exports.get_test_jobs = function(options, onResult) {
   reqGet.on('error', function(e) {
     console.error('error: ' + e.message);
   });
-}
+};
 
 exports.get_users_jobs = function(options, onResult) {
 
@@ -74,7 +74,7 @@ exports.get_users_jobs = function(options, onResult) {
   reqGet.on('error', function(e) {
     console.error('error: ' + e.message);
   });
-}
+};
 
 
 exports.get_specific_job = function(options, onResult) {
@@ -114,7 +114,7 @@ exports.get_specific_job = function(options, onResult) {
   reqGet.on('error', function(e) {
     console.error('error: ' + e.message);
   });
-}
+};
 
 exports.get_users_jobs_for_status = function(res, data) {
 
@@ -152,7 +152,7 @@ exports.get_users_jobs_for_status = function(res, data) {
   reqGet.on('error', function(e) {
     console.error('error: ' + e.message);
   });
-}
+};
 
 exports.post_job = function(res, data) {
 
@@ -180,13 +180,16 @@ exports.post_job = function(res, data) {
       "urgent": "Y"
   };
 
+  var outJson = JSON.stringify(post_data);
+
   var options = {
     host: config.jobs_rest_host,
     port: config.jobs_rest_port,
     path: "/jobs3/jobtest",
     method: "POST",
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "Content-Length": Buffer.byteLength(outJson, 'utf8')
     }
   };
 
@@ -195,22 +198,25 @@ exports.post_job = function(res, data) {
 
     res.setEncoding('utf-8');
 
-    res.on('data', function(chunk) {
-      output += chunk;
+    res.on('data', function(d) {
+      //output += chunk;
+        console.info('POST result:\n');
+        process.stdout.write(d);
+        console.info('\n\nPOST completed');
     });
-
-    res.on('end', function() {
+/*
+    res.on('end', function(d) {
       var obj = JSON.parse(output);
-      onResult.send(res.statusCode, obj);
-    });
+      d.send(res.statusCode, obj);
+    });*/
 
   });
 
-  reqPost.write(post_data);
+  reqPost.write(outJson);
 
   reqPost.end();
 
   reqPost.on('error', function(e) {
     console.error('error: ' + e.message);
   });
-}
+};
