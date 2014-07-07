@@ -1,5 +1,5 @@
 var http = require('http');
-var config = require('../config.js');
+var config = require('../../config.js');
 
 exports.get_test_jira = function(res, data) {
 

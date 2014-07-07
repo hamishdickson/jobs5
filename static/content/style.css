@@ -38,7 +38,7 @@
 body {
     padding-top: 60px;
     /*font-family: 'Open Sans', Helvetica, Arial, sans-serif;*/
-    font-family: 'effra', museo-slab, Georgia, "Times New Roman", Times, serif;
+    /*font-family: 'effra', museo-slab, Georgia, "Times New Roman", Times, serif;*/
     /*text-align: center;*/
 }
 p.lead {
@@ -106,11 +106,11 @@ a.list-group-item.orangeJobs {
 a.list-group-item.redJobs {
   color: white;
 }
-
+/*
 .border-me {
   border-bottom: 1px solid #ddd;
   margin-bottom: 20px;
-}
+}*/
 
 .another-job {
   color: blue;
@@ -137,11 +137,28 @@ a.list-group-item.redJobs {
   height: 200px;
   overflow: auto;
 }
-/* new styling
+
+/* additional theme */
 html, body, #data {
   background: #3a3a3a;
 }
 
-.page-header {
-background: #03899c;
-}*/
+.panel {
+    background: #595959;
+    border-radius: 0px;
+    border: 5px solid #4b4b4b;
+}
+
+.form-panel, .panel-default>.panel-heading {
+    background: #4b4b4b;
+    color: #ffffff;
+    border: none;
+}
+
+h1 {
+    color: #ffffff;
+}
+
+button#who-do-button, button#specific-job-button {
+    background: #00FF13;
+}

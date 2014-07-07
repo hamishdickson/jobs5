@@ -1,8 +1,8 @@
 var http = require('http');
-var config = require('../config.js');
+var config = require('../../config.js');
 var async = require('async');
 
-exports.get_test_jobs = function(options, onResult) {
+exports.get_all_jobs = function(options, onResult) {
 
   var optionsget = {
     host: config.jobs_rest_host,
@@ -46,7 +46,7 @@ exports.get_users_jobs = function(options, onResult) {
   var optionsget = {
     host: config.jobs_rest_host,
     port: config.jobs_rest_port,
-    path: "/jobs3/job/user/" + user,
+    path: "/jobs3/jobtest/user/" + user,
     method: "GET",
     headers: {
         'Content-Type': 'application/json'

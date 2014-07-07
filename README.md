@@ -2,6 +2,8 @@
 
 A very light webapp for jobs3 and jira
 
+Don't get too excited - I'm going to rewrite this in angularjs very soon
+
 ## Differences between jobs5 and jobs4
 
 Note, this is not considered stable and only used for prototyping/proof of concept. Please use jobs4 for production
