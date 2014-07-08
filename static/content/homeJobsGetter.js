@@ -37,7 +37,7 @@ $(document).ready(function() {
 	    });
 
       // get the jobs (test) data
-      $.getJSON("/jobs/test", function(d) {
+      $.getJSON("/jobs/user/" + whosJobsToGet, function(d) {
         $.extend(tdata, d);
       });
 
@@ -58,7 +58,7 @@ $(document).ready(function() {
 
       // get the user information
       $.getJSON("/persons/test", function(d) {
-        $.extend(tdataPerson, d);
+        //$.extend(tdataPerson, d);
       });
 
       // when AJAX calls are complete parse the template

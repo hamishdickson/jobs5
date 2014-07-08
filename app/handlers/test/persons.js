@@ -38,12 +38,12 @@ exports.get_test_persons = function(options, onResult) {
 
 exports.get_persons = function(options, onResult) {
 
-  var person = req.params.person;
+  var person = options.params.person;
 
   var optionsget = {
     host: config.jobs_rest_host,
     port: config.jobs_rest_port,
-    path: "/jobs3/person/" + person,
+    path: "/jobs3/jobtest/person/" + person,
     method: "GET",
     headers: {
         'Content-Type': 'application/json'

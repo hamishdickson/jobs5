@@ -149,13 +149,14 @@ html, body, #data {
     border: 5px solid #4b4b4b;
 }
 
-.form-panel, .panel-default>.panel-heading {
+.form-panel, .panel-default>.panel-heading,
+.panel-primary>.panel-heading {
     background: #4b4b4b;
     color: #ffffff;
     border: none;
 }
 
-h1 {
+h1, p {
     color: #ffffff;
 }
 
