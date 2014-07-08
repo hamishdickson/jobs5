@@ -2,7 +2,7 @@ var http = require('http');
 var config = require('../../config.js');
 var async = require('async');
 
-exports.get_all_jobs = function(options, onResult) {
+/*exports.get_all_jobs = function(options, onResult) {
 
   var optionsget = {
     host: config.jobs_rest_host,
@@ -35,13 +35,13 @@ exports.get_all_jobs = function(options, onResult) {
   reqGet.on('error', function(e) {
     console.error('error: ' + e.message);
   });
-};
+};*/
 
 exports.get_users_jobs = function(options, onResult) {
 
-  var user = req.params.user;
+  var user = options.params.user;
 
-  console.log("Get jobs for user: " + user);
+  console.log("Get (test) jobs for user: " + user);
 
   var optionsget = {
     host: config.jobs_rest_host,
@@ -81,12 +81,12 @@ exports.get_specific_job = function(options, onResult) {
 
   var jobNumber = options.params.jobNumber;
 
-  console.log("Get jobs for user: " + jobNumber);
+  console.log("Get specific job number: " + jobNumber);
 
   var optionsget = {
     host: config.jobs_rest_host,
     port: config.jobs_rest_port,
-    path: "/jobs3/job/" + jobNumber,
+    path: "/jobs3/jobtest/" + jobNumber,
     method: "GET",
     headers: {
         'Content-Type': 'application/json'
@@ -113,6 +113,7 @@ exports.get_specific_job = function(options, onResult) {
 
   reqGet.on('error', function(e) {
     console.error('error: ' + e.message);
+    four_oh_four();
   });
 };
 
@@ -124,7 +125,7 @@ exports.get_users_jobs_for_status = function(res, data) {
   var optionsget = {
     host: config.jobs_rest_host,
     port: config.jobs_rest_port,
-    path: "/jobs3/job/" + user + '?status=' + status,
+    path: "/jobs3/jobtest/" + user + '?status=' + status,
     method: "GET",
     headers: {
         'Content-Type': 'application/json'
@@ -218,5 +219,15 @@ exports.post_job = function(res, data) {
 
   reqPost.on('error', function(e) {
     console.error('error: ' + e.message);
+    //four_oh_four;
   });
 };
+
+function four_oh_four(req, res) {
+    res.writeHead(404, { "Content-Type" : "application/json" });
+    res.end(JSON.stringify(helpers.invalid_resource()) + "\n");
+}
+
+function internal_error(req, res) {
+    helpers.send_failure()
+}

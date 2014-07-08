@@ -31,14 +31,12 @@ if (config.LEVEL == 'DEV' || config.LEVEL == 'TEST') {
 
 app.get('/jobs/test/post', jobs_hdlr.post_job);
 
-app.get('/jobs/:jobNumber', jobs_hdlr.get_specific_job);
+app.get('/jobs/number/:jobNumber', jobs_hdlr.get_specific_job);
 app.get('/jobs/user/:user', jobs_hdlr.get_users_jobs);
-app.get('/jobs/user/:user/:status', jobs_hdlr.get_users_jobs_for_status);
+app.get('/jobs/status/:user/:status', jobs_hdlr.get_users_jobs_for_status);
 
-app.get('/persons/test', persons_hdlr.get_test_persons);
 app.get('/persons/:person', persons_hdlr.get_persons);
 
-app.get('/jira/test', jira_hdlr.get_test_jira);
 app.get('/jira/user/:user', jira_hdlr.get_users_jira);
 
 app.get("/", function (req, res) {
