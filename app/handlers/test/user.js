@@ -8,6 +8,6 @@ function User (user_data) {
     this.jiras = jira_hdlr.get_users_jira;
 }
 
-Album.prototype.person = null;
-Album.prototype.jobs = null;
-Album.prototype.jiras = null;
+User.prototype.person = null;
+User.prototype.jobs = null;
+User.prototype.jiras = null;
