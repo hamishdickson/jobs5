@@ -36,5 +36,4 @@ if (exports.LEVEL == 'DEV') {
     exports.jobs_specific_job_path = "/jobs3/";
     exports.jobs_users_jobs_for_status_path = "/jobs3/user/";
     exports.persons_persons_path = "/jobs3/person/";
-
 }
