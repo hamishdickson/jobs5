@@ -4,11 +4,15 @@
 
 var async = require('async'),
     helpers = require('./helpers.js'),
-    jobs = require('./jobs.js');
+    jobs = require('./jobs.js'),
+    person = require('./persons.js');
 
-function User (user_data) {
-    this.person = persons_hdlr.get_persons;
-    this.jobs = jobs_hdlr.get_users_jobs_for_status;
+function User (person, jobs) {
+    this.bob = "test";
+//    this.person = persons_hdlr.get_persons;
+    //this.jobs = jobs_hdlr.get_users_jobs;
+    this.person = person;
+    this.jobs = jobs;
     //this.jiras = jira_hdlr.get_users_jira;
 }
 
@@ -17,27 +21,48 @@ User.prototype.jobs = null;
 //User.prototype.jiras = null;
 
 User.prototype.response_obj = function () {
-    return { person: this.person,
+    return { //person: this.person,
         jobs: this.jobs };
 };
 
 exports.get_users = function(req, res) {
+
+    var user_jobs = {},
+        user_person = {};
+
     async.waterfall([
-        function (cb) {
-            //req.param.user = 'HD';
-            //var user_data = jobs.get_users_jobs(req);
-            //cb(user_data);
-            cb(helpers.error("no_such_user",
-                "The specified user does not exist"));
+        function(cb) {
+            jobs.get_cb_users_jobs(req, function(err, result) {
+                if (err) {
+                    //handle the error
+                    console.log("eh oh .. " + err.message);
+                } else {
+                    //do whatever you want with the result
+                    //helpers.send_success(res, { user: result });
+                    user_jobs = result.data.jobs;
+                    cb(null);
+                }
+            });
+        },
+        function(cb) {
+            person.get_cb_persons(req, function (err, result) {
+                if (err) {
+                    //handle the error
+                    console.log("eh oh .. " + err.message);
+                } else {
+                    //do whatever you want with the result
+                    //helpers.send_success(res, { user: result });
+                    user_person = result.data;
+                    cb(null);
+                }
+            })
         }
-    ], function(err, results) {
-        if (err) {
-            helpers.send_failure(res, err);
-        } else if (!results) {
-            helpers.send_failure(results, helpers.no_such_user);
-        } else {
-            var u = new User(user_data);
-            helpers.send_success(results, { user: u.responce_obj() });
+    ],
+        function(err) {
+            var user_data = new User(user_person, user_jobs);
+
+            helpers.send_success(res, { user: user_data});
         }
-    });
+
+    );
 };

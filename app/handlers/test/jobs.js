@@ -1,6 +1,50 @@
 var http = require('http');
 var config = require('../../config.js');
 var async = require('async');
+var helpers = require('./helpers.js');
+
+exports.get_cb_users_jobs = function(options, cb) {
+
+    var user = options.params.user;
+
+    console.log("Get (test) jobs for user: " + user);
+
+    var optionsget = {
+        host: config.jobs_rest_host,
+        port: config.jobs_rest_port,
+        path: "/jobs3/jobtest/user/" + user,
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    var reqGet = http.request(optionsget, function(res) {
+        var output = '';
+
+        res.setEncoding('utf-8');
+
+        res.on('data', function(chunk) {
+            output += chunk;
+        });
+
+        res.on('end', function() {
+            var obj = JSON.parse(output);
+            cb(null, {
+                status: res.statusCode,
+                data: obj
+            });
+        });
+
+    });
+
+    reqGet.end();
+
+    reqGet.on('error', function(err) {
+        cb(err);
+    });
+};
+
 
 exports.get_users_jobs = function(options, onResult) {
 
