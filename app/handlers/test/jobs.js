@@ -1,3 +1,4 @@
+/*
 var http = require('http');
 var config = require('../../config.js');
 var async = require('async');
@@ -105,6 +106,8 @@ exports.get_cb_users_jobs_for_status = function (options, cb) {
     var user = options.params.user;
     var status = options.params.status;
 
+    console.log("Get (test) jobs for user "+ user + " and status " + status);
+
     var optionsget = {
         host: config.jobs_rest_host,
         port: config.jobs_rest_port,
@@ -150,6 +153,10 @@ exports.get_users_jobs_for_status = function (options, cb) {
 };
 
 exports.post_job = function (res, data) {
+
+
+    console.log("Post (test) job");
+
 
     var post_data = {
         "jobNumber": 121,
@@ -199,11 +206,13 @@ exports.post_job = function (res, data) {
             process.stdout.write(d);
             console.info('\n\nPOST completed');
         });
-        /*
+        */
+/*
          res.on('end', function(d) {
          var obj = JSON.parse(output);
          d.send(res.statusCode, obj);
-         });*/
+         });*//*
+
 
     });
 
@@ -254,4 +263,4 @@ exports.get_job_notes = function (options, onResult) {
     reqGet.on('error', function (e) {
         console.error('error: ' + e.message);
     });
-};
+};*/

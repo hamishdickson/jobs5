@@ -1,3 +1,4 @@
+/*
 var http = require('http');
 var config = require('../../config.js');
 
@@ -112,3 +113,4 @@ exports.get_cb_persons = function(options, cb) {
         cb(err);
     });
 };
+*/

@@ -6,12 +6,12 @@ exports.get_cb_users_jobs = function (options, cb) {
 
     var user = options.params.user;
 
-    console.log("Get (test) jobs for user: " + user);
+    console.log("Get all jobs for user: " + user);
 
     var optionsget = {
         host: config.jobs_rest_host,
         port: config.jobs_rest_port,
-        path: "/jobs3/jobtest/user/" + user,
+        path: config.jobs_users_jobs_path + user,
         method: "GET",
         headers: {
             'Content-Type': 'application/json'
@@ -55,12 +55,12 @@ exports.get_cb_specific_job = function (options, cb) {
 
     var jobNumber = options.params.jobNumber;
 
-    console.log("Get specific (test) job number: " + jobNumber);
+    console.log("Get specific job number: " + jobNumber);
 
     var optionsget = {
         host: config.jobs_rest_host,
         port: config.jobs_rest_port,
-        path: "/jobs3/jobtest/" + jobNumber,
+        path: config.jobs_specific_job_path + jobNumber,
         method: "GET",
         headers: {
             'Content-Type': 'application/json'
@@ -108,7 +108,7 @@ exports.get_cb_users_jobs_for_status = function (options, cb) {
     var optionsget = {
         host: config.jobs_rest_host,
         port: config.jobs_rest_port,
-        path: "/jobs3/jobtest/user/" + user,
+        path: config.jobs_users_jobs_for_status_path + user + "?status=" + status,
         method: "GET",
         headers: {
             'Content-Type': 'application/json'

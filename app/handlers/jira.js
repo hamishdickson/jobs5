@@ -1,6 +1,8 @@
 var http = require('http');
 var config = require('../config.js');
 
+//TODO this basically still needs writing
+
 exports.get_test_jira = function(res, data) {
 
   var optionsget = {

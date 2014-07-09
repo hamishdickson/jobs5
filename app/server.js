@@ -8,7 +8,10 @@ var config = require('./config.js');
 
 var page_hdlr = require('./handlers/pages.js');
 var helpers = require('./handlers/helpers.js');
-var jobs_hdlr, persons_hdlr, jira_hdlr, user_hdlr;
+var jobs_hdlr = require('./handlers/jobs.js');
+var persons_hdlr = require('./handlers/persons.js');
+var jira_hdlr = require('./handlers/jira.js');
+var user_hdlr = require('./handlers/user.js');
 
 app.use(express.logger('dev'));
 app.use(express.bodyParser({ keepExtensions: true }));
@@ -17,19 +20,6 @@ app.use(express.static(__dirname + "/../static"));
 // this will always be like this
 app.get('/pages/:page_name', page_hdlr.generate);
 app.get('/pages/:page_name/:sub_page', page_hdlr.generate);
-
-// TODO remove later
-if (config.LEVEL == 'DEV' || config.LEVEL == 'TEST') {
-    jobs_hdlr = require('./handlers/test/jobs.js');
-    persons_hdlr = require('./handlers/test/persons.js');
-    jira_hdlr = require('./handlers/test/jira.js');
-    user_hdlr = require('./handlers/test/user.js');
-} else {
-    jobs_hdlr = require('./handlers/jobs.js');
-    persons_hdlr = require('./handlers/persons.js');
-    jira_hdlr = require('./handlers/jira.js');
-    user_hdlr = require('./handlers/user.js');
-}
 
 // to be updated
 app.get('/jobs/test/post', jobs_hdlr.post_job);
@@ -42,7 +32,7 @@ app.get('/jobs/notes/:jobNumber', jobs_hdlr.get_job_notes);
 app.get('/persons/:person', persons_hdlr.get_persons);
 
 app.get('/jira/user/:user', jira_hdlr.get_users_jira);
-app.get('/jira/reference/:reference', jira_hdlr.get_specific_jira);
+//app.get('/jira/reference/:reference', jira_hdlr.get_specific_jira);
 
 // the main event
 app.get('/user/:user', user_hdlr.get_users);

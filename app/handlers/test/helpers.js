@@ -1,3 +1,4 @@
+/*
 //
 // 04/02/14 HWD Creation
 //
@@ -65,3 +66,4 @@ exports.error_for_resp = function (err) {
             message: err.message });
     }
 };
+*/

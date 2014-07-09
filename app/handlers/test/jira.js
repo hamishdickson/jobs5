@@ -1,3 +1,4 @@
+/*
 var http = require('http');
 var config = require('../../config.js');
 
@@ -68,4 +69,4 @@ exports.get_specific_jira = function(res, data) {
     reqGet.on('error', function(e) {
         console.error(e);
     });
-};
+};*/
