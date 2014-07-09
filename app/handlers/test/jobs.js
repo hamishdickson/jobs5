@@ -2,41 +2,6 @@ var http = require('http');
 var config = require('../../config.js');
 var async = require('async');
 
-/*exports.get_all_jobs = function(options, onResult) {
-
-  var optionsget = {
-    host: config.jobs_rest_host,
-    port: config.jobs_rest_port,
-    path: "/jobs3/jobtest",
-    method: "GET",
-    headers: {
-        'Content-Type': 'application/json'
-    }
-  };
-
-  var reqGet = http.request(optionsget, function(res) {
-    var output = '';
-
-    res.setEncoding('utf-8');
-
-    res.on('data', function(chunk) {
-      output += chunk;
-    });
-
-    res.on('end', function() {
-      var obj = JSON.parse(output);
-      onResult.send(res.statusCode, obj);
-    });
-
-  });
-
-  reqGet.end();
-
-  reqGet.on('error', function(e) {
-    console.error('error: ' + e.message);
-  });
-};*/
-
 exports.get_users_jobs = function(options, onResult) {
 
   var user = options.params.user;
@@ -221,6 +186,45 @@ exports.post_job = function(res, data) {
     console.error('error: ' + e.message);
     //four_oh_four;
   });
+};
+
+exports.get_job_notes = function(options, onResult) {
+
+    var jobNumber = options.params.jobNumber;
+
+    console.log("Get (test) job notes for job number: " + jobNumber);
+
+    var optionsget = {
+        host: config.jobs_rest_host,
+        port: config.jobs_rest_port,
+        path: "/jobs3/jobtest/jobNotes/" + jobNumber,
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    var reqGet = http.request(optionsget, function(res) {
+        var output = '';
+
+        res.setEncoding('utf-8');
+
+        res.on('data', function(chunk) {
+            output += chunk;
+        });
+
+        res.on('end', function() {
+            var obj = JSON.parse(output);
+            onResult.send(res.statusCode, obj);
+        });
+
+    });
+
+    reqGet.end();
+
+    reqGet.on('error', function(e) {
+        console.error('error: ' + e.message);
+    });
 };
 
 function four_oh_four(req, res) {

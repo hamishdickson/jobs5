@@ -152,14 +152,26 @@ html, body, #data {
 .form-panel, .panel-default>.panel-heading,
 .panel-primary>.panel-heading {
     background: #4b4b4b;
-    color: #ffffff;
+    color: #cccccc;
     border: none;
 }
 
 h1, p {
-    color: #ffffff;
+    color: #cccccc;
 }
 
 button#who-do-button, button#specific-job-button {
     background: #00FF13;
+}
+
+input {
+    border-radius: 25px;
+    border: none;
+    background: #4b4b4b;
+    padding-left: 5px;
+    color: #cccccc;
+}
+
+::-webkit-input-placeholder {
+    color: #cccccc;
 }

@@ -20,7 +20,7 @@ exports.get_test_jira = function(res, data) {
   //reqGet.on('error', function(e) {
   //  console.error(e);
   //});
-}
+};
 
 exports.get_users_jira = function(res, data) {
 
@@ -44,4 +44,28 @@ exports.get_users_jira = function(res, data) {
   reqGet.on('error', function(e) {
     console.error(e);
   });
-}
+};
+
+exports.get_specific_jira = function(res, data) {
+
+    var user = req.params.user;
+
+    var optionsget = {
+        host: config.jira_rest_host,
+        path: "/rest/api/2/search?jql=assignee=" + user,
+        method: "GET"
+    };
+
+    var reqGet = http.request(optionsget, function(res) {
+        res.setEncoding('utf-8');
+
+        res.on('data', function(d) {
+            data.json(d);
+        });
+    });
+
+    reqGet.end();
+    reqGet.on('error', function(e) {
+        console.error(e);
+    });
+};
