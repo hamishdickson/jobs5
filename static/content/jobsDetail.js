@@ -12,7 +12,17 @@ $(document).ready(function() {
 
   });
 
-  $(".hide-job").click(function(){
+    $(".more-detail").click(function() {
+        var sizeClass = this.parentNode.parentNode.parentNode.parentNode;
+        var me = this;
+        var kiddies = this.childNodes;
+
+        addToPage(1);
+
+    });
+
+
+    $(".hide-job").click(function(){
     $(this.parentNode.parentNode.parentNode.parentNode).fadeOut('fast');
   });
 
@@ -45,6 +55,7 @@ function addToPage(jobNumber, callback) {
   $(document).ajaxStop(function() {
     var renderedPage = Mustache.to_html( tmpl, tdata );
     $("#more-detail").html( renderedPage );
-  })
+  });
+
   callback();
 }

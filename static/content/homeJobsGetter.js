@@ -11,7 +11,6 @@ $(document).ready(function() {
     $(this).addClass('fa-spin').removeClass('fa-child');
 
     var tmpl, tmpl2, tmpl3, tmpl4,
-        tdataPerson = {},
         tdata = {}; // JSON data object that feeds the template
 
     var whosJobsToGet = $("input[name=users-jobs-button]").val();

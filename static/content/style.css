@@ -83,34 +83,35 @@ p {
   padding-top: 10px;
 }
 
-.greenJobs {
-  background-image: linear-gradient(to bottom,#5cb85c 0,#449d44 100%);
+div.progress-bar.progress-bar-success {
+    background: #5cb85c;
 }
 
-a.list-group-item.greenJobs {
-  color: white;
+.list-group-item.greenJobs:hover {
+  /*background-image: linear-gradient(to bottom,#5cb85c 0,#449d44 100%);*/
+    background: #5cb85c;
+    border-radius: 0px;
 }
 
-.orangeJobs {
-  background-image: linear-gradient(to bottom,#f0ad4e 0,#ec971f 100%);
+div.progress-bar.progress-bar-warning {
+    background: #e08037;
 }
 
-a.list-group-item.orangeJobs {
-  color: white;
+.list-group-item.orangeJobs:hover {
+  /*background-image: linear-gradient(to bottom,#f0ad4e 0,#ec971f 100%);*/
+    background: #e08037;
+    border-radius: 0px;
 }
 
-.redJobs {
-  background-image: linear-gradient(to bottom,#d9534f 0,#c9302c 100%);
+div.progress-bar.progress-bar-danger {
+    background: #7e0104;
 }
 
-a.list-group-item.redJobs {
-  color: white;
+.list-group-item.redJobs:hover {
+  /*background-image: linear-gradient(to bottom,#d9534f 0,#c9302c 100%);*/
+    background: #7e0104;
+    border-radius: 0px;
 }
-/*
-.border-me {
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 20px;
-}*/
 
 .another-job {
   color: blue;
@@ -118,7 +119,7 @@ a.list-group-item.redJobs {
 
 .alpha {
   float: right;
-  color: #67EB46;
+  color: #5cb85c;
 }
 
 .jobsPanelDetail {
@@ -156,12 +157,17 @@ html, body, #data {
     border: none;
 }
 
-h1, p {
+h1, p, a {
     color: #cccccc;
 }
 
 button#who-do-button, button#specific-job-button {
-    background: #00FF13;
+    background: #5cb85c;
+    border: none;
+}
+
+button {
+    border: none;
 }
 
 input {
@@ -174,4 +180,60 @@ input {
 
 ::-webkit-input-placeholder {
     color: #cccccc;
+}
+
+button.convert-to-jira.btn.btn-sm.btn-primary,
+button.hide-job.btn.btn-sm.btn-primary,
+button.expand-job.btn.btn-sm.btn-primary {
+    background: #4b4b4b;
+    border: none;
+    -webkit-box-shadow: none;
+    color: #cccccc;
+}
+
+
+button.convert-to-jira.btn.btn-sm.btn-primary:hover,
+button.hide-job.btn.btn-sm.btn-primary:hover,
+button.expand-job.btn.btn-sm.btn-primary:hover {
+    background: #595959;
+    border: none;
+    -webkit-box-shadow: none;
+    color: #cccccc;
+}
+
+.more-detail {
+    float: right;
+    background: #595959;
+    border: none;
+    -webkit-box-shadow: none;
+    color: #cccccc;
+}
+
+.more-detail:hover {
+    background: #4b4b4b;
+    color: #cccccc;
+}
+
+.btn-primary {
+    background: #595959;
+}
+
+div.list-group {
+    background: #4b4b4b;
+    border: 5px solid #4b4b4b;
+    border-radius: 0px;
+}
+
+a.list-group-item, .list-group-item {
+    background: #4b4b4b;
+    border: none;
+    color: #cccccc;
+    text-shadow: none;
+}
+
+a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item:hover {
+    background: #595959;
+    border: none;
+    color: #cccccc;
+    text-shadow: none;
 }
