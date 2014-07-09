@@ -44,22 +44,23 @@ app.get('/persons/:person', persons_hdlr.get_persons);
 app.get('/jira/user/:user', jira_hdlr.get_users_jira);
 app.get('/jira/reference/:reference', jira_hdlr.get_specific_jira);
 
+// the main event
 app.get('/user/:user', user_hdlr.get_users);
 
 app.get("/", function (req, res) {
-	res.redirect("/pages/home");
-	res.end();
+    res.redirect("/pages/home");
+    res.end();
 });
 
 app.get("/jobs5", function (req, res) {
-	res.redirect("/pages/home");
-	res.end();
+    res.redirect("/pages/home");
+    res.end();
 });
 
 app.get('*', four_oh_four);
 
 function four_oh_four(req, res) {
-    res.writeHead(404, { "Content-Type" : "application/json" });
+    res.writeHead(404, { "Content-Type": "application/json" });
     res.end(JSON.stringify(helpers.invalid_resource()) + "\n");
 }
 
