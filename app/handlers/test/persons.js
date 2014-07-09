@@ -34,7 +34,7 @@ exports.get_test_persons = function(options, onResult) {
   reqGet.on('error', function(e) {
     console.error('error: ' + e.message);
   });
-}
+};
 
 exports.get_persons = function(options, onResult) {
 

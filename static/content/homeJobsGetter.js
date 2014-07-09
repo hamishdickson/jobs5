@@ -36,48 +36,28 @@ $(document).ready(function() {
 		    tmpl4 = d;
 	    });
 
-      // get the jobs (test) data
-      $.getJSON("/jobs/user/" + whosJobsToGet, function(d) {
+      // get the users data
+      $.getJSON("/user/" + whosJobsToGet, function(d) {
         $.extend(tdata, d);
-      });
-
-      // get the jobs data
-      /*$.getJSON("/jobs/user/" + whosJobsToGet, function(d) {
-        $.extend(tdata, d);
-      });*/
-
-      // get the jobs data - status W
-      /*$.getJSON("/jobs/user/" + whosJobsToGet + "/W", function(d) {
-        $.extend(tdata-w, d);
-      });*/
-
-      // get the jobs data - status H
-      /*$.getJSON("/jobs/user/" + whosJobsToGet + "/H", function(d) {
-        $.extend(tdata-h, d);
-      });*/
-
-      // get the user information
-      $.getJSON("/persons/test", function(d) {
-        //$.extend(tdataPerson, d);
       });
 
       // when AJAX calls are complete parse the template
       // replacing Mustache tags with vars
-	    $(document).ajaxStop(function() {
+	  $(document).ajaxStop(function() {
         var renderedPage2 = Mustache.to_html( tmpl2, tdata );
 
-		    $("#users-jobs-detail").html( renderedPage2 );
+		$("#users-jobs-detail").html( renderedPage2 );
 
-        if (!jQuery.isEmptyObject(tdata)) {
+        //if (!jQuery.isEmptyObject(tdata)) {
           var renderedPage = Mustache.to_html( tmpl, tdata );
-          var renderedPage3 = Mustache.to_html( tmpl3, tdataPerson );
+          var renderedPage3 = Mustache.to_html( tmpl3, tdata );
 
           $("#users-jobs-summary").html( renderedPage );
           $("#person-summary").html( renderedPage3 );
 
-        } else {
+        /*} else {
           $("#user-message-panel").html( tmpl4 );
-        }
+        }*/
 
         $('.fa-spin').addClass('fa-child').removeClass('fa-spin');
 	    })

@@ -8,8 +8,7 @@ var config = require('./config.js');
 
 var page_hdlr = require('./handlers/pages.js');
 var helpers = require('./handlers/helpers.js');
-var jobs_hdlr, persons_hdlr, jira_hdlr;
-var user_hdlr = require('./handlers/test/user.js');
+var jobs_hdlr, persons_hdlr, jira_hdlr, user_hdlr;
 
 app.use(express.logger('dev'));
 app.use(express.bodyParser({ keepExtensions: true }));
@@ -24,10 +23,12 @@ if (config.LEVEL == 'DEV' || config.LEVEL == 'TEST') {
     jobs_hdlr = require('./handlers/test/jobs.js');
     persons_hdlr = require('./handlers/test/persons.js');
     jira_hdlr = require('./handlers/test/jira.js');
+    user_hdlr = require('./handlers/test/user.js');
 } else {
     jobs_hdlr = require('./handlers/jobs.js');
     persons_hdlr = require('./handlers/persons.js');
     jira_hdlr = require('./handlers/jira.js');
+    user_hdlr = require('./handlers/user.js');
 }
 
 // to be updated

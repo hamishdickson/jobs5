@@ -20,11 +20,6 @@ User.prototype.person = null;
 User.prototype.jobs = null;
 //User.prototype.jiras = null;
 
-User.prototype.response_obj = function () {
-    return { //person: this.person,
-        jobs: this.jobs };
-};
-
 exports.get_users = function(req, res) {
 
     var user_jobs = {},
@@ -34,11 +29,8 @@ exports.get_users = function(req, res) {
         function(cb) {
             jobs.get_cb_users_jobs(req, function(err, result) {
                 if (err) {
-                    //handle the error
-                    console.log("eh oh .. " + err.message);
+                    cb(err);
                 } else {
-                    //do whatever you want with the result
-                    //helpers.send_success(res, { user: result });
                     user_jobs = result.data.jobs;
                     cb(null);
                 }
@@ -47,11 +39,8 @@ exports.get_users = function(req, res) {
         function(cb) {
             person.get_cb_persons(req, function (err, result) {
                 if (err) {
-                    //handle the error
-                    console.log("eh oh .. " + err.message);
+                    cb(err);
                 } else {
-                    //do whatever you want with the result
-                    //helpers.send_success(res, { user: result });
                     user_person = result.data;
                     cb(null);
                 }
@@ -59,9 +48,13 @@ exports.get_users = function(req, res) {
         }
     ],
         function(err) {
-            var user_data = new User(user_person, user_jobs);
-
-            helpers.send_success(res, { user: user_data});
+            if (err) {
+                console.log("eh oh .. " + err.message);
+                helpers.send_failure(res, err);
+            } else {
+                var user_data = new User(user_person, user_jobs);
+                helpers.send_success(res, { user: user_data });
+            }
         }
 
     );
