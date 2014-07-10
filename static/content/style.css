@@ -157,7 +157,7 @@ html, body, #data {
     border: none;
 }
 
-h1, p, a {
+h1, p, a, li {
     color: #cccccc;
 }
 
@@ -189,6 +189,7 @@ button.expand-job.btn.btn-sm.btn-primary {
     border: none;
     -webkit-box-shadow: none;
     color: #cccccc;
+
 }
 
 
@@ -202,7 +203,7 @@ button.expand-job.btn.btn-sm.btn-primary:hover {
 }
 
 .more-detail {
-    float: right;
+    /*float: right;*/
     background: #595959;
     border: none;
     -webkit-box-shadow: none;
@@ -236,4 +237,32 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item:hove
     border: none;
     color: #cccccc;
     text-shadow: none;
+}
+
+/* I need this incase the %s don't quite add up to 100 */
+div.progress {
+    background: #4b4b4b;
+}
+
+/* shade the odd elements */
+.big-job-data:nth-child(even) {
+    background: #4b4b4b;
+}
+
+div.panel-body.big-body {
+    padding: 0px;
+}
+
+.big-job-data>p {
+    padding-left: 15px;
+    margin: 0px;
+}
+
+.jobs-title, .job-number {
+    /*float: left;*/
+    display: inline-block;
+}
+
+.job-number {
+    padding-left: 5px;
 }

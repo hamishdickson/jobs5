@@ -226,7 +226,7 @@ exports.get_job_notes = function (options, onResult) {
     var optionsget = {
         host: config.jobs_rest_host,
         port: config.jobs_rest_port,
-        path: "/jobs3/jobtest/jobNotes/" + jobNumber,
+        path: config.notes_path + jobNumber,
         method: "GET",
         headers: {
             'Content-Type': 'application/json'
