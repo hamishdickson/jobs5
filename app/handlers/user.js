@@ -14,8 +14,8 @@ function User (person, zJobs, hJobs, wJobs) {
     this.wJobs = wJobs;
     this.totalJobs = zJobs.length + hJobs.length + wJobs.length;
     this.zJobsPercentage = (zJobs.length / this.totalJobs) * 100;
-    this.hJobsPercentage = (zJobs.length / this.totalJobs) * 100;
-    this.wJobsPercentage = (zJobs.length / this.totalJobs) * 100;
+    this.hJobsPercentage = (hJobs.length / this.totalJobs) * 100;
+    this.wJobsPercentage = (wJobs.length / this.totalJobs) * 100;
     //this.jiras = jira_hdlr.get_users_jira;
 }
 
@@ -79,6 +79,7 @@ exports.get_users = function(req, res) {
                 });
             },
         function(cb) {
+            req.params.person = req.params.user;
             person.get_cb_persons(req, function (err, result) {
                 if (err) {
                     cb(err);

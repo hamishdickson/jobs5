@@ -19,7 +19,7 @@ exports.jira_rest_host = "jira.jhc.co.uk";
 // default to live server
 exports.jobs_rest_host = "172.24.24.217";
 
-exports.LEVEL = 'DEV';
+exports.LEVEL = 'TEST';
 
 /*
  * overrides level
@@ -33,9 +33,9 @@ if (exports.LEVEL == 'DEV') {
     exports.persons_persons_path = "/jobs3/jobtest/person/";
     exports.notes_path = "/jobs3/jobtest/jobNotes/"
 } else {
-    exports.jobs_users_jobs_path = "/jobs3/user/";
-    exports.jobs_specific_job_path = "/jobs3/";
-    exports.jobs_users_jobs_for_status_path = "/jobs3/user/";
+    exports.jobs_users_jobs_path = "/jobs3/job/user/";
+    exports.jobs_specific_job_path = "/jobs3/job/";
+    exports.jobs_users_jobs_for_status_path = "/jobs3/job/user/";
     exports.persons_persons_path = "/jobs3/person/";
     exports.notes_path = "/jobs3/jobNotes/"
 }

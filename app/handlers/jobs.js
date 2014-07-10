@@ -125,8 +125,9 @@ exports.get_cb_users_jobs_for_status = function (options, cb) {
         });
 
         res.on('end', function () {
-
-            var obj = JSON.parse(output);
+            if (output != '') {
+              var obj = JSON.parse(output);
+            }
             cb(null, {
                 status: res.statusCode,
                 data: obj
