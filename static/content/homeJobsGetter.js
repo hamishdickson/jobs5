@@ -89,7 +89,7 @@ $(document).ready(function () {
             });
 
             // get the jobs3 data
-            $.getJSON("/jobs/test" + jobNumber, function (d) {
+            $.getJSON("/jobs/" + jobNumber, function (d) {
                 $.extend(tdataSpecific, d);
             });
 
