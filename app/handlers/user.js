@@ -34,7 +34,8 @@ exports.get_users = function(req, res) {
         user_jobs_w = {},
         user_person = {};
 
-    async.waterfall([
+//    async.waterfall([
+    async.parallel([
 /*        function(cb) {
             jobs.get_cb_users_jobs(req, function(err, result) {
                 if (err) {

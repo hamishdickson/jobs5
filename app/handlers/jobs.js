@@ -1,6 +1,7 @@
 var http = require('http');
 var config = require('../config.js');
 var async = require('async');
+var helpers = require('./helpers.js');
 
 exports.get_cb_users_jobs = function (options, cb) {
 
@@ -28,7 +29,9 @@ exports.get_cb_users_jobs = function (options, cb) {
         });
 
         res.on('end', function () {
-            var obj = JSON.parse(output);
+            if (output != '') {
+                var obj = JSON.parse(output);
+            }
             cb(null, {
                 status: res.statusCode,
                 data: obj
@@ -47,7 +50,12 @@ exports.get_cb_users_jobs = function (options, cb) {
 // so you can call it directly
 exports.get_users_jobs = function (options, cb) {
     exports.get_cb_users_jobs(options, function (err, result) {
-        cb.send(result.status, result.data);
+        if (err) {
+            console.log("Error : " + err.message);
+            cb.send(helpers.error(500, "Internal server error"));
+        } else {
+            cb.send(result.status, result.data);
+        }
     });
 };
 
