@@ -157,7 +157,7 @@ html, body, #data {
     border: none;
 }
 
-h1, p, a, li {
+h1, h3, p, a, li {
     color: #cccccc;
 }
 
@@ -233,10 +233,23 @@ a.list-group-item, .list-group-item {
 }
 
 a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item:hover {
-    background: #595959;
+    /*background: #595959;*/
     border: none;
     color: #cccccc;
     text-shadow: none;
+    border-radius: 0px;
+}
+
+a.list-group-item.jobs-in-progress:hover {
+    background: #9351a6;
+}
+
+a.list-group-item.jobs-on-wait:hover {
+    background: #4472b9;
+}
+
+a.list-group-item.jobs-on-hold:hover {
+    background: #20B2AA;
 }
 
 /* I need this incase the %s don't quite add up to 100 */
@@ -265,4 +278,29 @@ div.panel-body.big-body {
 
 .job-number {
     padding-left: 5px;
+}
+
+.pie-chart-outer {
+
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+    background-color: blue;
+}
+
+.pie-chart-inner {
+    height: 80%;
+    width: 80%;
+    margin: auto auto;
+    border-radius: 100%;
+    background-color: black;
+}
+
+.deliverable-date-title, .deliverable-date {
+    /*float: left;*/
+    display: inline-block;
+}
+
+.deliverable-date {
+    margin-left: 2px;
 }

@@ -1,3 +1,5 @@
+/*
+
 var jobsData = {};
 
 $(document).ready(function () {
@@ -57,9 +59,17 @@ $(document).ready(function () {
                 $("#users-jobs-summary").html(renderedPage);
                 $("#person-summary").html(renderedPage3);
 
-                /*} else {
+                *//*
+
+*/
+/*
+} else {
                  $("#user-message-panel").html( tmpl4 );
-                 }*/
+                 }*//*
+*/
+/*
+
+
 
                 $('.fa-spin').addClass('fa-child').removeClass('fa-spin');
             })
@@ -106,3 +116,5 @@ $(document).ready(function () {
     $('#users-jobs-detail').sortable();
 
 });
+
+*/

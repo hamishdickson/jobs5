@@ -2,26 +2,26 @@
 <div class="col-sm-6">
     <div class="list-group">
         <p class="list-group-item">You have {{data.user.totalJobs}} jobs assigined to you</p>
-        <a href="#" class="list-group-item active">{{data.user.zJobs.length}} in progress</a>
+        <a href="#" class="list-group-item jobs-in-progress">{{data.user.zJobs.length}} in progress</a>
         <a href="#" class="list-group-item jobs-on-wait">{{data.user.wJobs.length}} on wait</a>
         <a href="#" class="list-group-item jobs-on-hold">{{data.user.hJobs.length}} on hold</a>
     </div>
 </div>
 <div class="progressBar col-sm-6">
-    <div class="progress" title="{{data.user.zJobsPercentage}}% success ... {{data.user.wJobsPercentage}}% today ... {{data.user.hJobsPercentage}}% ({{data.user.hJobs.length}}) late">
-        <div class="progress-bar progress-bar-success" style="width: {{data.user.zJobsPercentage}}%">
-            <span class="sr-only">{{data.user.zJobsPercentage}}% Complete (success)</span>
+    <div class="progress" title="{{data.user.futureDeliverablesPercentage}}% success ... {{data.user.presentDeliverablesPercentage}}% today ... {{data.user.pastDeliverablesPercentage}}% ({{data.user.hJobs.length}}) late">
+        <div class="progress-bar progress-bar-success" style="width: {{data.user.futureDeliverablesPercentage}}%">
+            <span class="sr-only">{{data.user.futureDeliverablesPercentage}}% Complete (success)</span>
         </div>
-        <div class="progress-bar progress-bar-warning" style="width: {{data.user.wJobsPercentage}}%">
-            <span class="sr-only">{{data.user.wJobsPercentage}}% Complete (warning)</span>
+        <div class="progress-bar progress-bar-warning" style="width: {{data.user.presentDeliverablesPercentage}}%">
+            <span class="sr-only">{{data.user.presentDeliverablesPercentage}}% Complete (warning)</span>
         </div>
-        <div class="progress-bar progress-bar-danger" style="width: {{data.user.hJobsPercentage}}%">
-            <span class="sr-only">{{data.user.hJobsPercentage}}% Complete (danger)</span>
+        <div class="progress-bar progress-bar-danger" style="width: {{data.user.pastDeliverablesPercentage}}%">
+            <span class="sr-only">{{data.user.pastDeliverablesPercentage}}% Complete (danger)</span>
         </div>
     </div>
     <div class="list-group">
-        <a href="#" class="list-group-item greenJobs">6 deliverables all ok (3 in the next 7 days)</a>
-        <a href="#" class="list-group-item orangeJobs">1 deliverable due today</a>
-        <a href="#" class="list-group-item redJobs">2 late jobs</a>
+        <a href="#" class="list-group-item greenJobs">{{data.user.futureCount}} deliverables all ok ({{data.user.futureCount7}} in the next 7 days)</a>
+        <a href="#" class="list-group-item orangeJobs">{{data.user.presentCount}} deliverables due today</a>
+        <a href="#" class="list-group-item redJobs">{{data.user.pastCount}} late deliverables</a>
     </div>
 </div>

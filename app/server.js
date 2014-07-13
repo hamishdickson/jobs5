@@ -12,6 +12,7 @@ var jobs_hdlr = require('./handlers/jobs.js');
 var persons_hdlr = require('./handlers/persons.js');
 var jira_hdlr = require('./handlers/jira.js');
 var user_hdlr = require('./handlers/user.js');
+var dlv_hdlr = require('./handlers/deliverables.js');
 
 app.use(express.logger('dev'));
 app.use(express.bodyParser({ keepExtensions: true }));
@@ -30,6 +31,9 @@ app.get('/jobs/status/:user/:status', jobs_hdlr.get_users_jobs_for_status);
 app.get('/jobs/notes/:jobNumber', jobs_hdlr.get_job_notes);
 
 app.get('/persons/:person', persons_hdlr.get_persons);
+
+app.get('/deliverables/user/:user', dlv_hdlr.get_deliverables_for_user);
+app.get('/deliverables/job/:jobNumber', dlv_hdlr.get_deliverables_for_job);
 
 app.get('/jira/user/:user', jira_hdlr.get_users_jira);
 //app.get('/jira/reference/:reference', jira_hdlr.get_specific_jira);

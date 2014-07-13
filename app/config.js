@@ -31,11 +31,13 @@ if (exports.LEVEL == 'DEV') {
     exports.jobs_specific_job_path = "/jobs3/jobtest/";
     exports.jobs_users_jobs_for_status_path = "/jobs3/jobtest/user/";
     exports.persons_persons_path = "/jobs3/jobtest/person/";
-    exports.notes_path = "/jobs3/jobtest/jobNotes/"
+    exports.notes_path = "/jobs3/jobtest/jobNotes/";
+    exports.deliverables_path_for_user = "/jobs3/jobtest/deliverables/user/";
+    exports.deliverables_path_for_job = "/jobs3/jobtest/deliverables/job/";
 } else {
     exports.jobs_users_jobs_path = "/jobs3/job/user/";
     exports.jobs_specific_job_path = "/jobs3/job/";
     exports.jobs_users_jobs_for_status_path = "/jobs3/job/user/";
     exports.persons_persons_path = "/jobs3/person/";
-    exports.notes_path = "/jobs3/jobNotes/"
+    exports.notes_path = "/jobs3/jobNotes/";
 }
