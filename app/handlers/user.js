@@ -48,6 +48,8 @@ function User (person, zJobs, hJobs, wJobs, deliverables) {
     this.futureDeliverablesPercentage = (this.futureCount / this.allDeliverables.length) * 100;
 
     //this.jiras = jira_hdlr.get_users_jira;
+
+    // todo - format deliverable dates nicely
 }
 
 // some date handling

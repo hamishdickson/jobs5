@@ -84,6 +84,14 @@ $(function() {
                             $("#users-jobs-summary").html(renderedPage);
                             $("#person-summary").html(renderedPage3);
 
+                            // todo replace job numbers with a <span class="job-number"> which you can click on
+                            // and it will open a new detail with the job in
+                            //$("#data").html($("#data").html().replace(/123456/g,"<span class='job-link'>bob</span>"));
+
+                            // todo the same with jira
+
+                            // todo similar with source - except the source will open in a new tab
+
                             /*
                              } else {
                              $("#user-message-panel").html( tmpl4 );
@@ -173,5 +181,18 @@ $(function() {
 	}();
 });
 
+function linkMaker(inText) {
+    var regex_for_job = "\ [1-9][0-9]{6}\ |\(00[1-9][0-9]{6}\)";
+    var replaceString = "bob";
+    var outText = inText.replace(regex_for_job, replaceString);
+
+    return outText;
+}
+
+function formatDate(inDate) {
+    var inDateString = inDate.toString();
+    var outDate = inDateString.substr(6,2) + '/' + inDateString.substr(4,2) + '/' + inDateString.substr(0,4);
+    return outDate;
+}
 
 
