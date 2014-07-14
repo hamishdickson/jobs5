@@ -6,14 +6,17 @@ var async = require('async'),
     helpers = require('./helpers.js'),
     jobs = require('./jobs.js'),
     person = require('./persons.js'),
-    deliverables = require('./deliverables.js');
+    deliverables = require('./deliverables.js'),
+    jira = require('./jira.js'),
+    config = require('../config.js');
 
-function User (person, zJobs, hJobs, wJobs, deliverables) {
+function User (person, zJobs, hJobs, wJobs, deliverables, jiras) {
     this.person = person;
     this.zJobs = zJobs;
     this.hJobs = hJobs;
     this.wJobs = wJobs;
     this.allDeliverables = deliverables;
+    this.jiras = jiras;
     this.totalJobs = zJobs.length + hJobs.length + wJobs.length;
     this.zJobsPercentage = (zJobs.length / this.totalJobs) * 100;
     this.hJobsPercentage = (hJobs.length / this.totalJobs) * 100;
@@ -47,8 +50,6 @@ function User (person, zJobs, hJobs, wJobs, deliverables) {
     this.presentDeliverablesPercentage = (this.presentCount / this.allDeliverables.length) * 100;
     this.futureDeliverablesPercentage = (this.futureCount / this.allDeliverables.length) * 100;
 
-    //this.jiras = jira_hdlr.get_users_jira;
-
     // todo - format deliverable dates nicely
 }
 
@@ -68,7 +69,7 @@ User.prototype.allDeliverables = null;
 User.prototype.totalJobs = 0;
 User.prototype.pastDeliverablesPercentage = null;
 
-//User.prototype.jiras = null;
+User.prototype.jiras = null;
 
 exports.get_users = function(req, res) {
 
@@ -76,7 +77,8 @@ exports.get_users = function(req, res) {
         user_jobs_h = {},
         user_jobs_w = {},
         user_person = {},
-        user_deliverables = {};
+        user_deliverables = {},
+        user_jiras = {};
 
     async.parallel([
             function(cb) {
@@ -122,24 +124,60 @@ exports.get_users = function(req, res) {
                     }
                 });
             },
-        function(cb) {
-            req.params.person = req.params.user;
-            person.get_cb_persons(req, function (err, result) {
-                if (err) {
-                    cb(err);
-                } else {
-                    user_person = result.data;
-                    cb(null);
-                }
-            })
-        }
+            /*function(cb) {
+                async.waterfall([
+                    function(cb) {
+                        req.params.person = req.params.user;
+                        person.get_cb_persons(req, function (err, result) {
+                            if (err) {
+                                cb(err);
+                            } else {
+                                user_person = result.data;
+                                cb(null, result.data.windowsProfileName);
+                            }
+                        })
+                    },
+                    function(profile, cb) {
+
+                        req.params.windowsProfile = profile;
+
+                        jira.get_cb_users_jiras(req, function (err, result) {
+                            if (err) {
+                                cb(err);
+                            } else {
+                                user_jiras = result.data;
+                                cb(null);
+                            }
+                        })
+                    }
+                ],
+                    function(err) {
+                        if (err) {
+                            cb(err);
+                        } else {
+                            cb(null);
+                        }
+                    }
+                )
+            }*/
+            function(cb) {
+                req.params.person = req.params.user;
+                person.get_cb_persons(req, function (err, result) {
+                    if (err) {
+                        cb(err);
+                    } else {
+                        user_person = result.data;
+                        cb(null, result.data.windowsProfileName);
+                    }
+                })
+            }
     ],
         function(err) {
             if (err) {
                 console.log("eh oh .. " + err.message);
                 helpers.send_failure(res, err);
             } else {
-                var user_data = new User(user_person, user_jobs_z, user_jobs_h, user_jobs_w, user_deliverables);
+                var user_data = new User(user_person, user_jobs_z, user_jobs_h, user_jobs_w, user_deliverables, user_jiras);
                 helpers.send_success(res, { user: user_data });
             }
         }

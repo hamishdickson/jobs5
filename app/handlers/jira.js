@@ -1,49 +1,64 @@
-var http = require('http');
+/*
+ * NOTE the s in https!
+ */
+var https = require('https');
 var config = require('../config.js');
+var async = require('async');
+var helpers = require('./helpers.js');
 
-//TODO this basically still needs writing
+exports.get_cb_users_jiras = function (options, cb) {
 
-exports.get_test_jira = function(res, data) {
+    var windowsProfile = options.params.windowsProfile;
 
-  var optionsget = {
-    host: config.jobs_rest_host,
-    port: config.jobs_rest_port,
-    path: "/jobs3/jobtest",
-    method: "GET"
-  };
 
-  var reqGet = http.request(optionsget, function(res) {
-    //res.setEncoding('utf-8');
+    console.log("Get all jira issues for user: " + windowsProfile);
 
-    res.on('data', function(d) {
-      console.log(d);
+    var optionsget = {
+        host: config.jira_rest_host,
+        port: config.jobs_rest_port,
+        path: config.jira_users_jiras_path + windowsProfile,
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    var reqGet = https.request(optionsget, function (res) {
+        var output = '';
+
+        res.setEncoding('utf-8');
+
+        res.on('data', function (chunk) {
+            output += chunk;
+        });
+
+        res.on('end', function () {
+            if (output != '') {
+                var obj = JSON.parse(output);
+            }
+            cb(null, {
+                status: res.statusCode,
+                data: obj
+            });
+        });
+
     });
-  }).end();
-  //reqGet.on('error', function(e) {
-  //  console.error(e);
-  //});
-}
 
-exports.get_users_jira = function(res, data) {
+    reqGet.end();
 
-  var user = req.params.user;
-
-  var optionsget = {
-    host: config.jira_rest_host,
-    path: "/rest/api/2/search?jql=assignee=" + user,
-    method: "GET"
-  };
-
-  var reqGet = http.request(optionsget, function(res) {
-    res.setEncoding('utf-8');
-
-    res.on('data', function(d) {
-      data.json(d);
+    reqGet.on('error', function (err) {
+        cb(err);
     });
-  });
+};
 
-  reqGet.end();
-  reqGet.on('error', function(e) {
-    console.error(e);
-  });
-}
+// so you can call it directly
+exports.get_users_jiras = function (options, cb) {
+    exports.get_cb_users_jiras(options, function (err, result) {
+        if (err) {
+            console.log("Error : " + err.message);
+            cb.send(helpers.error(500, "Internal server error"));
+        } else {
+            cb.send(result.status, result.data);
+        }
+    });
+};

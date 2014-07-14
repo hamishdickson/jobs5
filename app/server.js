@@ -35,7 +35,7 @@ app.get('/persons/:person', persons_hdlr.get_persons);
 app.get('/deliverables/user/:user', dlv_hdlr.get_deliverables_for_user);
 app.get('/deliverables/job/:jobNumber', dlv_hdlr.get_deliverables_for_job);
 
-app.get('/jira/user/:user', jira_hdlr.get_users_jira);
+app.get('/jira/user/:user', jira_hdlr.get_users_jiras);
 //app.get('/jira/reference/:reference', jira_hdlr.get_specific_jira);
 
 // the main event
