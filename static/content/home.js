@@ -103,6 +103,8 @@ $(function() {
                                     $("h3.job-number").css({"color": "blue"});
                                 });*/
 
+                            $("#big-me").accordion();
+
                             $("a.list-group-item.jobs-in-progress").hover(
                                 function(){ $("h3.job-number").css({"color": "#9351a6"}); },
                                 function(){ $("h3.job-number").css({"color": "#cccccc"}); }
