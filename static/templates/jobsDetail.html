@@ -4,7 +4,7 @@
         <div class="panel-heading">
             <h3 class="panel-title jobs-title">Job number:</h3><h3 class="job-number">{{jobNumber}}</h3>
             {{#deliverables.0}}<p class="deliverable-date-title">Next deliverable:</p><p class="deliverable-date">{{promisedDate}}</p>{{/deliverables.0}}
-            <button type="button" class="expand-job btn btn-sm btn-primary"><i class="fa fa-arrows" title="Expand"></i></button>
+            <a href="/pages/bigDetail/{{jobNumber}}" target="_blank"><button type="button" class="expand-job btn btn-sm btn-primary"><i class="fa fa-arrows" title="Expand"></i></button></a>
             <button type="button" class="convert-to-jira btn btn-sm btn-primary"><i class="fa fa-database" title="Convert to JIRA issue"></i></button>
             <button type="button" class="hide-job btn btn-sm btn-primary"><i class="fa fa-times" title="Hide"></i></button>
             <button type="button" class="more-detail btn btn-sm btn-primary"><i class="fa fa-plus" title="More"></i></button>
