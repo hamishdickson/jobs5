@@ -5,8 +5,10 @@
 $(function() {
     var tmpl, tdata = {};
 
-    var url = document.URL.split("/");
-    var jobNumber = url[5];
+    var url = window.location.pathname.split("/");
+
+    // this doesn't feel that safe ...
+    var jobNumber = url[3];
 
     var initPage = function() {
         $.get("/templates/bigDetail.html", function(d) {
