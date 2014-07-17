@@ -11,20 +11,13 @@
             {{#deliverables.0}}<p class="deliverable-date">{{promisedDate}}</p>{{/deliverables.0}}
 
             <div class="panel-options">
-                <button type="button" class="convert-to-jira btn btn-sm btn-primary"><i class="fa fa-database"
-                                                                                        title="Convert to JIRA issue"></i>
-                </button>
-                <button type="button" class="hide-job btn btn-sm btn-primary"><i class="fa fa-times" title="Hide"></i>
-                </button>
+            <!-- hwd remove buttons for now -->
             </div>
         </div>
         <div class="panel-body big-body">
             <div class="big-job-data col-sm-12"><p>Description: {{description}}</p></div>
             <div class="col-sm-8">
-                <div class="big-job-data"><p>full whack of comments blah blah blah full whack of comments blah blah blah
-                    full whack of comments blah blah blah full whack of comments blah blah blah full whack of comments
-                    blah blah blah full whack of comments blah blah blah full whack of comments blah blah blah full
-                    whack of comments blah blah blah</p></div>
+                <div class="big-job-data"><p>{{notes}}</p></div>
             </div>
             <div class="col-sm-4">
                 <div class="big-job-data"><p>Client: {{client}}</p></div>

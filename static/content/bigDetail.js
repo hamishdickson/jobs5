@@ -19,6 +19,10 @@ $(function() {
             $.extend(tdata, d);
         });
 
+        $.getJSON("/jobs/notes/" + jobNumber, function(d) {
+            $.extend(tdata, d);
+        });
+
         $(document).ajaxStop(function (d) {
             var renderedPage = Mustache.to_html( tmpl, tdata );
             $("#data").html( renderedPage );
