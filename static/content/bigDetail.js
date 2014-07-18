@@ -25,7 +25,7 @@ $(function() {
         });
 
         $(document).ajaxStop(function (d) {
-            var renderedPage = Mustache.to_html( tmpl, tdata ).replace(/[1-2][0-9]{5}/g, '<a href="/jobs/number/$1">$1</a>');
+            var renderedPage = Mustache.to_html( tmpl, tdata ).replace(/([1-2][0-9]{5})/g, '<a href="/pages/bigDetail/\$1" target="_blank">\$1</a>');
             $("#data").html( renderedPage );
         });
     }();

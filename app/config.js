@@ -19,7 +19,7 @@ exports.jira_rest_host = "jira.jhc.co.uk";
 // default to live server
 exports.jobs_rest_host = "172.24.24.217";
 
-exports.LEVEL = 'DEV';
+exports.LEVEL = 'TEST';
 
 /*
  * overrides level
