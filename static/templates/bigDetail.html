@@ -17,7 +17,7 @@
         <div class="panel-body big-body">
             <div class="big-job-data col-sm-12"><p>Description: {{description}}</p></div>
             <div class="col-sm-8">
-                <div class="big-job-data"><p>{{notes}}</p></div>
+                <div class="big-job-data">{{#notes}}<p>{{.}}</p>{{/notes}}</div>
             </div>
             <div class="col-sm-4">
                 <div class="big-job-data"><p>Client: {{client}}</p></div>
@@ -32,7 +32,7 @@
             </div>
 
 
-            <div class="col-sm-6" id="big-me">
+            <div class="col-sm-4" id="big-me">
                 <h3>Billing crap</h3>
                 <div class="big-job-data">
                     <p>Who pay: {{whoPay}}</p>
@@ -44,7 +44,7 @@
                 <div class="big-job-data"><p>Project: {{project}}</p></div>
 
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <h3>IRs</h3>
                 <ul>
                     <li>IR 12345</li>

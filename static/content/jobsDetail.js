@@ -1,7 +1,7 @@
 $(document).ready(function () {
-    $(".expand-job").click(function () {
+/*    $(".expand-job").click(function () {
         $(this.parentNode.parentNode.parentNode.parentNode).attr('class', 'col-sm-6');
-    });
+    });*/
 
     $(".more-detail").click(function () {
         var sizeClass = this.parentNode.parentNode.parentNode.parentNode;

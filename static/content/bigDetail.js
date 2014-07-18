@@ -20,12 +20,24 @@ $(function() {
         });
 
         $.getJSON("/jobs/notes/" + jobNumber, function(d) {
+            d.notes = formatNotes(d.notes);
             $.extend(tdata, d);
         });
 
         $(document).ajaxStop(function (d) {
-            var renderedPage = Mustache.to_html( tmpl, tdata );
+            var renderedPage = Mustache.to_html( tmpl, tdata ).replace(/[1-2][0-9]{5}/g, '<a href="/jobs/number/$1">$1</a>');
             $("#data").html( renderedPage );
         });
     }();
 });
+
+/*
+ * ok this looks a bit arbitrary, but 4 spaces should be enough to indicate a breakline
+ */
+
+var formatNotes = function (inNotes) {
+    var output = inNotes;
+
+    output = output.split("    ");
+    return output;
+};
