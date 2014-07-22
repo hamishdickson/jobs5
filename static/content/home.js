@@ -26,7 +26,7 @@ $(function() {
             $(document).ready(function () {
 
                 $("#who-do-text-box").keyup(function (event) {
-                    if (event.which == 13) {
+                    if (event.which == 13 || event.keyCode == 13) {
                         $("#who-do-button").click();
                     }
                 });
@@ -84,24 +84,7 @@ $(function() {
                             $("#users-jobs-summary").html(renderedPage);
                             $("#person-summary").html(renderedPage3);
 
-                            // todo replace job numbers with a <span class="job-number"> which you can click on
-                            // and it will open a new detail with the job in
-                            //$("#data").html($("#data").html().replace(/123456/g,"<span class='job-link'>bob</span>"));
-
-                            // todo the same with jira
-
-                            // todo similar with source - except the source will open in a new tab
-
-                            /*
-                             } else {
-                             $("#user-message-panel").html( tmpl4 );
-                             }*/
-                            //$(document).ajaxStop(function() {
-                                $('.fa-spin').addClass('fa-child').removeClass('fa-spin');
-
-                                /*$("a.list-group-item.jobs-in-progress").click(function(){
-                                    $("h3.job-number").css({"color": "blue"});
-                                });*/
+                            $('.fa-spin').addClass('fa-child').removeClass('fa-spin');
 
                             $("#big-me").accordion();
 
@@ -197,4 +180,6 @@ function formatDate(inDate) {
     return outDate;
 }
 
+function getDetails() {
 
+}

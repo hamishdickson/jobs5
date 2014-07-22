@@ -38,6 +38,7 @@ $(function() {
 var formatNotes = function (inNotes) {
     var output = inNotes;
 
-    output = output.split("    ");
+    /*output = output.split("    ");*/
+    output = output.split("\n");
     return output;
 };
