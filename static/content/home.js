@@ -101,13 +101,17 @@ $(function() {
                             var today = new Date();
 
                             $('p.deliverable-date').filter(function(){
-                                return $(this).text()==today
+                                return parseInt($(this).text()) == parseInt(today.yyyymmdd())
                             }).addClass("due-today");
 
 
                             $('p.deliverable-date').filter(function(){
-                                return parseInt($(this).text()) < parseInt(today)
+                                return parseInt($(this).text()) < parseInt(today.yyyymmdd())
                             }).addClass("due-past");
+
+                            $('p.deliverable-date').filter(function(){
+                                return parseInt($(this).text()) > parseInt(today.yyyymmdd())
+                            }).addClass("due-future");
 
                             /*$("a.list-group-item.jobs-in-progress").hover(
                                 function(){ $("h3.job-number").css({"color": "#9351a6"}); },
@@ -140,14 +144,24 @@ $(function() {
                                 function(){ $("p.on-hold").css({"color": "#cccccc"}); }
                             );
 
-                            $(".list-group-item.greenJobs").hover(
+/*                            $(".list-group-item.greenJobs").hover(
                                 function(){ $("p.deliverable-date").css({"color": "#5cb85c"}); },
                                 function(){ $("p.deliverable-date").css({"color": "#cccccc"}); }
-                            );
+                            );*/
 
+                            $(".list-group-item.greenJobs").hover(
+                                function(){ $("p.deliverable-date.due-future").css({"color": "#5cb85c"}); },
+                                function(){ $("p.deliverable-date.due-future").css({"color": "#cccccc"}); }
+                            );
+/*
                             $(".list-group-item.orangeJobs").hover(
                                 function(){ $("p.deliverable-date").css({"color": "#e08037"}); },
                                 function(){ $("p.deliverable-date").css({"color": "#cccccc"}); }
+                            );*/
+
+                            $(".list-group-item.orangeJobs").hover(
+                                function(){ $("p.deliverable-date.due-today").css({"color": "#e08037"}); },
+                                function(){ $("p.deliverable-date.due-today").css({"color": "#cccccc"}); }
                             );
 /*
                             $(".list-group-item.redJobs").hover(
