@@ -86,21 +86,58 @@ $(function() {
 
                             $('.fa-spin').addClass('fa-child').removeClass('fa-spin');
 
-                            $("#big-me").accordion();
+                            $('p.job-status').filter(function(){
+                                return $(this).text()=='Status: A'
+                            }).addClass("in-progress");
 
-                            $("a.list-group-item.jobs-in-progress").hover(
+                            $('p.job-status').filter(function(){
+                                return $(this).text()=='Status: W'
+                            }).addClass("on-wait");
+
+                            $('p.job-status').filter(function(){
+                                return $(this).text()=='Status: H'
+                            }).addClass("on-wait");
+
+                            var today = new Date();
+
+                            $('p.deliverable-date').filter(function(){
+                                return $(this).text()==today
+                            }).addClass("due-today");
+
+
+                            $('p.deliverable-date').filter(function(){
+                                return parseInt($(this).text()) < parseInt(today)
+                            }).addClass("due-past");
+
+                            /*$("a.list-group-item.jobs-in-progress").hover(
                                 function(){ $("h3.job-number").css({"color": "#9351a6"}); },
                                 function(){ $("h3.job-number").css({"color": "#cccccc"}); }
+                            );*/
+
+                            $("a.list-group-item.jobs-in-progress").hover(
+                                function(){ $("p.in-progress").css({"color": "#9351a6"}); },
+                                function(){ $("p.in-progress").css({"color": "#cccccc"}); }
                             );
 
-                            $("a.list-group-item.jobs-on-wait").hover(
+                            /*$("a.list-group-item.jobs-on-wait").hover(
                                 function(){ $("h3.job-number").css({"color": "#4472b9"}); },
                                 function(){ $("h3.job-number").css({"color": "#cccccc"}); }
+                            );*/
+
+                            $("a.list-group-item.jobs-on-wait").hover(
+                                function(){ $("p.on-wait").css({"color": "#4472b9"}); },
+                                function(){ $("p.on-wait").css({"color": "#cccccc"}); }
                             );
 
-                            $("a.list-group-item.jobs-on-hold").hover(
+                            /*$("a.list-group-item.jobs-on-hold").hover(
                                 function(){ $("h3.job-number").css({"color": "#20B2AA"}); },
                                 function(){ $("h3.job-number").css({"color": "#cccccc"}); }
+                            );*/
+
+
+                            $("a.list-group-item.jobs-on-hold").hover(
+                                function(){ $("p.on-hold").css({"color": "#20B2AA"}); },
+                                function(){ $("p.on-hold").css({"color": "#cccccc"}); }
                             );
 
                             $(".list-group-item.greenJobs").hover(
@@ -112,10 +149,15 @@ $(function() {
                                 function(){ $("p.deliverable-date").css({"color": "#e08037"}); },
                                 function(){ $("p.deliverable-date").css({"color": "#cccccc"}); }
                             );
-
+/*
                             $(".list-group-item.redJobs").hover(
                                 function(){ $("p.deliverable-date").css({"color": "#7e0104"}); },
                                 function(){ $("p.deliverable-date").css({"color": "#cccccc"}); }
+                            );*/
+
+                            $(".list-group-item.redJobs").hover(
+                                function(){ $("p.deliverable-date.due-past").css({"color": "#7e0104"}); },
+                                function(){ $("p.deliverable-date.due-past").css({"color": "#cccccc"}); }
                             );
                         })
                     }();
@@ -165,6 +207,13 @@ $(function() {
 	    });
 	}();
 });
+
+Date.prototype.yyyymmdd = function() {
+    var yyyy = this.getFullYear().toString();
+    var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
+    var dd  = this.getDate().toString();
+    return yyyy + (mm[1]?mm:"0"+mm[0]) + (dd[1]?dd:"0"+dd[0]); // padding
+};
 
 function linkMaker(inText) {
     var regex_for_job = "\ [1-9][0-9]{6}\ |\(00[1-9][0-9]{6}\)";

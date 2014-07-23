@@ -304,3 +304,7 @@ div.panel-body.big-body {
 .deliverable-date {
     margin-left: 2px;
 }
+
+.a.list-group-item.jobs-in-progress.active {
+    color: #9351a6;
+}
