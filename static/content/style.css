@@ -308,3 +308,16 @@ div.panel-body.big-body {
 .a.list-group-item.jobs-in-progress.active {
     color: #9351a6;
 }
+
+.onoffswitch-label {
+    border: none;
+}
+
+.onoffswitch-inner:before {
+    background-color: #428bca;
+}
+
+
+.onoffswitch-inner:after {
+    background-color: #4b4b4b;
+}

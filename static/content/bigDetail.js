@@ -26,6 +26,8 @@ $(function() {
 
         $(document).ajaxStop(function (d) {
             var renderedPage = Mustache.to_html( tmpl, tdata ).replace(/([1-2][0-9]{5})/g, '<a href="/pages/bigDetail/\$1" target="_blank">\$1</a>');
+            /*renderedPage.replace(/([1-2][0-9]{5})/g, '<a href="/pages/bigDetail/\$1" target="_blank">\$1</a>');*/
+            /*replace(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/g, '<a href="\$1" target="_blank">\$1</a>');*/
             $("#data").html( renderedPage );
         });
     }();
