@@ -2,188 +2,67 @@
 // 04/02/14 HWD Creation
 //
 
-$(function() {
+$(function () {
     var url = window.location;
     // Will only work if string in href matches with location
-    $('ul.nav a[href="'+ url +'"]').parent().addClass('active');
+    $('ul.nav a[href="' + url + '"]').parent().addClass('active');
 
     // Will also work for relative and absolute hrefs
-    $('ul.nav a').filter(function() {
+    $('ul.nav a').filter(function () {
         return this.href == url;
     }).parent().addClass('active');
 
-	var tmpl, // main template HTML
+    var tmpl, // main template HTML
         tdata = {}; // JSON data object that feeds the template
 
-	// Initialise page
-	var initPage = function() {
+    // Initialise page
+    var initPage = function () {
 
-	    // Load the HTML template
-	    $.get("/templates/home.html", function(d) {
-		    tmpl = d;
-	    });
+        // Load the HTML template
+        $.get("/templates/home.html", function (d) {
+            tmpl = d;
+        });
 
-      // when AJAX calls are complete parse the template
-      // replacing Mustache tags with vars
-	    $(document).ajaxStop(function() {
-		    var renderedPage = Mustache.to_html( tmpl, tdata );
-		    $("#data").html( renderedPage );
+        var jobsData = {};
+        var whosJobsToGet = "";
 
-            var jobsData = {};
+        $.cookie.json = true;
+        cookie = $.cookie("Jobs5");
+
+        /*        if (cookie === undefined) {
+            // do normal
+            // ask if this is them
+        } else {
+
+            // pre load it
+            whosJobsToGet = cookie.name;
+            getDetails(whosJobsToGet);
+
+        }*/
+
+        // when AJAX calls are complete parse the template
+        // replacing Mustache tags with vars
+        $(document).ajaxStop(function () {
+            var renderedPage = Mustache.to_html(tmpl, tdata);
+            $("#data").html(renderedPage);
 
             $(document).ready(function () {
 
                 $("#who-do-text-box").keyup(function (event) {
-                    if (event.which == 13 || event.keyCode == 13) {
-                        $("#who-do-button").click();
+                    if (event.keyCode == 13) {
+
+                        whosJobsToGet = $("input[name=users-jobs-button]").val();
+                        getDetails(whosJobsToGet);
                     }
                 });
 
-                $("a.list-group-item.jobs-in-progress").click(function(){
+                $("a.list-group-item.jobs-in-progress").click(function () {
                     $("h3.job-number").css({"color": "blue"});
                 });
 
                 $("#who-do-button").click(function () {
-                    $(this).attr('disabled');
-                    $(this).addClass('fa-spin').removeClass('fa-child');
-
-                    var tmpl, tmpl2, tmpl3, tmpl4,
-                        tdata = {}; // JSON data object that feeds the template
-
-                    var whosJobsToGet = $("input[name=users-jobs-button]").val();
-
-                    // Initialise page
-                    var initPage = function () {
-
-                        // Load the HTML template
-                        $.get("/templates/jobsSummary.html", function (d) {
-                            tmpl = d;
-                        });
-
-                        $.get("/templates/jobsDetail.html", function (d) {
-                            tmpl2 = d;
-                        });
-
-                        $.get("/templates/personSummary.html", function (d) {
-                            tmpl3 = d;
-                        });
-
-                        $.get("/templates/warnings/user-not-found.html", function (d) {
-                            tmpl4 = d;
-                        });
-
-                        // get the users data
-                        $.getJSON("/user/" + whosJobsToGet, function (d) {
-                            jobsData = d;
-                            $.extend(tdata, d);
-                        });
-
-                        // when AJAX calls are complete parse the template
-                        // replacing Mustache tags with vars
-                        $(document).ajaxStop(function () {
-                            var renderedPage2 = Mustache.to_html(tmpl2, tdata);
-
-                            $("#users-jobs-detail").html(renderedPage2);
-
-                            //if (!jQuery.isEmptyObject(tdata)) {
-                            var renderedPage = Mustache.to_html(tmpl, tdata);
-                            var renderedPage3 = Mustache.to_html(tmpl3, tdata);
-
-                            $("#users-jobs-summary").html(renderedPage);
-                            $("#person-summary").html(renderedPage3);
-
-                            $('.fa-spin').addClass('fa-child').removeClass('fa-spin');
-
-                            $('p.job-status').filter(function(){
-                                return $(this).text()=='Status: A'
-                            }).addClass("in-progress");
-
-                            $('p.job-status').filter(function(){
-                                return $(this).text()=='Status: W'
-                            }).addClass("on-wait");
-
-                            $('p.job-status').filter(function(){
-                                return $(this).text()=='Status: H'
-                            }).addClass("on-wait");
-
-                            var today = new Date();
-
-                            $('p.deliverable-date').filter(function(){
-                                return parseInt($(this).text()) == parseInt(today.yyyymmdd())
-                            }).addClass("due-today");
-
-
-                            $('p.deliverable-date').filter(function(){
-                                return parseInt($(this).text()) < parseInt(today.yyyymmdd())
-                            }).addClass("due-past");
-
-                            $('p.deliverable-date').filter(function(){
-                                return parseInt($(this).text()) > parseInt(today.yyyymmdd())
-                            }).addClass("due-future");
-
-                            /*$("a.list-group-item.jobs-in-progress").hover(
-                                function(){ $("h3.job-number").css({"color": "#9351a6"}); },
-                                function(){ $("h3.job-number").css({"color": "#cccccc"}); }
-                            );*/
-
-                            $("a.list-group-item.jobs-in-progress").hover(
-                                function(){ $("p.in-progress").css({"color": "#9351a6"}); },
-                                function(){ $("p.in-progress").css({"color": "#cccccc"}); }
-                            );
-
-                            /*$("a.list-group-item.jobs-on-wait").hover(
-                                function(){ $("h3.job-number").css({"color": "#4472b9"}); },
-                                function(){ $("h3.job-number").css({"color": "#cccccc"}); }
-                            );*/
-
-                            $("a.list-group-item.jobs-on-wait").hover(
-                                function(){ $("p.on-wait").css({"color": "#4472b9"}); },
-                                function(){ $("p.on-wait").css({"color": "#cccccc"}); }
-                            );
-
-                            /*$("a.list-group-item.jobs-on-hold").hover(
-                                function(){ $("h3.job-number").css({"color": "#20B2AA"}); },
-                                function(){ $("h3.job-number").css({"color": "#cccccc"}); }
-                            );*/
-
-
-                            $("a.list-group-item.jobs-on-hold").hover(
-                                function(){ $("p.on-hold").css({"color": "#20B2AA"}); },
-                                function(){ $("p.on-hold").css({"color": "#cccccc"}); }
-                            );
-
-/*                            $(".list-group-item.greenJobs").hover(
-                                function(){ $("p.deliverable-date").css({"color": "#5cb85c"}); },
-                                function(){ $("p.deliverable-date").css({"color": "#cccccc"}); }
-                            );*/
-
-                            $(".list-group-item.greenJobs").hover(
-                                function(){ $("p.deliverable-date.due-future").css({"color": "#5cb85c"}); },
-                                function(){ $("p.deliverable-date.due-future").css({"color": "#cccccc"}); }
-                            );
-/*
-                            $(".list-group-item.orangeJobs").hover(
-                                function(){ $("p.deliverable-date").css({"color": "#e08037"}); },
-                                function(){ $("p.deliverable-date").css({"color": "#cccccc"}); }
-                            );*/
-
-                            $(".list-group-item.orangeJobs").hover(
-                                function(){ $("p.deliverable-date.due-today").css({"color": "#e08037"}); },
-                                function(){ $("p.deliverable-date.due-today").css({"color": "#cccccc"}); }
-                            );
-/*
-                            $(".list-group-item.redJobs").hover(
-                                function(){ $("p.deliverable-date").css({"color": "#7e0104"}); },
-                                function(){ $("p.deliverable-date").css({"color": "#cccccc"}); }
-                            );*/
-
-                            $(".list-group-item.redJobs").hover(
-                                function(){ $("p.deliverable-date.due-past").css({"color": "#7e0104"}); },
-                                function(){ $("p.deliverable-date.due-past").css({"color": "#cccccc"}); }
-                            );
-                        })
-                    }();
-
+                    whosJobsToGet = $("input[name=users-jobs-button]").val();
+                    getDetails(whosJobsToGet);
                 });
 
 
@@ -226,15 +105,15 @@ $(function() {
 
             });
 
-	    });
-	}();
+        });
+    }();
 });
 
-Date.prototype.yyyymmdd = function() {
+Date.prototype.yyyymmdd = function () {
     var yyyy = this.getFullYear().toString();
-    var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
-    var dd  = this.getDate().toString();
-    return yyyy + (mm[1]?mm:"0"+mm[0]) + (dd[1]?dd:"0"+dd[0]); // padding
+    var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
+    var dd = this.getDate().toString();
+    return yyyy + (mm[1] ? mm : "0" + mm[0]) + (dd[1] ? dd : "0" + dd[0]); // padding
 };
 
 function linkMaker(inText) {
@@ -247,10 +126,207 @@ function linkMaker(inText) {
 
 function formatDate(inDate) {
     var inDateString = inDate.toString();
-    var outDate = inDateString.substr(6,2) + '/' + inDateString.substr(4,2) + '/' + inDateString.substr(0,4);
+    var outDate = inDateString.substr(6, 2) + '/' + inDateString.substr(4, 2) + '/' + inDateString.substr(0, 4);
     return outDate;
 }
 
-function getDetails() {
+function getDetails(whosJobsToGet) {
 
+    if (whosJobsToGet != '') {
+
+        $(this).attr('disabled');
+        $(this).addClass('fa-spin').removeClass('fa-child');
+
+        var tmpl, tmpl2, tmpl3, tmpl4, tmplIsItMe,
+            tdata = {}; // JSON data object that feeds the template
+
+        // Initialise page
+        var initPage = function () {
+
+            // Load the HTML template
+            $.get("/templates/jobsSummary.html", function (d) {
+                tmpl = d;
+            });
+
+            $.get("/templates/jobsDetail.html", function (d) {
+                tmpl2 = d;
+            });
+
+            $.get("/templates/personSummary.html", function (d) {
+                tmpl3 = d;
+            });
+
+            $.get("/templates/warnings/user-not-found.html", function (d) {
+                tmpl4 = d;
+            });
+
+            $.get("/templates/warnings/is-it-me.html", function (d) {
+                tmplIsItMe = d;
+            });
+
+            // get the users data
+            $.getJSON("/user/" + whosJobsToGet, function (d) {
+                jobsData = d;
+                $.extend(tdata, d);
+            });
+
+            // when AJAX calls are complete parse the template
+            // replacing Mustache tags with vars
+            $(document).ajaxStop(function () {
+                var renderedPage2 = Mustache.to_html(tmpl2, tdata);
+
+                $("#users-jobs-detail").html(renderedPage2);
+
+                //if (!jQuery.isEmptyObject(tdata)) {
+                var renderedPage = Mustache.to_html(tmpl, tdata);
+                var renderedPage3 = Mustache.to_html(tmpl3, tdata);
+                var renderedPageMe = Mustache.to_html(tmplIsItMe, tdata);
+
+                $("#users-jobs-summary").html(renderedPage);
+                $("#person-summary").html(renderedPage3);
+
+                if (cookie === undefined) {
+                    $("#user-message-panel").html(renderedPageMe);
+                }
+
+                $(".hide-message").click(function () {
+                    $(".remember-me-panel").fadeOut('fast');
+                });
+
+                // add the user to the COOOOOOOOKIE
+                $(".remember-me-yes").click(function () {
+
+                    cookie = {
+                        "name": whosJobsToGet,
+                        "rememberMe": true,
+                        "helpText": false,
+                        "removeMe": false
+                    };
+
+                    $.cookie("Jobs5", cookie);
+
+                    // and close the box
+                    $(".remember-me-panel").fadeOut('fast');
+                });
+
+
+                $('.fa-spin').addClass('fa-child').removeClass('fa-spin');
+
+                $('p.job-status').filter(function () {
+                    return $(this).text() == 'Status: A'
+                }).addClass("in-progress");
+
+                $('p.job-status').filter(function () {
+                    return $(this).text() == 'Status: W'
+                }).addClass("on-wait");
+
+                $('p.job-status').filter(function () {
+                    return $(this).text() == 'Status: H'
+                }).addClass("on-wait");
+
+                var today = new Date();
+
+                $('p.deliverable-date').filter(function () {
+                    return parseInt($(this).text()) == parseInt(today.yyyymmdd())
+                }).addClass("due-today");
+
+
+                $('p.deliverable-date').filter(function () {
+                    return parseInt($(this).text()) < parseInt(today.yyyymmdd())
+                }).addClass("due-past");
+
+                $('p.deliverable-date').filter(function () {
+                    return parseInt($(this).text()) > parseInt(today.yyyymmdd())
+                }).addClass("due-future");
+
+                /*$("a.list-group-item.jobs-in-progress").hover(
+                 function(){ $("h3.job-number").css({"color": "#9351a6"}); },
+                 function(){ $("h3.job-number").css({"color": "#cccccc"}); }
+                 );*/
+
+                $("a.list-group-item.jobs-in-progress").hover(
+                    function () {
+                        $("p.in-progress").css({"color": "#9351a6"});
+                    },
+                    function () {
+                        $("p.in-progress").css({"color": "#cccccc"});
+                    }
+                );
+
+                /*$("a.list-group-item.jobs-on-wait").hover(
+                 function(){ $("h3.job-number").css({"color": "#4472b9"}); },
+                 function(){ $("h3.job-number").css({"color": "#cccccc"}); }
+                 );*/
+
+                $("a.list-group-item.jobs-on-wait").hover(
+                    function () {
+                        $("p.on-wait").css({"color": "#4472b9"});
+                    },
+                    function () {
+                        $("p.on-wait").css({"color": "#cccccc"});
+                    }
+                );
+
+                /*$("a.list-group-item.jobs-on-hold").hover(
+                 function(){ $("h3.job-number").css({"color": "#20B2AA"}); },
+                 function(){ $("h3.job-number").css({"color": "#cccccc"}); }
+                 );*/
+
+
+                $("a.list-group-item.jobs-on-hold").hover(
+                    function () {
+                        $("p.on-hold").css({"color": "#20B2AA"});
+                    },
+                    function () {
+                        $("p.on-hold").css({"color": "#cccccc"});
+                    }
+                );
+
+                /*                            $(".list-group-item.greenJobs").hover(
+                 function(){ $("p.deliverable-date").css({"color": "#5cb85c"}); },
+                 function(){ $("p.deliverable-date").css({"color": "#cccccc"}); }
+                 );*/
+
+                $(".list-group-item.greenJobs").hover(
+                    function () {
+                        $("p.deliverable-date.due-future").css({"color": "#5cb85c"});
+                    },
+                    function () {
+                        $("p.deliverable-date.due-future").css({"color": "#cccccc"});
+                    }
+                );
+                /*
+                 $(".list-group-item.orangeJobs").hover(
+                 function(){ $("p.deliverable-date").css({"color": "#e08037"}); },
+                 function(){ $("p.deliverable-date").css({"color": "#cccccc"}); }
+                 );*/
+
+                $(".list-group-item.orangeJobs").hover(
+                    function () {
+                        $("p.deliverable-date.due-today").css({"color": "#e08037"});
+                    },
+                    function () {
+                        $("p.deliverable-date.due-today").css({"color": "#cccccc"});
+                    }
+                );
+                /*
+                 $(".list-group-item.redJobs").hover(
+                 function(){ $("p.deliverable-date").css({"color": "#7e0104"}); },
+                 function(){ $("p.deliverable-date").css({"color": "#cccccc"}); }
+                 );*/
+
+                $(".list-group-item.redJobs").hover(
+                    function () {
+                        $("p.deliverable-date.due-past").css({"color": "#7e0104"});
+                    },
+                    function () {
+                        $("p.deliverable-date.due-past").css({"color": "#cccccc"});
+                    }
+                );
+            })
+        }();
+
+    } else {
+
+    }
 }

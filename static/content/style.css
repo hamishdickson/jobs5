@@ -321,3 +321,18 @@ div.panel-body.big-body {
 .onoffswitch-inner:after {
     background-color: #4b4b4b;
 }
+
+.remember-me-panel .hide-message {
+    float: right;
+}
+
+.remember-me-panel, button.hide-job.btn.btn-sm.btn-primary.hide-message,
+button.hide-job.btn.btn-sm.btn-primary.remember-me-yes {
+    background: #ff6c00;
+    border: none;
+}
+
+button.hide-job.btn.btn-sm.btn-primary.remember-me-yes:hover,
+button.hide-job.btn.btn-sm.btn-primary.hide-message:hover {
+    background: #4b4b4b;
+}
