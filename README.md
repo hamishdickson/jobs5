@@ -2,6 +2,8 @@
 
 A very light webapp for jobs3 and jira.
 
+Note: this is being rewritten at the moment. Development is in angularjs, Master is all done in the DOM
+
 ## Differences between jobs5 and jobs4
 
 This is a simple webapp, not designed to do everything that jobs4 does. Mark has put a lot of work into jobs4 and it is a much more complete application.
