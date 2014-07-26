@@ -29,17 +29,6 @@ $(function () {
         $.cookie.json = true;
         cookie = $.cookie("Jobs5");
 
-        /*        if (cookie === undefined) {
-            // do normal
-            // ask if this is them
-        } else {
-
-            // pre load it
-            whosJobsToGet = cookie.name;
-            getDetails(whosJobsToGet);
-
-        }*/
-
         // when AJAX calls are complete parse the template
         // replacing Mustache tags with vars
         $(document).ajaxStop(function () {
