@@ -2,7 +2,7 @@
  * Created by hamishdickson on 12/07/2014.
  */
 var http = require('http');
-var config = require('../config.js');
+var config = require('../../config.js');
 
 exports.get_cb_deliverables_for_user = function(options, cb) {
 

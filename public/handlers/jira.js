@@ -2,7 +2,8 @@
  * NOTE the s in https!
  */
 var https = require('https');
-var config = require('../config.js');
+var config = require('../../' +
+    'config.js');
 var async = require('async');
 var helpers = require('./helpers.js');
 

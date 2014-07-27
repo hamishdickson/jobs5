@@ -7,9 +7,9 @@ var app = express();
 var path = require('path');
 var config = require('./config');
 
-var jobs_hdlr = require('./public/handlers/jobs.js');
+var jobs_hdlr = require('./public/handlers/jobs.js');/*
 var persons_hdlr = require('./public/handlers/persons.js');
-var user_hdle = require('./public/handlers/user.js');
+var user_hdle = require('./public/handlers/user.js');*/
 
 app.get('/jobs/user/:user', jobs_hdlr.get_cb_users_jobs);
 
