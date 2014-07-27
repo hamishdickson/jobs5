@@ -1,5 +1,5 @@
 var http = require('http');
-var config = require('../config.js');
+var config = require('../../config.js');
 var async = require('async');
 var helpers = require('./helpers.js');
 

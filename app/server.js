@@ -22,7 +22,7 @@ app.use(express.static(__dirname + "/../static"));
 app.get('/pages/:page_name', page_hdlr.generate);
 app.get('/pages/:page_name/:sub_page', page_hdlr.generate);
 
-// to be updated
+// todo change to post
 app.get('/jobs/test/post', jobs_hdlr.post_job);
 
 app.get('/jobs/number/:jobNumber', jobs_hdlr.get_specific_job);
