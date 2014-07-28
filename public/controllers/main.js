@@ -14,6 +14,8 @@ angular.module('MyApp')
             'Romance', 'Sci-Fi', 'Sport', 'Suspense', 'Talk Show', 'Thriller',
             'Travel'];
 
+        $scope.statuss = ['A', 'B', 'Z', 'H', 'W'];
+
         $scope.headingTitle = 'Top 12 Shows';
 
         $scope.shows = Show.query();
