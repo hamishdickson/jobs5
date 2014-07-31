@@ -2,6 +2,10 @@
 
 A very light webapp for jobs3 and jira.
 
+## Suggestions for improvement
+
+All suggestions are welcome, the best way to add one is to create an issue. If you are really keen and want to improve jobs5 yourself, please fork the Development branch and submit a pull request.
+
 ## Differences between jobs5 and jobs4
 
 This is a simple webapp, not designed to do everything that jobs4 does. Mark has put a lot of work into jobs4 and it is a much more complete application.
