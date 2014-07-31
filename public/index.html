@@ -31,14 +31,14 @@
         <li><a target="_blank" href="https://github.com/hamishdickson/jobs5">About</a></li>
         <li><a href="mailto:made.up@jhc.co.uk?subject=Jobs3-webapp">Contact</a></li>
     </ul>
-    <ul class="nav navbar-nav pull-right" ng-if="!currentUser">
+<!--    <ul class="nav navbar-nav pull-right" ng-if="!currentUser">
         <li data-match-route="/login"><a href="/login">Login</a></li>
         <li data-match-route="/signup"><a href="/signup">Sign up</a></li>
     </ul>
     <ul class="nav navbar-nav pull-right" ng-if="currentUser">
         <li class="navbar-text" ng-bind="currentUser.email"></li>
         <li><a href="javascript:void(0)" ng-click="logout()">Logout</a></li>
-    </ul>
+    </ul>-->
 </div>
 
 <div ng-view></div>
@@ -54,7 +54,9 @@
 
 <script src="app.js"></script>
 <script src="controllers/main.js"></script>
+<script src="controllers/job.js"></script>
 <script src="services/show.js"></script>
+<script src="services/job.js"></script>
 
 </body>
 </html>

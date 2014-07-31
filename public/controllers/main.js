@@ -2,7 +2,7 @@
  * Created by hamishdickson on 19/07/2014.
  */
 angular.module('MyApp')
-    .controller('MainCtrl', ['$scope', 'Show', function($scope, Show) {
+    .controller('MainCtrl', ['$scope', 'Show', function($scope, Show, Job) {
 
         $scope.alphabet = ['0-9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
             'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
@@ -14,9 +14,9 @@ angular.module('MyApp')
             'Romance', 'Sci-Fi', 'Sport', 'Suspense', 'Talk Show', 'Thriller',
             'Travel'];
 
-        $scope.statuss = ['A', 'B', 'Z', 'H', 'W'];
+        $scope.jobs = ['A', 'B', 'Z', 'H', 'W'];
 
-        $scope.headingTitle = 'Top 12 Shows';
+        $scope.headingTitle = 'All Jobs';
 
         $scope.shows = Show.query();
 
@@ -29,4 +29,10 @@ angular.module('MyApp')
             $scope.shows = Show.query({ alphabet: char });
             $scope.headingTitle = char;
         };
+
+        $scope.filterByJob = function(char) {
+            $scope.jobs = Show.query({ job: char });
+            $scope.headingTitle = char;
+        }
     }]);
+

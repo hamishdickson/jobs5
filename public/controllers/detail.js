@@ -2,8 +2,8 @@
  * Created by hamishdickson on 19/07/2014.
  */
 angular.module('MyApp')
-    .controller('DetailCtrl', ['$scope', '$rootScope', '$routeParams', 'Show', 'Subscription',
-        function($scope, $rootScope, $routeParams, Show, Subscription) {
+    .controller('DetailCtrl', ['$scope', '$rootScope', '$routeParams', 'Show', 'Job', 'Subscription',
+        function($scope, $rootScope, $routeParams, Show, Job, Subscription) {
             Show.get({ _id: $routeParams.id }, function(show) {
                 $scope.show = show;
 
@@ -27,5 +27,9 @@ angular.module('MyApp')
                 $scope.nextEpisode = show.episodes.filter(function(episode) {
                     return new Date(episode.firstAired) > new Date();
                 })[0];
+            });
+
+            Job.get({ _id: $routeParams.id }, function(job) {
+                $scope.job = job;
             });
         }]);
