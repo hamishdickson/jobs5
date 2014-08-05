@@ -1,15 +1,15 @@
 <div class="jumbotron">
     <div class="container">
-<!--        <ul class="alphabet">
-            <li ng-repeat="char in alphabet">
-                <span ng-click="filterByAlphabet(char)">{{char}}</span>
-            </li>
-        </ul>
-        <ul class="genres">
-            <li ng-repeat="genre in genres">
-                <span ng-click="filterByGenre(genre)">{{genre}}</span>
-            </li>
-        </ul>-->
+        <!--        <ul class="alphabet">
+                    <li ng-repeat="char in alphabet">
+                        <span ng-click="filterByAlphabet(char)">{{char}}</span>
+                    </li>
+                </ul>
+                <ul class="genres">
+                    <li ng-repeat="genre in genres">
+                        <span ng-click="filterByGenre(genre)">{{genre}}</span>
+                    </li>
+                </ul>-->
         <ul class="genres">
             <li ng-repeat="job in jobs">
                 <span ng-click="filterByJob(job)">Status {{job}}</span>
@@ -50,79 +50,80 @@
     <div class="list-group">
         <div class="list-group-item panel panel-body col-sm-6" ng-repeat="job in jobsCtrl.jobsData">
 
-                <h3>{{job.jobNumber}}</h3>
+            <h3>{{job.jobNumber}}</h3>
 
-                <section ng-controller="TabsController as tabCtrl">
-                    <ul class="nav nav-pills">
-                        <li ng-class="{ active:tabCtrl.isSet(1) }">
-                            <a href="" ng-click="tabCtrl.setTab(1)">Description</a>
-                        </li>
-                        <li ng-class="{ active:tabCtrl.isSet(2) }">
-                            <a href="" ng-click="tabCtrl.setTab(2)">Status</a>
-                        </li>
-                        <li ng-class="{ active:tabCtrl.isSet(3) }">
-                            <a href="" ng-click="tabCtrl.setTab(3)">Notes</a>
+            <section ng-controller="TabsController as tabCtrl">
+                <ul class="nav nav-pills">
+                    <li ng-class="{ active:tabCtrl.isSet(1) }">
+                        <a href="" ng-click="tabCtrl.setTab(1)">Description</a>
+                    </li>
+                    <li ng-class="{ active:tabCtrl.isSet(2) }">
+                        <a href="" ng-click="tabCtrl.setTab(2)">Status</a>
+                    </li>
+                    <li ng-class="{ active:tabCtrl.isSet(3) }">
+                        <a href="" ng-click="tabCtrl.setTab(3)">Notes</a>
+                    </li>
+                </ul>
+
+                <!--  Description Tab's Content  -->
+                <div ng-show="tabCtrl.isSet(1)">
+                    <h4>Description</h4>
+                    <blockquote>{{job.description}}</blockquote>
+                </div>
+
+                <!--  Status Tab's Content  -->
+                <div ng-show="tabCtrl.isSet(2)">
+                    <h4>Status</h4>
+                    <blockquote>Status: {{job.status}}</blockquote>
+                </div>
+
+                <!--  Notes Tab's Content  -->
+                <div ng-show="tabCtrl.isSet(3)">
+
+                    <!--  Job Notes List -->
+                    <ul>
+                        <h4>Notes</h4>
+                        <li ng-repeat="note in job.notes">
+                            {{note.body}}
+                            <blockquote>
+                                <cite class="clearfix">—{{note.author}}</cite>
+                            </blockquote>
                         </li>
                     </ul>
 
-                    <!--  Description Tab's Content  -->
-                    <div ng-show="tabCtrl.isSet(1)">
-                        <h4>Description</h4>
-                        <blockquote>{{job.description}}</blockquote>
-                    </div>
-
-                    <!--  Status Tab's Content  -->
-                    <div ng-show="tabCtrl.isSet(2)">
-                        <h4>Status</h4>
-                        <blockquote>Status: {{job.status}}</blockquote>
-                    </div>
-
-                    <!--  Review Tab's Content  -->
-                    <div ng-show="tabCtrl.isSet(3)">
-
-                        <!--  Job Notes List -->
-                        <ul>
-                            <h4>Notes</h4>
-                            <li ng-repeat="note in job.notes">
-                                {{note.body}}
-                                <blockquote>
-                                    <cite class="clearfix">—{{note.author}}</cite>
-                                </blockquote>
-                            </li>
-                        </ul>
+                    <!--  Notes Form -->
+                    <form name="reviewForm" ng-controller="NotesController as notesCtrl"
+                          ng-submit="notesCtrl.addNote(job)">
+                        <!--  Live Preview -->
+                        <blockquote>
+                            {{notesCtrl.note.body}}
+                            <cite class="clearfix">—{{notesCtrl.note.author}}</cite>
+                        </blockquote>
 
                         <!--  Notes Form -->
-                        <form name="reviewForm" ng-controller="NotesController as notesCtrl" ng-submit="notesCtrl.addNote(job)">
-                            <!--  Live Preview -->
-                            <blockquote>
-                                {{notesCtrl.note.body}}
-                                <cite class="clearfix">—{{notesCtrl.note.author}}</cite>
-                            </blockquote>
+                        <h4>Add to jobs notes</h4>
+                        <fieldset class="form-group">
+                            <select ng-model="note.stars" class="form-control"
+                                    ng-options="stars for stars in [5,4,3,2,1]" title="Stars">
+                                <option value="">Rate the job</option>
+                            </select>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <textarea ng-model="notesCtrl.note.body" class="form-control"
+                                      placeholder="Add me some notes ..."
+                                      title="Notes"></textarea>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <input ng-model="notesCtrl.note.author" type="email" class="form-control"
+                                   placeholder="jimmyDean@example.org" title="Email"/>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <input type="submit" class="btn btn-primary pull-right" value="Submit Note"/>
+                        </fieldset>
+                    </form>
 
-                            <!--  Notes Form -->
-                            <h4>Add to jobs notes</h4>
-                            <fieldset class="form-group">
-                                <select ng-model="note.stars" class="form-control"
-                                        ng-options="stars for stars in [5,4,3,2,1]" title="Stars">
-                                    <option value="">Rate the job</option>
-                                </select>
-                            </fieldset>
-                            <fieldset class="form-group">
-                                <textarea ng-model="notesCtrl.note.body" class="form-control" placeholder="Add me some notes ..."
-                                          title="Notes"></textarea>
-                            </fieldset>
-                            <fieldset class="form-group">
-                                <input ng-model="notesCtrl.note.author" type="email" class="form-control"
-                                       placeholder="jimmyDean@example.org" title="Email"/>
-                            </fieldset>
-                            <fieldset class="form-group">
-                                <input type="submit" class="btn btn-primary pull-right" value="Submit Note"/>
-                            </fieldset>
-                        </form>
-
-                    </div>
-                </section>
-            </div>
-
+                </div>
+            </section>
+        </div>
     </div>
 </div>
