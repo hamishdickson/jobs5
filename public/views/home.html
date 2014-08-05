@@ -43,100 +43,86 @@
 </div>-->
 
 
-<div class="container" ng-controller="JobsController as jobs1">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            {{headingTitle}}
-        </div>
-        <div class="panel-body">
-            <div class="row show-list">
-                <div class="col-xs-4 col-md-3" ng-repeat="job in jobs1.test">
-                    <div ng-show="job.status === headingTitle">
-                        <p>{{job.jobNumber}}</p>
-                        <p>{{job.status}}</p>
-                        <p>{{job.description}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="container" ng-controller="JobsController as jobsCtrl">
     <header>
         <h1 class="text-center">Jobs {{headingTitle}}</h1>
     </header>
     <div class="list-group">
-        <div class="list-group-item" ng-repeat="job in jobsCtrl.test">
-            <h3>{{job.jobNumber}}</h3>
+        <div class="list-group-item panel panel-body col-sm-6" ng-repeat="job in jobsCtrl.jobsData">
 
-            <section ng-controller="TabsController as tabCtrl">
-                <ul class="nav nav-pills">
-                    <li ng-class="{ active:tabCtrl.isSet(1) }">
-                        <a href="" ng-click="tabCtrl.setTab(1)">Description</a>
-                    </li>
-                    <li ng-class="{ active:tabCtrl.isSet(2) }">
-                        <a href="" ng-click="tab.setTab(2)">Specs</a>
-                    </li>
-                    <li ng-class="{ active:tabCtrl.isSet(3) }">
-                        <a href="" ng-click="tabCtrl.setTab(3)">Reviews</a>
-                    </li>
-                </ul>
+                <h3>{{job.jobNumber}}</h3>
 
-                <!--  Description Tab's Content  -->
-                <div ng-show="tabCtrl.isSet(1)">
-                    <h4>Description</h4>
-                    <blockquote>{{job.description}}</blockquote>
-                </div>
-
-                <!--  Status Tab's Content  -->
-                <div ng-show="tabCtrl.isSet(2)">
-                    <h4>Status</h4>
-                    <blockquote>Status: {{job.status}}</blockquote>
-                </div>
-
-                <!--  Review Tab's Content  -->
-                <div ng-show="tabCtrl.isSet(3)">
-
-                    <!--  Job Notes List -->
-                    <ul>
-                        <h4>Notes</h4>
-                        <li ng-repeat="note in job.notes">
-                            {{note.body}}
-                            <blockquote>
-                                <cite class="clearfix">—{{note.author}}</cite>
-                            </blockquote>
+                <section ng-controller="TabsController as tabCtrl">
+                    <ul class="nav nav-pills">
+                        <li ng-class="{ active:tabCtrl.isSet(1) }">
+                            <a href="" ng-click="tabCtrl.setTab(1)">Description</a>
+                        </li>
+                        <li ng-class="{ active:tabCtrl.isSet(2) }">
+                            <a href="" ng-click="tab.setTab(2)">Specs</a>
+                        </li>
+                        <li ng-class="{ active:tabCtrl.isSet(3) }">
+                            <a href="" ng-click="tabCtrl.setTab(3)">Reviews</a>
                         </li>
                     </ul>
 
-                    <!--  Notes Form -->
-                    <form name="reviewForm">
-                        <!--  Live Preview -->
-                        <blockquote>
-                            {{note.body}}
-                            <cite class="clearfix">—{{note.author}}</cite>
-                        </blockquote>
+                    <!--  Description Tab's Content  -->
+                    <div ng-show="tabCtrl.isSet(1)">
+                        <h4>Description</h4>
+                        <blockquote>{{job.description}}</blockquote>
+                    </div>
 
-                        <!--  Review Form -->
-                        <h4>Add to jobs notes</h4>
-                        <fieldset class="form-group">
-                            <select ng-model="note.stars" class="form-control" ng-options="stars for stars in [5,4,3,2,1]"  title="Stars">
-                                <option value="">Rate the Product</option>
-                            </select>
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <textarea ng-model="note.body" class="form-control" placeholder="Add me some notes ..." title="Notes"></textarea>
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <input ng-model="note.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" />
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <input type="submit" class="btn btn-primary pull-right" value="Submit Note" />
-                        </fieldset>
-                    </form>
+                    <!--  Status Tab's Content  -->
+                    <div ng-show="tabCtrl.isSet(2)">
+                        <h4>Status</h4>
+                        <blockquote>Status: {{job.status}}</blockquote>
+                    </div>
 
-                </div>
-            </section>
-        </div>
+                    <!--  Review Tab's Content  -->
+                    <div ng-show="tabCtrl.isSet(3)">
+
+                        <!--  Job Notes List -->
+                        <ul>
+                            <h4>Notes</h4>
+                            <li ng-repeat="note in job.notes">
+                                {{note.body}}
+                                <blockquote>
+                                    <cite class="clearfix">—{{note.author}}</cite>
+                                </blockquote>
+                            </li>
+                        </ul>
+
+                        <!--  Notes Form -->
+                        <form name="reviewForm" ng-controller="NotesController as notesCtrl" ng-submit="notesCtrl.addNote(job)">
+                            <!--  Live Preview -->
+                            <blockquote>
+                                {{notesCtrl.note.body}}
+                                <cite class="clearfix">—{{notesCtrl.note.author}}</cite>
+                            </blockquote>
+
+                            <!--  Review Form -->
+                            <h4>Add to jobs notes</h4>
+                            <fieldset class="form-group">
+                                <select ng-model="note.stars" class="form-control"
+                                        ng-options="stars for stars in [5,4,3,2,1]" title="Stars">
+                                    <option value="">Rate the job</option>
+                                </select>
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <textarea ng-model="notesCtrl.note.body" class="form-control" placeholder="Add me some notes ..."
+                                          title="Notes"></textarea>
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <input ng-model="notesCtrl.note.author" type="email" class="form-control"
+                                       placeholder="jimmyDean@example.org" title="Email"/>
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <input type="submit" class="btn btn-primary pull-right" value="Submit Note"/>
+                            </fieldset>
+                        </form>
+
+                    </div>
+                </section>
+            </div>
+
     </div>
 </div>

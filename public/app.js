@@ -26,7 +26,7 @@
                     templateUrl: 'views/home.html',
                     controller: 'MainCtrl'
                 })
-                .when('/shows/:id', {
+                .when('/jobs/:id', {
                     templateUrl: 'views/detail.html',
                     controller: 'DetailCtrl'
                 })
