@@ -1,6 +1,6 @@
 <div class="jumbotron">
     <div class="container">
-        <ul class="alphabet">
+<!--        <ul class="alphabet">
             <li ng-repeat="char in alphabet">
                 <span ng-click="filterByAlphabet(char)">{{char}}</span>
             </li>
@@ -9,10 +9,10 @@
             <li ng-repeat="genre in genres">
                 <span ng-click="filterByGenre(genre)">{{genre}}</span>
             </li>
-        </ul>
+        </ul>-->
         <ul class="genres">
             <li ng-repeat="job in jobs">
-                <span ng-click="filterByJob(job)">{{job}}</span>
+                <span ng-click="filterByJob(job)">Status {{job}}</span>
             </li>
         </ul>
     </div>
@@ -58,10 +58,10 @@
                             <a href="" ng-click="tabCtrl.setTab(1)">Description</a>
                         </li>
                         <li ng-class="{ active:tabCtrl.isSet(2) }">
-                            <a href="" ng-click="tab.setTab(2)">Specs</a>
+                            <a href="" ng-click="tabCtrl.setTab(2)">Status</a>
                         </li>
                         <li ng-class="{ active:tabCtrl.isSet(3) }">
-                            <a href="" ng-click="tabCtrl.setTab(3)">Reviews</a>
+                            <a href="" ng-click="tabCtrl.setTab(3)">Notes</a>
                         </li>
                     </ul>
 
@@ -99,7 +99,7 @@
                                 <cite class="clearfix">—{{notesCtrl.note.author}}</cite>
                             </blockquote>
 
-                            <!--  Review Form -->
+                            <!--  Notes Form -->
                             <h4>Add to jobs notes</h4>
                             <fieldset class="form-group">
                                 <select ng-model="note.stars" class="form-control"
