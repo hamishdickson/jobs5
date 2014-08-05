@@ -85,6 +85,7 @@
                         <h4>Notes</h4>
                         <li ng-repeat="note in job.notes">
                             {{note.body}}
+                            <strong>{{note.response}}</strong>
                             <blockquote>
                                 <cite class="clearfix">—{{note.author}}</cite>
                             </blockquote>
@@ -97,21 +98,27 @@
                         <!--  Live Preview -->
                         <blockquote>
                             {{notesCtrl.note.body}}
+                            <strong>Current response: {{notesCtrl.note.response}}</strong>
                             <cite class="clearfix">—{{notesCtrl.note.author}}</cite>
                         </blockquote>
 
                         <!--  Notes Form -->
                         <h4>Add to jobs notes</h4>
                         <fieldset class="form-group">
-                            <select ng-model="note.stars" class="form-control"
-                                    ng-options="stars for stars in [5,4,3,2,1]" title="Stars">
-                                <option value="">Rate the job</option>
+                            <select ng-model="notesCtrl.note.status" class="form-control"
+                                    ng-options="status for status in [A,B,H,W,C]" title="Status">
+                                <option value="">Job status</option>
                             </select>
                         </fieldset>
                         <fieldset class="form-group">
                             <textarea ng-model="notesCtrl.note.body" class="form-control"
                                       placeholder="Add me some notes ..."
                                       title="Notes"></textarea>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <textarea ng-model="notesCtrl.note.response" class="form-control"
+                                      placeholder="Response to client ..."
+                                      title="Response"></textarea>
                         </fieldset>
                         <fieldset class="form-group">
                             <input ng-model="notesCtrl.note.author" type="email" class="form-control"
