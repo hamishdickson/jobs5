@@ -6,8 +6,8 @@ angular.module('MyApp')
         this.note = {};
 
         this.addNote = function(job) {
+            this.note.createdOn = Date.now();
             job.notes.push(this.note);
-
             this.note = {};
         };
     });

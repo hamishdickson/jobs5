@@ -4705,3 +4705,9 @@ em {
     float: left; }
     .navbar-nav > li > a {
       padding: 15px; }
+
+.ng-invalid.ng-dirty {
+  border-color: red; }
+
+.ng-valid.ng-dirty {
+  border-color: green; }

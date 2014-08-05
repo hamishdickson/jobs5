@@ -218,3 +218,11 @@ em {
     }
   }
 }
+
+.ng-invalid.ng-dirty {
+  border-color: red;
+}
+
+.ng-valid.ng-dirty {
+  border-color: green;
+}
