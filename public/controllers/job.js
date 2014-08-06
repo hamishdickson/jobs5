@@ -10,6 +10,8 @@ var app = angular.module('MyApp');
     });
 
     app.controller('NotesController', function () {
+        this.statuss = ['A', 'B'];
+
         this.note = {};
 
         this.addNote = function(job) {
