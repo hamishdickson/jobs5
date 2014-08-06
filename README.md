@@ -35,3 +35,4 @@ There is still quite a lot left to do, but here is everything I can think of bef
 5. ~~replace style.css with style.scss~~
 6. add something that will check to see if there is a new version available in github, and if there is pull it and restart the node sever (or just use nodemon)
 7. ~~add in functionality to change data (ie convert jobs5 from a viewer to a full blown app)~~
+8. add in login page
