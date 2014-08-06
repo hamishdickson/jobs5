@@ -1,0 +1,24 @@
+<!-- tabs section -->
+<section>
+    <ul class="nav nav-pills">
+        <li ng-class="{ active:tabCtrl.isSet(1) }">
+            <a href="" ng-click="tabCtrl.setTab(1)">Description</a>
+        </li>
+        <li ng-class="{ active:tabCtrl.isSet(2) }">
+            <a href="" ng-click="tabCtrl.setTab(2)">Status</a>
+        </li>
+        <li ng-class="{ active:tabCtrl.isSet(3) }">
+            <a href="" ng-click="tabCtrl.setTab(3)">Notes</a>
+        </li>
+    </ul>
+
+    <!--  Description Tab's Content  -->
+    <job-description ng-show="tabCtrl.isSet(1)"></job-description>
+
+    <!--  Status Tab's Content  -->
+    <jobs-status ng-show="tabCtrl.isSet(2)"></jobs-status>
+
+    <!--  Notes Tab's Content  -->
+    <job-notes ng-show="tabCtrl.isSet(3)"></job-notes>
+
+</section>

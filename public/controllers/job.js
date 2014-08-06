@@ -19,7 +19,7 @@ var app = angular.module('MyApp');
             this.note = {};
         };
     });
-
+/*
     app.controller('TabsController', function () {
         this.tab = 1;
 
@@ -30,8 +30,7 @@ var app = angular.module('MyApp');
         this.isSet = function(tabName) {
             return this.tab === tabName;
         }
-
-    });
+    });*/
 
     app.directive('jobNotes', function() {
         return {
@@ -51,6 +50,25 @@ var app = angular.module('MyApp');
         return {
             restrict: 'E',
             templateUrl: '../views/jobs-status.html'
+        };
+    });
+
+    app.directive('jobTabs', function() {
+        return {
+            restrict: 'E',
+            templateUrl: '../views/jobs-tabs.html',
+            controller: function() {
+                this.tab = 1;
+
+                this.setTab = function(newValue) {
+                    this.tab = newValue;
+                };
+
+                this.isSet = function(tabName) {
+                    return this.tab === tabName;
+                }
+            },
+            controllerAs: 'tabCtrl'
         };
     });
 

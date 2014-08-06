@@ -23,7 +23,8 @@
 
                         <h3>{{job.jobNumber}}</h3>
 
-                        <section ng-controller="TabsController as tabCtrl">
+                        <job-tabs></job-tabs>
+                        <!--<section ng-controller="TabsController as tabCtrl">
                             <ul class="nav nav-pills">
                                 <li ng-class="{ active:tabCtrl.isSet(1) }">
                                     <a href="" ng-click="tabCtrl.setTab(1)">Description</a>
@@ -36,67 +37,17 @@
                                 </li>
                             </ul>
 
-                            <!--  Description Tab's Content  -->
+                            &lt;!&ndash;  Description Tab's Content  &ndash;&gt;
                             <job-description ng-show="tabCtrl.isSet(1)"></job-description>
 
-                            <!--  Status Tab's Content  -->
+                            &lt;!&ndash;  Status Tab's Content  &ndash;&gt;
                             <jobs-status ng-show="tabCtrl.isSet(2)"></jobs-status>
 
-                            <!--  Notes Tab's Content  -->
-                            <!--  Job Notes List -->
+                            &lt;!&ndash;  Notes Tab's Content  &ndash;&gt;
+                            &lt;!&ndash;  Job Notes List &ndash;&gt;
                             <job-notes ng-show="tabCtrl.isSet(3)"></job-notes>
-                            <!--<ul>
-                                <h4>Notes</h4>
-                                <li ng-repeat="note in job.notes">
-                                    {{note.body}}
-                                    <strong>{{note.response}}</strong>
-                                    <blockquote>
-                                        <cite class="clearfix">—{{note.author}} on {{note.createdOn | date :
-                                            'medium'}}</cite>
-                                    </blockquote>
-                                </li>
-                            </ul>
 
-                            &lt;!&ndash;  Notes Form &ndash;&gt;
-                            <form name="notesForm" ng-controller="NotesController as notesCtrl"
-                                  ng-submit="notesForm.$valid && notesCtrl.addNote(job)" novalidate>
-                                &lt;!&ndash;  Live Preview &ndash;&gt;
-                                <blockquote>
-                                    <p>{{notesCtrl.note.body}}</p>
-
-                                    <p><strong>Current response: {{notesCtrl.note.response}}</strong></p>
-
-                                    <p><cite class="clearfix">—{{notesCtrl.note.author}}</cite></p>
-                                </blockquote>
-
-                                &lt;!&ndash;  Notes Form &ndash;&gt;
-                                <h4>Add to jobs notes</h4>
-                                <fieldset class="form-group">
-                                    <select ng-model="notesCtrl.note.status" class="form-control"
-                                            ng-options="status for status in [5,4,3,2,1]" title="Status">
-                                        <option value="">Job status</option>
-                                    </select>
-                                </fieldset>
-                                <fieldset class="form-group">
-                                    <textarea ng-model="notesCtrl.note.body" class="form-control"
-                                              placeholder="Add me some notes ..."
-                                              title="Notes"></textarea>
-                                </fieldset>
-                                <fieldset class="form-group">
-                                    <textarea ng-model="notesCtrl.note.response" class="form-control"
-                                              placeholder="Response to client ..."
-                                              title="Response"></textarea>
-                                </fieldset>
-                                <fieldset class="form-group">
-                                    <input ng-model="notesCtrl.note.author" type="email" class="form-control"
-                                           placeholder="get@me.coffee" title="Email"/>
-                                </fieldset>
-                                <fieldset class="form-group">
-                                    <input type="submit" class="btn btn-primary pull-right" value="Submit Note"/>
-                                </fieldset>
-                            </form>
--->
-                        </section>
+                        </section>-->
                     </div>
                 </div>
             </div>
