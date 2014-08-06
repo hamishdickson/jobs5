@@ -28,10 +28,10 @@ The port can be changed in app/config.js
 
 There is still quite a lot left to do, but here is everything I can think of before this is production ready (in no specific order)
 
-1) use gulp to compress everything
-2) add cookies to remember who you are
-3) add jira support
-4) a huge refactoring exercise is needed
-5) replace style.css with style.scss
-6) add something that will check to see if there is a new version available in github, and if there is pull it and restart the node sever (or just use nodemon)
-7) add in functionality to change data (ie convert jobs5 from a viewer to a full blown app)
+1. use gulp to compress everything
+2. add cookies to remember who you are
+3. add jira support
+4. --a huge refactoring exercise is needed--
+5. --replace style.css with style.scss--
+6. add something that will check to see if there is a new version available in github, and if there is pull it and restart the node sever (or just use nodemon)
+7. --add in functionality to change data (ie convert jobs5 from a viewer to a full blown app)--
