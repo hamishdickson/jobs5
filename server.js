@@ -8,16 +8,13 @@ var path = require('path');
 var config = require('./config');
 var bodyParser = require('body-parser');
 
+// modules for API calls
 var jobs_hdlr = require('./public/handlers/jobs.js');
-/*var persons_hdlr = require('./public/handlers/persons.js');
-var user_hdle = require('./public/handlers/user.js');*/
-
-/*
-app.get('/jobs/user/:user', jobs_hdlr.get_users_jobs);
-app.get('/api/shows', function(req, res, next) {
-*/
 
 app.get('/jobs/user/:user', jobs_hdlr.get_users_jobs);
+app.get('/jobs/number/:jobNumber', jobs_hdlr.get_specific_job);
+app.get('/jobs/status/:user/:status', jobs_hdlr.get_users_jobs_for_status);
+app.get('/jobs/notes/:jobNumber', jobs_hdlr.get_job_notes);
 
 app.set('port', process.env.PORT || config.PORT);
 
