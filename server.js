@@ -26,7 +26,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(express.bodyParser({ keepExtensions: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use(express.static(__dirname + '/public'));
 
 console.log("Starting up server - port " + config.PORT);
 

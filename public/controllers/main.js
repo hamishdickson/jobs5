@@ -14,7 +14,7 @@ angular.module('MyApp')
             'Romance', 'Sci-Fi', 'Sport', 'Suspense', 'Talk Show', 'Thriller',
             'Travel'];
 
-        $scope.jobs = ['A', 'B', 'Z', 'H', 'W'];
+        $scope.statuss = ['A', 'B', 'Z', 'H', 'W'];
 
         $scope.headingTitle = 'All Jobs';
 
@@ -30,8 +30,8 @@ angular.module('MyApp')
             $scope.headingTitle = char;
         };
 
-        $scope.filterByJob = function(char) {
-            $scope.jobs = Show.query({ job: char });
+        $scope.filterByStatus = function(char) {
+            $scope.jobs = Job.query({ status: char });
             $scope.headingTitle = char;
         }
     }]);
