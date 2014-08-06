@@ -36,7 +36,21 @@ var app = angular.module('MyApp');
     app.directive('jobNotes', function() {
         return {
             restrict: 'E',
-            templateUrl: '/public/controllers/job-notes.html'
+            templateUrl: '../views/job-notes.html'
+        };
+    });
+
+    app.directive('jobDescription', function() {
+        return {
+            restrict: 'E',
+            templateUrl: '../views/jobs-description.html'
+        };
+    });
+
+    app.directive('jobsStatus', function() {
+        return {
+            restrict: 'E',
+            templateUrl: '../views/jobs-status.html'
         };
     });
 

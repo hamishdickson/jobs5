@@ -37,23 +37,15 @@
                             </ul>
 
                             <!--  Description Tab's Content  -->
-                            <div ng-show="tabCtrl.isSet(1)">
-                                <h4>Description</h4>
-                                <blockquote>{{job.description}}</blockquote>
-                            </div>
+                            <job-description ng-show="tabCtrl.isSet(1)"></job-description>
 
                             <!--  Status Tab's Content  -->
-                            <div ng-show="tabCtrl.isSet(2)">
-                                <h4>Status</h4>
-                                <blockquote>Status: {{job.status}}</blockquote>
-                                <p>{{job.response}}</p>
-                            </div>
+                            <jobs-status ng-show="tabCtrl.isSet(2)"></jobs-status>
 
                             <!--  Notes Tab's Content  -->
-
                             <!--  Job Notes List -->
                             <job-notes ng-show="tabCtrl.isSet(3)"></job-notes>
-                            <ul>
+                            <!--<ul>
                                 <h4>Notes</h4>
                                 <li ng-repeat="note in job.notes">
                                     {{note.body}}
@@ -65,10 +57,10 @@
                                 </li>
                             </ul>
 
-                            <!--  Notes Form -->
+                            &lt;!&ndash;  Notes Form &ndash;&gt;
                             <form name="notesForm" ng-controller="NotesController as notesCtrl"
                                   ng-submit="notesForm.$valid && notesCtrl.addNote(job)" novalidate>
-                                <!--  Live Preview -->
+                                &lt;!&ndash;  Live Preview &ndash;&gt;
                                 <blockquote>
                                     <p>{{notesCtrl.note.body}}</p>
 
@@ -77,7 +69,7 @@
                                     <p><cite class="clearfix">—{{notesCtrl.note.author}}</cite></p>
                                 </blockquote>
 
-                                <!--  Notes Form -->
+                                &lt;!&ndash;  Notes Form &ndash;&gt;
                                 <h4>Add to jobs notes</h4>
                                 <fieldset class="form-group">
                                     <select ng-model="notesCtrl.note.status" class="form-control"
@@ -103,7 +95,7 @@
                                     <input type="submit" class="btn btn-primary pull-right" value="Submit Note"/>
                                 </fieldset>
                             </form>
-
+-->
                         </section>
                     </div>
                 </div>
