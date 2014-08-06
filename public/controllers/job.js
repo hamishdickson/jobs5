@@ -19,18 +19,6 @@ var app = angular.module('MyApp');
             this.note = {};
         };
     });
-/*
-    app.controller('TabsController', function () {
-        this.tab = 1;
-
-        this.setTab = function(newValue) {
-            this.tab = newValue;
-        };
-
-        this.isSet = function(tabName) {
-            return this.tab === tabName;
-        }
-    });*/
 
     app.directive('jobNotes', function() {
         return {
@@ -39,10 +27,10 @@ var app = angular.module('MyApp');
         };
     });
 
-    app.directive('jobDescription', function() {
+    app.directive('jobSummary', function() {
         return {
             restrict: 'E',
-            templateUrl: '../views/jobs-description.html'
+            templateUrl: '../views/jobs-summary.html'
         };
     });
 

@@ -2,18 +2,18 @@
 <section>
     <ul class="nav nav-pills">
         <li ng-class="{ active:tabCtrl.isSet(1) }">
-            <a href="" ng-click="tabCtrl.setTab(1)">Description</a>
+            <a href="" ng-click="tabCtrl.setTab(1)">Summary</a>
         </li>
         <li ng-class="{ active:tabCtrl.isSet(2) }">
             <a href="" ng-click="tabCtrl.setTab(2)">Status</a>
         </li>
         <li ng-class="{ active:tabCtrl.isSet(3) }">
-            <a href="" ng-click="tabCtrl.setTab(3)">Notes</a>
+            <a href="" ng-click="tabCtrl.setTab(3)">Updates</a>
         </li>
     </ul>
 
     <!--  Description Tab's Content  -->
-    <job-description ng-show="tabCtrl.isSet(1)"></job-description>
+    <job-summary ng-show="tabCtrl.isSet(1)"></job-summary>
 
     <!--  Status Tab's Content  -->
     <jobs-status ng-show="tabCtrl.isSet(2)"></jobs-status>

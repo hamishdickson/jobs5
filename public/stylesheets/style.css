@@ -4711,3 +4711,6 @@ em {
 
 .ng-valid.ng-dirty {
   border-color: green; }
+
+ul {
+  list-style-type: none; }
