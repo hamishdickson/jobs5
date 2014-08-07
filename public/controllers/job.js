@@ -11,7 +11,7 @@
 
         job.jobsData = [];
 
-        $http({method: 'GET', url: '/jobs/user/hd'}).success(function (data) {
+        $http({method: 'GET', url: 'http://localhost:8070/jobs3/jobtest/user/hd'}).success(function (data) {
             job.jobsData = data.jobs;
         });
     }]);
