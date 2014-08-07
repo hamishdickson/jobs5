@@ -16,16 +16,8 @@
         });
     }]);
 
-    app.controller('NotesController', ['$http', function ($http) {
-        var notes = this;
-
-        notes.note = [];
-
-        $http.get('http://localhost:8070/jobs3/jobtest/jobNotes/12').success(function (data) {
-            notes = data;
-        });
-
-        //this.note = {};
+    app.controller('NotesController', function() {
+        this.note = notesTest;
 
         this.addNote = function (job) {
             this.note.createdOn = Date.now();
@@ -33,7 +25,9 @@
             job.response = this.note.response;
             this.note = {};
         };
-    }]);
+    });
+
+    var notesTest = [{"jobNumber": 123456, "body": "well, here we go", "response": "Not one for a while", "author": "me@domain"}];
 
     app.directive('jobNotes', function () {
         return {
