@@ -11,7 +11,7 @@ exports.PORT = 3070;
 //
 // REST api
 //
-exports.jobs_rest_port = 8070;
+exports.JOBS_REST_PORT = 8070;
 
 // jira
 exports.JIRA_REST_HOST = "jira.jhc.co.uk";

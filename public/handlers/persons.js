@@ -7,7 +7,7 @@ exports.get_cb_persons = function(options, cb) {
 
     var optionsget = {
         host: config.JOBS_REST_HOST,
-        port: config.jobs_rest_port,
+        port: config.JOBS_REST_PORT,
         path: config.PERSONS_PERSONS_PATH + person,
         method: "GET",
         headers: {

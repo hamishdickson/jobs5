@@ -1,17 +1,10 @@
-//
-// HWD
-//
+/*
+ * HWD
+*/
 
-
-//
-// jobs5
-//
 exports.PORT = 3071;
 
-//
-// REST api
-//
-exports.jobs_rest_port = 8070;
+exports.JOBS_REST_PORT = 8070;
 
 // jira
 exports.JIRA_REST_HOST = "jira.jhc.co.uk";
@@ -24,7 +17,6 @@ exports.LEVEL = 'DEV';
 /*
  * overrides level
  */
-
 if (exports.LEVEL == 'DEV') {
     exports.JOBS_REST_HOST = "192.168.1.5";
     exports.JOBS_USERS_JOBS_PATH = "/jobs3/jobtest/user/";

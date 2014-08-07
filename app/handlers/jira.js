@@ -15,7 +15,7 @@ exports.get_cb_users_jiras = function (options, cb) {
 
     var optionsget = {
         host: config.JIRA_REST_HOST,
-        port: config.jobs_rest_port,
+        port: config.JOBS_REST_PORT,
         path: config.JIRA_USERS_JIRAS_PATH + windowsProfile,
         method: "GET",
         headers: {

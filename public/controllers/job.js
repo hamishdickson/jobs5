@@ -11,13 +11,21 @@
 
         job.jobsData = [];
 
-        $http({method: 'GET', url: 'http://localhost:8070/jobs3/jobtest/user/hd'}).success(function (data) {
+        $http.get('http://localhost:8070/jobs3/jobtest/user/hd').success(function (data) {
             job.jobsData = data.jobs;
         });
     }]);
 
-    app.controller('NotesController', function () {
-        this.note = {};
+    app.controller('NotesController', ['$http', function ($http) {
+        var notes = this;
+
+        notes.note = [];
+
+        $http.get('http://localhost:8070/jobs3/jobtest/jobNotes/12').success(function (data) {
+            notes = data;
+        });
+
+        //this.note = {};
 
         this.addNote = function (job) {
             this.note.createdOn = Date.now();
@@ -25,7 +33,7 @@
             job.response = this.note.response;
             this.note = {};
         };
-    });
+    }]);
 
     app.directive('jobNotes', function () {
         return {

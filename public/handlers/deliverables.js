@@ -10,7 +10,7 @@ exports.get_cb_deliverables_for_user = function(options, cb) {
 
     var optionsget = {
         host: config.JOBS_REST_HOST,
-        port: config.jobs_rest_port,
+        port: config.JOBS_REST_PORT,
         path: config.DELIVERABLES_PATH_FOR_USER + user,
         method: "GET",
         headers: {
@@ -57,7 +57,7 @@ exports.get_cb_deliverables_for_job = function(options, cb) {
 
     var optionsget = {
         host: config.JOBS_REST_HOST,
-        port: config.jobs_rest_port,
+        port: config.JOBS_REST_PORT,
         path: config.DELIVERABLES_PATH_FOR_USER + jobNumber,
         method: "GET",
         headers: {

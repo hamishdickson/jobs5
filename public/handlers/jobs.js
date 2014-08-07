@@ -11,7 +11,7 @@ exports.get_cb_users_jobs = function (options, cb) {
 
     var optionsget = {
         host: config.JOBS_REST_HOST,
-        port: config.jobs_rest_port,
+        port: config.JOBS_REST_PORT,
         path: config.JOBS_USERS_JOBS_PATH + user,
         method: "GET",
         headers: {
@@ -67,7 +67,7 @@ exports.get_cb_specific_job = function (options, cb) {
 
     var optionsget = {
         host: config.JOBS_REST_HOST,
-        port: config.jobs_rest_port,
+        port: config.JOBS_REST_PORT,
         path: config.JOBS_SPECIFIC_JOB_PATH + jobNumber,
         method: "GET",
         headers: {
@@ -115,7 +115,7 @@ exports.get_cb_users_jobs_for_status = function (options, cb) {
 
     var optionsget = {
         host: config.JOBS_REST_HOST,
-        port: config.jobs_rest_port,
+        port: config.JOBS_REST_PORT,
         path: config.JOBS_USERS_JOBS_FOR_STATUS_PATH + user + "?status=" + status,
         method: "GET",
         headers: {
@@ -188,7 +188,7 @@ exports.post_job = function (res, data) {
 
     var options = {
         host: config.JOBS_REST_HOST,
-        port: config.jobs_rest_port,
+        port: config.JOBS_REST_PORT,
         path: "/jobs3/jobtest",
         method: "POST",
         headers: {
@@ -234,7 +234,7 @@ exports.get_job_notes = function (options, onResult) {
 
     var optionsget = {
         host: config.JOBS_REST_HOST,
-        port: config.jobs_rest_port,
+        port: config.JOBS_REST_PORT,
         path: config.NOTES_PATH + jobNumber,
         method: "GET",
         headers: {

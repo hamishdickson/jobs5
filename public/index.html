@@ -21,6 +21,12 @@
         <li><a target="_blank" href="https://github.com/hamishdickson/jobs5">About</a></li>
         <li><a href="mailto:made.up@jhc.co.uk?subject=Jobs3-webapp">Contact</a></li>
     </ul>
+    <ul class="nav navbar-nav pull-right" ng-if="!currentUser">
+        <li data-match-route="/login"><a href="/login">Login</a></li>
+    </ul>
+    <ul class="nav navbar-nav pull-right" ng-if="currentUser">
+        <li class="navbar-text" ng-bind="currentUser.email"></li>
+    </ul>
 </div>
 
 <div ng-view></div>
