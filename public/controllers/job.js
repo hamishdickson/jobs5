@@ -9,6 +9,8 @@
     app.controller('JobsController', ['$http', function ($http) {
         var job = this;
 
+        job.jobsData = [];
+
         $http({method: 'GET', url: '/jobs/user/hd'}).success(function (data) {
             job.jobsData = data.jobs;
         });
