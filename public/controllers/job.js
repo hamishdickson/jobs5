@@ -6,12 +6,9 @@ var app = angular.module('MyApp');
 
     app.controller('JobsController', function () {
         this.jobsData = testJobs;
-
     });
 
     app.controller('NotesController', function () {
-        this.statuss = ['A', 'B'];
-
         this.note = {};
 
         this.addNote = function(job) {
