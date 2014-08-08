@@ -1,7 +1,6 @@
 /**
  * Created by hamishdickson on 31/07/2014.
  */
-/*angular.module('MyApp')*/
 
 (function () {
     var app = angular.module('MyApp');
