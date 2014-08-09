@@ -5,17 +5,19 @@
 (function () {
     var app = angular.module('MyApp');
 
-    app.controller('JobsController', ['$http','$rootScope', function ($http, $rootScope) {
+    app.controller('JobsController', ['$http', '$rootScope', function ($http, $rootScope) {
         var job = this;
 
         job.jobsData = [];
 
-        $http.get('http://localhost:8070/jobs3/jobtest/user/' + $rootScope.currentUser).success(function (data) {
-            job.jobsData = data.jobs;
-        });
+        if ($rootScope.currentUser) {
+            $http.get('http://localhost:8070/jobs3/jobtest/user/' + $rootScope.currentUser).success(function (data) {
+                job.jobsData = data.jobs;
+            });
+        }
     }]);
 
-    app.controller('NotesController', function() {
+    app.controller('NotesController', function () {
         this.note = notesTest;
 
         this.addNote = function (job) {
@@ -26,7 +28,9 @@
         };
     });
 
-    var notesTest = [{"jobNumber": 123456, "body": "well, here we go", "response": "Not one for a while", "author": "me@domain"}];
+    var notesTest = [
+        {"jobNumber": 123456, "body": "well, here we go", "response": "Not one for a while", "author": "me@domain"}
+    ];
 
     app.directive('jobNotes', function () {
         return {

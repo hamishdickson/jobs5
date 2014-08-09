@@ -10,6 +10,7 @@ var config = require('./config');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var http = require('http');
 
 app.set('port', process.env.PORT || config.PORT);
 

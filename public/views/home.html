@@ -17,6 +17,9 @@
             </div>
         </div>
         <div class="panel-body">
+
+            <div ng-show="jobsCtrl.jobsData.length === 0"><p>Cool - looks like you don't have any jobs to show!</p></div>
+
             <div class="row show-list">
                 <div class="list-group">
                     <div class="list-group-item panel panel-body col-sm-6" ng-repeat="job in jobsCtrl.jobsData">
