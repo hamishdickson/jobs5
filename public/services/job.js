@@ -4,6 +4,6 @@
 (function () {
     angular.module('MyApp')
         .factory('Job', ['$resource', function ($resource) {
-            return $resource('/jobs/user/:_id');
+            return $resource('http://localhost:8070/jobs3/jobtest/:_id');
         }]);
 })();

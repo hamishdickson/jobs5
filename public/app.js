@@ -27,8 +27,8 @@ angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mg
                 controller: 'MainCtrl'
             })
             .when('/detail/jobs/:id', {
-                templateUrl: 'views/detail.html',
-                controller: 'DetailCtrl'
+                templateUrl: '../views/detail.html',
+                controller: 'DetailController'
             })
             .otherwise({
                 redirectTo: '/'
