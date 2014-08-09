@@ -1,15 +1,18 @@
 /**
  * Created by hamishdickson on 09/08/2014.
  */
-angular.module('MyApp')
-    .factory('Auth', ['$http', '$location', '$rootScope', '$cookieStore', '$alert',
-        function($http, $location, $rootScope, $cookieStore, $alert) {
+
+(function () {
+    var app = angular.module('MyApp');
+
+    app.factory('Auth', ['$http', '$location', '$rootScope', '$cookieStore', '$alert',
+        function ($http, $location, $rootScope, $cookieStore, $alert) {
             $rootScope.currentUser = $cookieStore.get('user');
 
             return {
-                login: function(user) {
+                login: function (user) {
                     return $http.post('/api/login', user)
-                        .success(function(data) {
+                        .success(function (data) {
                             $rootScope.currentUser = data;
                             $location.path('/');
 
@@ -21,7 +24,7 @@ angular.module('MyApp')
                                 duration: 3
                             });
                         })
-                        .error(function() {
+                        .error(function () {
                             $alert({
                                 title: 'Error!',
                                 content: 'Invalid username or server problem',
@@ -33,3 +36,4 @@ angular.module('MyApp')
                 }
             };
         }]);
+})();

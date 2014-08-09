@@ -17,8 +17,10 @@
  });
  }]);*/
 
-angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mgcrea.ngStrap'])
-    .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
+(function () {
+    var app = angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mgcrea.ngStrap']);
+
+    app.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
         $locationProvider.html5Mode(true);
 
         $routeProvider
@@ -35,3 +37,4 @@ angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mg
             });
 
     }]);
+})();
