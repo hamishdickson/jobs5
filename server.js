@@ -78,11 +78,11 @@ app.listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
 });
 
-/* todo this causes problems ... work out why
+/* todo this causes problems ... work out why */
 app.get("*", function (req, res) {
     res.redirect('/#' + req.originalUrl);
 });
-*/
+
 
 var isEmpty = function(inObj) {
     return Object.keys(inObj).length === 0;
