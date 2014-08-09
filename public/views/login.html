@@ -4,17 +4,18 @@
             <div class="panel-body">
                 <h2 class="text-center">Login</h2>
 
-                <form method="post" ng-submit="login()" name="loginForm">
+                <form method="post" ng-submit="loginCtrl.login(email)" name="loginForm">
 
                     <div class="form-group">
                         <input class="form-control input-lg" type="text" name="email"
-                               ng-model="email" placeholder="Email" required autofocus>
+                               ng-model="email" placeholder="Initials" required autofocus>
                     </div>
 
-                    <div class="form-group">
+                        <!-- TODO password disabled for now - reinstate if needed -->
+<!--                    <div class="form-group">
                         <input class="form-control input-lg" type="password" name="password"
                                ng-model="password" placeholder="Password" required>
-                    </div>
+                    </div>-->
 
                     <button type="submit" ng-disabled="loginForm.$invalid"
                             class="btn btn-lg btn-block btn-success">Sign In

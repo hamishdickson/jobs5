@@ -4,12 +4,16 @@
 (function () {
     var app = angular.module('MyApp');
 
-    app.controller('LoginCtrl', ['$scope', 'Auth', function ($scope, Auth) {
-        $scope.login = function () {
-            Auth.login({
-                email: $scope.email,
-                password: $scope.password
-            });
-        };
-    }]);
+    app.directive('login', function() {
+        return {
+            restrict: 'E',
+            templateUrl: '../views/login.html',
+            controller: function() {
+                this.login = function(username) {
+                    console.log(username);
+                }
+            },
+            controllerAs: "loginCtrl"
+        }
+    });
 })();
