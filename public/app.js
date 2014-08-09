@@ -30,10 +30,6 @@ angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mg
                 templateUrl: 'views/detail.html',
                 controller: 'DetailCtrl'
             })
-            .when('/add', {
-                templateUrl: 'views/add.html',
-                controller: 'AddCtrl'
-            })
             .otherwise({
                 redirectTo: '/'
             });
