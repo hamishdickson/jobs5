@@ -8,6 +8,12 @@ Note: this is being rewritten at the moment. Development is in angularjs, Master
 
 This is a simple webapp, not designed to do everything that jobs4 does. Mark has put a lot of work into jobs4 and it is a much more complete application.
 
+## Loging in
+
+Authentication for this app is pretty much done on trust, all that is checked is that the username provided on login is valid.
+
+IF it becomes a requirement to connect to the LDAP and confirm passwords, then let me know, I have prototyped this with passport (a node module)
+
 ## Technologies
 
 The back end uses a java rest server to get the jobs data from the iSeries (see hamishdickson/Jobs3RestServer). A node.js app runs this webapp (with express.js)
