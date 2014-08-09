@@ -5,12 +5,12 @@
 (function () {
     var app = angular.module('MyApp');
 
-    app.controller('JobsController', ['$http', function ($http) {
+    app.controller('JobsController', ['$http','$rootScope', function ($http, $rootScope) {
         var job = this;
 
         job.jobsData = [];
 
-        $http.get('http://localhost:8070/jobs3/jobtest/user/hd').success(function (data) {
+        $http.get('http://localhost:8070/jobs3/jobtest/user/' + $rootScope.currentUser).success(function (data) {
             job.jobsData = data.jobs;
         });
     }]);
