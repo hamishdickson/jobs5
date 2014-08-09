@@ -27,9 +27,49 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.post('/api/login', function(req, res) {
-    res.cookie('user', JSON.stringify(req.body.user));
-    res.send(req.body.user);
+app.post('/api/login', function(req, response) {
+
+    // ok, so let's verify this is a real person
+
+    var options = {
+        host: config.JOBS_REST_HOST,
+        port: config.JOBS_REST_PORT,
+        path: config.PERSONS_PERSONS_PATH + req.body.user,
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    var reqGet = http.request(options, function(res) {
+        var output = "";
+
+        res.setEncoding('utf-8');
+
+        res.on('data', function(chunk) {
+            output += chunk;
+        });
+
+        res.on('end', function() {
+            if (output !== "") {
+                var obj = JSON.parse(output);
+
+                if (!isEmpty(obj)) {
+                    response.cookie('user', JSON.stringify(obj));
+                    response.send(obj);
+                } else {
+                    response.send(500);
+                }
+            } else {
+                response.send(500);
+            }
+        });
+    });
+
+    reqGet.end();
+    reqGet.on('error', function(err){
+        response.send(err);
+    });
 });
 
 console.log("Starting up server - port " + config.PORT);
@@ -43,3 +83,7 @@ app.get("*", function (req, res) {
     res.redirect('/#' + req.originalUrl);
 });
 */
+
+var isEmpty = function(inObj) {
+    return Object.keys(inObj).length === 0;
+};

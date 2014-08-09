@@ -11,7 +11,7 @@
         job.jobsData = [];
 
         if ($rootScope.currentUser) {
-            $http.get('http://localhost:8070/jobs3/jobtest/user/' + $rootScope.currentUser).success(function (data) {
+            $http.get('http://localhost:8070/jobs3/jobtest/user/' + $rootScope.currentUser.initials).success(function (data) {
                 job.jobsData = data.jobs;
             });
         }
