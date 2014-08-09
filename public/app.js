@@ -24,9 +24,9 @@ angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mg
         $routeProvider
             .when('/', {
                 templateUrl: 'views/home.html',
-                controller: 'MainCtrl'
+                controller: 'MainController'
             })
-            .when('/detail/jobs/:id', {
+            .when('/detail/job/:id', {
                 templateUrl: '../views/detail.html',
                 controller: 'DetailController'
             })

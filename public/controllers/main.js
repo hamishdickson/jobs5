@@ -2,7 +2,7 @@
  * Created by hamishdickson on 19/07/2014.
  */
 angular.module('MyApp')
-    .controller('MainCtrl', ['$scope', 'Job', function($scope, Job) {
+    .controller('MainController', ['$scope', 'Job', function($scope, Job) {
 
         $scope.statuss = ['A', 'B', 'Z', 'H', 'W'];
 

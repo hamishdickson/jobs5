@@ -13,7 +13,6 @@ var session = require('express-session');
 var http = require('http');
 
 app.set('port', process.env.PORT || config.PORT);
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
@@ -78,11 +77,9 @@ app.listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
 });
 
-/* todo this causes problems ... work out why */
 app.get("*", function (req, res) {
     res.redirect('/#' + req.originalUrl);
 });
-
 
 var isEmpty = function(inObj) {
     return Object.keys(inObj).length === 0;

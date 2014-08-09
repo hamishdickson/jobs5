@@ -1,4 +1,14 @@
-<div class="jumbotron" ng-controller="DetailController as DetailCtrl">
-    hamish test
-    {{job}}
+<div class="container" ng-controller="DetailController as detailCtrl">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Job {{jobTitle}}
+            <div class="pull-right">
+                <input class="search" type="text" ng-model="query.name" placeholder="Search...">
+            </div>
+        </div>
+        <div class="panel-body">
+            <p>{{jobDetails.description}}</p>
+            <p>{{jobDetails.response}}</p>
+        </div>
+    </div>
 </div>
