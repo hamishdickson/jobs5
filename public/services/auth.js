@@ -10,7 +10,7 @@ angular.module('MyApp')
             return {
                 login: function(user) {
                     return $http.post('/api/login', user)
-                        /*.success(function(data) {
+                        .success(function(data) {
                             $rootScope.currentUser = data;
                             $location.path('/');
 
@@ -21,7 +21,7 @@ angular.module('MyApp')
                                 type: 'success',
                                 duration: 3
                             });
-                        })*/
+                        })
                         .error(function() {
                             $alert({
                                 title: 'Error!',

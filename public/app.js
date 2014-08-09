@@ -35,4 +35,3 @@ angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mg
             });
 
     }]);
-

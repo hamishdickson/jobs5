@@ -4,10 +4,10 @@
 (function () {
     var app = angular.module('MyApp');
 
-    app.directive('login', ['$scope', 'Auth', function($scope, Auth) {
+    app.directive('login', ['Auth', function(Auth) {
         return {
             restrict: 'E',
-            templateUrl: '../views/login.html',
+            templateUrl: '../views/login.html'/*,
             controller: function() {
                 $scope.login = function(username) {
                     Auth.login({
@@ -16,7 +16,7 @@
                     console.log(username);
                 }
             },
-            controllerAs: "loginCtrl"
+            controllerAs: "loginCtrl"*/
         }
     }]);
 })();
