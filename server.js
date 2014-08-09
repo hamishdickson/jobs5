@@ -1,6 +1,6 @@
-//
-// 04/02/14 HWD Creation
-//
+/**
+ * Created by hamishdickson on 04/02/2014.
+ */
 
 var express = require('express');
 var logger = require('morgan');
