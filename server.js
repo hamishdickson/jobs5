@@ -3,6 +3,7 @@
 //
 
 var express = require('express');
+var logger = require('morgan');
 var app = express();
 var path = require('path');
 var config = require('./config');
@@ -12,7 +13,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var session = require('express-session');
 
-passport.serializeUser(function(user, done) {
+/*passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
 
@@ -20,36 +21,46 @@ passport.deserializeUser(function(id, done) {
     User.findById(id, function(err, user) {
         done(err, user);
     });
-});
+});*/
 
-app.post('/api/login', passport.authenticate('local'), function(req, res) {
-    res.cookie('user', JSON.stringify(req.user));
-    res.send(req.user);
-});
 
-passport.use(new LocalStrategy(
-    function(username, done) {
-        User.findOne({ username: username }, function (err, user) {
-            if (err) { return done(err); }
-            if (!user) {
-                return done(null, false, { message: 'Incorrect username.' });
-            }
-            return done(null, user);
-        });
-    }
-));
+/*
+passport.use(new LocalStrategy({ usernameField: 'user' }, function(user, done) {
+    // todo check user exists
+    */
+/*User.findOne({ user: user }, function(err, user) {
+     if (err) return done(err);
+     if (!user) return done(null, false);
+     });*//*
+
+    return user;
+}));
+*/
 
 app.set('port', process.env.PORT || config.PORT);
 
-app.use(express.logger('dev'));
+app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(session({ secret: 'keyboard cat' }));
+/*
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.bodyParser({ keepExtensions: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+*/
+app.use(express.static(path.join(__dirname, 'public'), { maxAge: 86400000 }));
+app.use(function(req, res, next) {
+    if (req.user) {
+        res.cookie('user', JSON.stringify(req.user));
+    }
+    next();
+});
+
+
+app.post('/api/login', function(req, res) {
+    res.cookie('user', JSON.stringify(req.body.user));
+    res.send(req.body.user);
+});
 
 console.log("Starting up server - port " + config.PORT);
 

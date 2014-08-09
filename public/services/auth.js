@@ -25,7 +25,7 @@ angular.module('MyApp')
                         .error(function() {
                             $alert({
                                 title: 'Error!',
-                                content: 'Invalid username or password.',
+                                content: 'Invalid username',
                                 placement: 'top-right',
                                 type: 'danger',
                                 duration: 3

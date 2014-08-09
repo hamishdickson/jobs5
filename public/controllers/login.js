@@ -7,16 +7,15 @@
     app.directive('login', ['Auth', function(Auth) {
         return {
             restrict: 'E',
-            templateUrl: '../views/login.html'/*,
+            templateUrl: '../views/login.html',
             controller: function() {
-                $scope.login = function(username) {
+                this.login = function(username) {
                     Auth.login({
-                        username: $scope.user
+                        user: username
                     });
-                    console.log(username);
                 }
             },
-            controllerAs: "loginCtrl"*/
+            controllerAs: "loginCtrl"
         }
     }]);
 })();

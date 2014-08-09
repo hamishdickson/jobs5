@@ -22,13 +22,13 @@
         <li><a href="mailto:made.up@jhc.co.uk?subject=Jobs3-webapp">Contact</a></li>
     </ul>
     <ul class="nav navbar-nav pull-right" ng-if="currentUser">
-        <li class="navbar-text" ng-bind="currentUser.username"></li>
+        <li class="navbar-text" ng-bind="currentUser"></li>
     </ul>
 </div>
 
-<login></login>
+<login ng-show="!currentUser"></login>
 
-<div ng-view ng-show="false"></div>
+<div ng-view ng-show="currentUser"></div>
 
 <script src="scripts/jquery.js"></script>
 <script src="scripts/jquery-ui.js"></script>
