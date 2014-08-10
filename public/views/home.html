@@ -2,7 +2,7 @@
     <div class="container">
         <ul class="genres">
             <li ng-repeat="status in statuss">
-                <span ng-click="filterByJob(status)">Status {{status}}</span>
+                <span ng-click="filterByStatus(status)">Status {{status}}</span>
             </li>
         </ul>
     </div>
@@ -13,20 +13,22 @@
         <div class="panel-heading">
             Jobs {{headingTitle}}
             <div class="pull-right">
-                <input class="search" type="text" ng-model="query.name" placeholder="Search...">
+                <input class="search" type="text" ng-model="query.jobNumber" placeholder="Search...">
             </div>
         </div>
         <div class="panel-body">
 
-            <div ng-show="jobsCtrl.jobsData.length === 0"><p>Cool - looks like you don't have any jobs to show!</p></div>
+            <div ng-show="jobsCtrl.jobsData.length === 0"><p>Cool - looks like you don't have any jobs to show!</p>
+            </div>
 
             <div class="row show-list">
                 <div class="list-group">
-                    <div class="list-group-item panel panel-body col-sm-6" ng-repeat="job in jobsCtrl.jobsData">
+                    <div class="list-group-item panel panel-body col-sm-6" ng-repeat="job in jobsCtrl.jobsData | filter: query">
+                        <!--<div ng-if="query == '' || job.jobNumber == query">-->
+                            <h3><a href="/detail/job/{{job.jobNumber}}">{{job.jobNumber}}</a></h3>
 
-                        <h3><a href="/detail/job/{{job.jobNumber}}">{{job.jobNumber}}</a></h3>
-
-                        <job-tabs></job-tabs>
+                            <job-tabs></job-tabs>
+                        <!--</div>-->
                     </div>
                 </div>
             </div>

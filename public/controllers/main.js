@@ -11,9 +11,13 @@
 
         $scope.headingTitle = 'All Jobs';
 
-        $scope.filterByStatus = function (char) {
-            $scope.jobs = Job.query({ status: char });
-            $scope.headingTitle = char;
+        $scope.query = '';
+
+        $scope.jobs = Job.query();
+
+        $scope.filterByStatus = function (status) {
+            $scope.jobs = Job.query({status: status});
+            $scope.headingTitle = 'at status ' + status;
         }
     }]);
 })();
