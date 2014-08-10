@@ -18,7 +18,11 @@ IF it becomes a requirement to connect to the LDAP and confirm passwords, then l
 
 The back end uses a java rest server to get the jobs data from the iSeries (see hamishdickson/Jobs3RestServer). A node.js app runs this webapp (with express.js)
 
-The front end only uses javascript, mustache.js (as a template engine) and jQuery - this is by design, I wanted to see how far we could go with just javascript
+~~The front end only uses javascript, mustache.js (as a template engine) and jQuery - this is by design, I wanted to see how far we could go with just javascript~~
+
+OK, I've replaced that with AngularJs, for the simple reason that it was becoming painful to manipulate the DOM directly.
+
+This is also now using SCSS (compiled with gulpjs - hence the weird gulpfile.js file) rather than CSS.
 
 ## How to run
 
