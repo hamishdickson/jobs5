@@ -4,8 +4,17 @@
 (function () {
     var app = angular.module('MyApp');
 
-    app.controller('NotesController', function () {
-        this.note = notesTest;
+    app.controller('NotesController', ['$rootScope', '$http', function ($rootScope, $http) {
+        //this.note = notesTest;
+        var note = this;
+
+        note.notesData = [];
+
+        if ($rootScope.currentUser) {
+            $http.get('http://localhost:8070/jobs3/jobtest/jobNotes/123455').success(function (data) {
+                note.notesData = data;
+            });
+        }
 
         this.addNote = function (job) {
             this.note.createdOn = Date.now();
@@ -13,9 +22,5 @@
             job.response = this.note.response;
             this.note = {};
         };
-    });
-
-    var notesTest = [
-        {"jobNumber": 123456, "body": "well, here we go", "response": "Not one for a while", "author": "me@domain"}
-    ];
+    }]);
 })();

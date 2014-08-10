@@ -1,9 +1,9 @@
-<!--  Job Notes List -->
-<ul>
+<!--  Job notes list and update -->
+<!--<ul ng-controller="NotesController as notesCtrl">
     <h4>Notes</h4>
-    <li ng-repeat="note in job.notes">
+    <li ng-repeat="note in notesCtrl.note">
         <blockquote>
-            <p>{{note.body}}</p>
+            <p>{{notesCtrl.note}}</p>
 
             <p><strong>{{note.response}}</strong></p>
 
@@ -11,7 +11,7 @@
                 'medium'}}</cite></p>
         </blockquote>
     </li>
-</ul>
+</ul>-->
 
 <!--  Notes Form -->
 <form name="notesForm" ng-controller="NotesController as notesCtrl"
@@ -44,14 +44,8 @@
     <fieldset class="form-group">
         <textarea ng-model="notesCtrl.note.response" class="form-control"
                   placeholder="Response to client ..."
-                  title="Response" maxlength="135" name="bob"></textarea>
-        <!--<span ng-show="form.notesForm.$error.maxLength">Max length is only 135</span>-->
+                  title="Response" maxlength="135"></textarea>
     </fieldset>
-    <!-- todo replace with logged in initials -->
-    <!--<fieldset class="form-group">
-        <input ng-model="notesCtrl.note.author" type="email" class="form-control"
-               placeholder="get@me.coffee" title="Email"/>
-    </fieldset>-->
     <fieldset class="form-group">
         <input type="submit" class="btn btn-primary pull-right" value="Submit Note"/>
     </fieldset>
