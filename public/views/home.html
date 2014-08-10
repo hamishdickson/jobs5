@@ -11,7 +11,7 @@
 <div class="container" ng-controller="JobsController as jobsCtrl">
     <div class="panel panel-default">
         <div class="panel-heading">
-            Jobs {{headingTitle}}
+            {{headingTitle}}
             <div class="pull-right">
                 <input class="search" type="text" ng-model="query.jobNumber" placeholder="Search...">
             </div>
@@ -23,7 +23,7 @@
 
             <div class="row show-list">
                 <div class="list-group">
-                    <div class="list-group-item panel panel-body col-sm-6" ng-repeat="job in jobsCtrl.jobsData | filter: query">
+                    <div class="list-group-item panel panel-body col-sm-6" ng-repeat="job in jobsCtrl.jobsData | filter: {status: sublist} | filter: query">
                         <!--<div ng-if="query == '' || job.jobNumber == query">-->
                             <h3><a href="/detail/job/{{job.jobNumber}}">{{job.jobNumber}}</a></h3>
 

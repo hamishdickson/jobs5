@@ -7,17 +7,21 @@
 
     app.controller('MainController', ['$scope', 'Job', function ($scope, Job) {
 
-        $scope.statuss = ['A', 'B', 'Z', 'H', 'W'];
+        $scope.statuss = ['All', 'A', 'B', 'H', 'W'];
 
-        $scope.headingTitle = 'All Jobs';
+        $scope.headingTitle = 'All users jobs';
 
         $scope.query = '';
 
-        $scope.jobs = Job.query();
-
         $scope.filterByStatus = function (status) {
-            $scope.jobs = Job.query({status: status});
-            $scope.headingTitle = 'at status ' + status;
+            if (status == 'All') {
+                $scope.sublist = '';
+                $scope.headingTitle = 'All users jobs';
+            } else {
+                $scope.sublist = status;
+                $scope.headingTitle = 'Only users jobs with status ' + status;
+            }
+
         }
     }]);
 })();
