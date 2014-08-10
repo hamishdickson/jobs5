@@ -1,7 +1,7 @@
 <div class="container" ng-controller="DetailController as detailCtrl">
     <div class="panel panel-default">
         <div class="panel-heading">
-            Job {{jobTitle}}
+            Job {{jobDetails.jobNumber}}
             <div class="pull-right">
                 <input class="search" type="text" ng-model="query.name" placeholder="Search...">
             </div>
@@ -10,7 +10,66 @@
             <p>{{jobDetails.description}}</p>
             <p>{{jobDetails.response}}</p>
 
-            <job-notes></job-notes>
+            <!--  Job notes list and update -->
+            <div>
+                <ul>
+                    <h4>Notes</h4>
+
+                    <li ng-repeat="note in jobDetails.notes">
+                        <p ng-if="!note.body && !note.response && !note.status">{{note}}</p>
+                        <blockquote ng-show="note.body || note.response || note.status">
+                            <p ng-show="note.body">New note: {{note.body}}</p>
+
+                            <p ng-show="note.response">New response: {{note.response}}</p>
+
+                            <p ng-show="note.status">Status changed to: {{note.status}}</p>
+
+                            <cite class="clearfix">—{{note.author}} on {{note.createdOn | date :
+                                'medium'}}</cite>
+
+                            <p ng-show="note.fail">This didn't post!</p>
+                        </blockquote>
+                    </li>
+                </ul>
+            </div>
+
+
+            <!--  Notes Form -->
+            <form name="notesForm" ng-controller="NotesController as notesCtrl"
+                  ng-submit="notesForm.$valid && (notesCtrl.note.body || notesCtrl.note.response || notesCtrl.note.status) && notesCtrl.addNote(jobDetails)"
+                  novalidate>
+
+                <!--  Live Preview -->
+                <blockquote ng-show="notesCtrl.note.body || notesCtrl.note.response || notesCtrl.note.status">
+                    <p ng-show="notesCtrl.note.body">New note: {{notesCtrl.note.body}}</p>
+
+                    <p ng-show="notesCtrl.note.response"><strong>Updated response: {{notesCtrl.note.response}}</strong></p>
+
+                    <p ng-show="notesCtrl.note.status">New status: {{notesCtrl.note.status}}</p>
+                </blockquote>
+
+                <!--  Notes Form -->
+                <h4>Add an update</h4>
+                <fieldset class="form-group">
+                    <select ng-model="notesCtrl.note.status" class="form-control"
+                            ng-options="status for status in statuss" title="Status">
+                        <option value="">Job status</option>
+                    </select>
+                </fieldset>
+                <fieldset class="form-group">
+                    <textarea ng-model="notesCtrl.note.body" class="form-control"
+                              placeholder="Add me some notes ..."
+                              title="Notes"></textarea>
+                </fieldset>
+                <fieldset class="form-group">
+                    <textarea ng-model="notesCtrl.note.response" class="form-control"
+                              placeholder="Response to client ..."
+                              title="Response" maxlength="135"></textarea>
+                </fieldset>
+                <fieldset class="form-group">
+                    <input type="submit" class="btn btn-primary pull-right" value="Add update"/>
+                </fieldset>
+            </form>
         </div>
     </div>
 </div>

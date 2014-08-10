@@ -33,7 +33,7 @@
             this.note.createdOn = Date.now();
             this.note.author = $rootScope.currentUser.name;
 
-            this.note.jobNumber = job.jobTitle;
+            this.note.jobNumber = job.jobNumber;
 
             if (this.note.body) {
                 var input = {
