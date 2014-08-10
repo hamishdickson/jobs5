@@ -1,4 +1,5 @@
 <!--  Job notes list and update -->
+        <!-- todo fix this sod -->
 <!--<ul ng-controller="NotesController as notesCtrl">
     <h4>Notes</h4>
     <li ng-repeat="note in notesCtrl.note">
@@ -21,7 +22,7 @@
     <blockquote ng-show="notesCtrl.note.body || notesCtrl.note.response || notesCtrl.note.status">
         <p ng-show="notesCtrl.note.body">New note: {{notesCtrl.note.body}}</p>
 
-        <p ng-show="notesCtrl.note.response"><strong>New response: {{notesCtrl.note.response}}</strong></p>
+        <p ng-show="notesCtrl.note.response"><strong>Updated response: {{notesCtrl.note.response}}</strong></p>
 
         <p ng-show="notesCtrl.note.status">New status: {{notesCtrl.note.status}}</p>
 
@@ -47,6 +48,6 @@
                   title="Response" maxlength="135"></textarea>
     </fieldset>
     <fieldset class="form-group">
-        <input type="submit" class="btn btn-primary pull-right" value="Submit Note"/>
+        <input type="submit" class="btn btn-primary pull-right" value="Add update"/>
     </fieldset>
 </form>
