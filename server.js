@@ -11,8 +11,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var http = require('http');
+var compress = require('compression');
 
 app.set('port', process.env.PORT || config.PORT);
+app.use(compress())
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
