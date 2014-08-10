@@ -14,6 +14,8 @@
 
                 <cite class="clearfix">—{{note.author}} on {{note.createdOn | date :
                     'medium'}}</cite>
+
+                <p ng-show="note.fail">This didn't post!</p>
             </blockquote>
         </li>
     </ul>
