@@ -34,7 +34,8 @@ The port can be changed in app/config.js
 
 There is still quite a lot left to do, but here is everything I can think of before this is production ready (in no specific order)
 
-1. use gulp to compress everything
+0. Add in unit tests. That's what's made this so hard - there are no unit tests for jobs3
+1. ~~use gulp to compress everything~~
 2. ~~add cookies to remember who you are~~
 3. add jira support
 4. ~~a huge refactoring exercise is needed~~
