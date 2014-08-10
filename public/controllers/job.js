@@ -11,25 +11,34 @@
         job.jobsData = [];
 
         if ($rootScope.currentUser) {
-            $http.get('http://localhost:8070/jobs3/jobtest/user/' + $rootScope.currentUser.initials).success(function (data) {
-                job.jobsData = data.jobs;
-            });
+            $http.get('http://localhost:8070/jobs3/jobtest/user/' + $rootScope.currentUser.initials)
+                .success(function (data) {
+                    job.jobsData = data.jobs;
+                })
+                .error(function () {
+                    $alert({
+                        title: 'Error!',
+                        content: 'Problem communicating with server!',
+                        placement: 'top-right',
+                        type: 'danger',
+                        duration: 3
+                    });
+                });
         }
     }]);
 
-    app.controller('NotesController', function () {
-        this.note = {};
+    app.controller('NotesController', ['$rootScope', function ($rootScope) {
 
         this.addNote = function (job) {
             this.note.createdOn = Date.now();
+            this.note.author = $rootScope.currentUser.name;
 
-            job.note.push(this.note);
-            job.response = this.note.response;
+            /* todo replace this with a post to the jobs system */
+            job.notes.push(this.note);
+
             this.note = {};
         };
-    });
-
-    var job = [];
+    }]);
 
     app.directive('jobNotes', function () {
         return {
