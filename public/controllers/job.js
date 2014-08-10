@@ -37,8 +37,8 @@
 
             if (this.note.body) {
                 var input = {
-                    "jobNumber": job.jobNumber,
-                    "note": this.note.body,
+                    "jobNumber": parseInt(job.jobNumber),
+                    "notes": this.note.body,
                     "softwarePackage": 0
                 };
 
@@ -46,10 +46,10 @@
                     .success(function () {
                         $alert({
                             title: 'Nice!',
-                            content: "You've updated the job notes.",
+                            content: "You've updated the job notes!",
                             placement: 'top-right',
                             type: 'success',
-                            duration: 3
+                            duration: 5
                         });
                     })
                     .error(function () {
