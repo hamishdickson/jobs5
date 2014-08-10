@@ -57,7 +57,7 @@ app.post('/api/login', function(req, response) {
                     response.cookie('user', JSON.stringify(obj));
                     response.send(obj);
                 } else {
-                    response.send(500);
+                    response.send(404);
                 }
             } else {
                 response.send(500);
