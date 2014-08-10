@@ -4,22 +4,44 @@
 (function () {
     var app = angular.module('MyApp');
 
-    app.controller('NotesController', ['$rootScope', '$http', function ($rootScope, $http) {
-        //this.note = notesTest;
-        var note = this;
-
-        note.notesData = [];
-
-        if ($rootScope.currentUser) {
-            $http.get('http://localhost:8070/jobs3/jobtest/jobNotes/123455').success(function (data) {
-                note.notesData = data;
-            });
-        }
+    app.controller('NotesController', ['$rootScope', '$http', '$alert', function ($rootScope, $http, $alert) {
 
         this.addNote = function (job) {
             this.note.createdOn = Date.now();
+            this.note.author = $rootScope.currentUser.name;
+
+            this.note.jobNumber = job.jobNumber;
+
+            if (this.note.body) {
+                var input = {
+                    "jobNumber": parseInt(job.jobNumber),
+                    "notes": this.note.body,
+                    "softwarePackage": 0
+                };
+
+                $http.post('http://localhost:8070/jobs3/jobtest/jobNotes', input)
+                    .success(function () {
+                        $alert({
+                            title: 'Nice!',
+                            content: "You've updated the job notes!",
+                            placement: 'top-right',
+                            type: 'success',
+                            duration: 5
+                        });
+                    })
+                    .error(function () {
+                        $alert({
+                            title: 'Error!',
+                            content: 'There was a problem talking to the server!',
+                            placement: 'top-right',
+                            type: 'danger',
+                            duration: 30
+                        });
+                    });
+            }
+
             job.notes.push(this.note);
-            job.response = this.note.response;
+
             this.note = {};
         };
     }]);
