@@ -7,7 +7,7 @@
 
     app.controller('ConfigController', ['$scope', function($scope) {
 
-        var _LEVEL = 'TEST';
+        var _LEVEL = 'DEV';
         $scope.JOBS_REST_PORT = 8070;
 
         if (_LEVEL == 'DEV') {
