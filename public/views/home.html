@@ -5,6 +5,12 @@
                 <span ng-click="filterByStatus(status)">Status {{status}}</span>
             </li>
         </ul>
+
+        <ul class="genres">
+            <li ng-repeat="import in importances">
+                <span ng-click="filterByImportance(import)">Import {{import}}</span>
+            </li>
+        </ul>
     </div>
 </div>
 
@@ -23,7 +29,7 @@
 
             <div class="row show-list">
                 <div class="list-group">
-                    <div class="list-group-item panel panel-body col-sm-6" ng-repeat="job in jobsCtrl.jobsData | filter: {status: sublist} | filter: query">
+                    <div class="list-group-item panel panel-body col-sm-6" ng-repeat="job in jobsCtrl.jobsData | filter: {status: sublist} | filter: { importance : subImport } | filter: query">
                         <!--<div ng-if="query == '' || job.jobNumber == query">-->
                             <h3><a href="/detail/job/{{job.jobNumber}}">{{job.jobNumber}}</a><div class="pull-right">Status {{job.status}}</div></h3>
                             <div>
