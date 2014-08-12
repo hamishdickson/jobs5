@@ -25,8 +25,11 @@
                 <div class="list-group">
                     <div class="list-group-item panel panel-body col-sm-6" ng-repeat="job in jobsCtrl.jobsData | filter: {status: sublist} | filter: query">
                         <!--<div ng-if="query == '' || job.jobNumber == query">-->
-                            <h3><a href="/detail/job/{{job.jobNumber}}">{{job.jobNumber}}</a></h3>
-
+                            <h3><a href="/detail/job/{{job.jobNumber}}">{{job.jobNumber}}</a><div class="pull-right">Status {{job.status}}</div></h3>
+                            <div>
+                                <h4 ng-repeat="deliverable in job.deliverables" ng-if="$first">Next deliverable: {{deliverable.promisedDate}}</h4>
+                                <h4 class="pull-right">Importance: {{job.importance}}</h4>
+                            </div>
                             <job-tabs></job-tabs>
                         <!--</div>-->
                     </div>
