@@ -16,10 +16,14 @@
 
         $scope.query = '';
 
+        $scope.clearQuery = function() {
+            $scope.sublist = '';
+            $scope.subImport = '';
+        };
+
         $scope.filterByStatus = function (status) {
             if (status == 'All') {
-                $scope.sublist = '';
-                $scope.subImport = '';
+                $scope.clearQuery();
                 $scope.headingTitle = 'All users jobs';
             } else {
                 $scope.sublist = status;
@@ -36,7 +40,6 @@
                 $scope.subImport = importance;
                 $scope.headingTitle = 'Only users jobs with importance ' + importance;
             }
-            //$scope.subImport = '3';
         };
     }]);
 })();
