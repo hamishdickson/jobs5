@@ -24,10 +24,7 @@
     <!--  Notes Tab's Content  -->
     <job-notes ng-show="tabCtrl.isSet(3)"></job-notes>
 
-    <div ng-show="tabCtrl.isSet(4)">
-        <p>Work order: <a href="/detail/job/{{job.workorder}}">{{job.workorder}}</a></p>
-        <p>Whos' paying: {{job.whoPay}}</p>
-        <p>Invoice text: {{job.invoiceText}}</p>
-    </div>
+    <!-- billing information -->
+    <jobs-billing ng-show="tabCtrl.isSet(4)"></jobs-billing>
 
 </section>
