@@ -19,8 +19,8 @@
                     "softwarePackage": 0
                 };
 
-                $http.post('http://localhost:8070/jobs3/jobtest/jobNotes', input)
-                //$http.post('http://172.24.24.217:8070/jobs3/job/jobNotes', input)
+                //$http.post('http://localhost:8070/jobs3/jobtest/jobNotes', input)
+                $http.post('http://172.24.24.217:8070/jobs3/job/jobNotes', input)
                     .success(function () {
                         $alert({
                             title: 'Nice!',
