@@ -3,14 +3,10 @@
  */
 (function () {
     var app = angular.module('MyApp');
-    app.filter('myFormatDateFilter', function () {
+    app.filter('searchFilter', function () {
         return function (input) {
-            output = input.toString();
-            if (angular.isDefined(output)) {
-                output = output.slice(0, 8);
+            output = input;
 
-                output = output.slice(6, 8) + '/' + output.slice(4, 6) + '/' + output.slice(0, 4);
-            }
             return output;
         };
     });

@@ -18,13 +18,6 @@
         };
     });
 
-    app.directive('jobsStatus', function () {
-        return {
-            restrict: 'E',
-            templateUrl: '../views/jobs-status.html'
-        };
-    });
-
     app.directive('jobsBilling', function() {
         return {
             restrict: 'E',
