@@ -1,16 +1,28 @@
 <div class="jumbotron">
     <div class="container">
-        <ul class="genres">
-            <li ng-repeat="status in statuss">
-                <span ng-click="filterByStatus(status)">Status {{status}}</span>
-            </li>
-        </ul>
+        <div class="col-sm-12">
+            <div class="col-sm-1">
+                <h4>Filters:</h4>
+            </div>
+            <div class="col-sm-8">
+                <ul class="genres">
+                    <li ng-repeat="status in statuss">
+                        <span ng-click="filterByStatus(status)">Status {{status}}</span>
+                    </li>
+                </ul>
 
-        <ul class="genres">
-            <li ng-repeat="import in importances">
-                <span ng-click="filterByImportance(import)">Import {{import}}</span>
-            </li>
-        </ul>
+                <ul class="genres">
+                    <li ng-repeat="import in importances">
+                        <span ng-click="filterByImportance(import)">Priority {{import}}</span>
+                    </li>
+                </ul>
+                <ul class="genres">
+                    <li>
+                        <span ng-click="noFilter()">No filter</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -36,9 +48,9 @@
                             <div class="pull-right">Status {{job.status}}</div>
                         </h3>
                         <div>
-                            <h4 ng-repeat="deliverable in job.deliverables" ng-if="$first">Next deliverable:
-                                {{deliverable.promisedDate}}</h4>
-                            <h4 class="pull-right">Importance: {{job.importance}}</h4>
+                            <h4 ng-repeat="deliverable in job.deliverables" ng-if="$first" class="deliverable-date">Next deliverable:
+                                {{deliverable.promisedDate | dateFilter: deliverable.promisedDate}}</h4>
+                            <h4 class="pull-right">Priority: {{job.importance}}</h4>
                         </div>
                         <job-tabs></job-tabs>
                     </div>

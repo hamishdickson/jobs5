@@ -8,7 +8,7 @@
     app.controller('MainController', ['$scope', 'Job', function ($scope, Job) {
 
         // todo move All out of here and have it's on button to clear out queries
-        $scope.statuss = ['All', 'A', 'B', 'H', 'W'];
+        $scope.statuss = ['A', 'B', 'H', 'W'];
 
         $scope.importances = ['1', '2', '3', '4', '5'];
 
@@ -16,30 +16,20 @@
 
         $scope.query = '';
 
-        $scope.clearQuery = function() {
-            $scope.sublist = '';
-            $scope.subImport = '';
-        };
-
         $scope.filterByStatus = function (status) {
-            if (status == 'All') {
-                $scope.clearQuery();
-                $scope.headingTitle = 'All users jobs';
-            } else {
-                $scope.sublist = status;
-                $scope.headingTitle = 'Only users jobs with status ' + status;
-            }
-
+            $scope.sublist = status;
+            $scope.headingTitle = 'Only users jobs with status ' + status;
         };
 
         $scope.filterByImportance = function (importance) {
-            if (importance == 'All') {
-                $scope.subImport = '';
-                $scope.headingTitle = 'All users jobs';
-            } else {
-                $scope.subImport = importance;
-                $scope.headingTitle = 'Only users jobs with importance ' + importance;
-            }
+            $scope.subImport = importance;
+            $scope.headingTitle = 'Only users jobs with importance ' + importance;
+        };
+
+        $scope.noFilter = function () {
+            $scope.subImport = '';
+            $scope.sublist = '';
+            $scope.headingTitle = 'All jobs';
         };
     }]);
 })();

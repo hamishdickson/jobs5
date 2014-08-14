@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Jobs5v0.2</title>
+    <title>Jobs3 webapp</title>
     <link href="stylesheets/style.css" rel="stylesheet">
     <link rel="icon" type="image/ico" href="favicon.ico"/>
 </head>
@@ -15,7 +15,7 @@
      role="navigation" bs-navbar>
     <div class="navbar-header">
         <a class="navbar-brand" href="/">
-            Jobs5v0.2</a>
+            Jobs3 webapp</a>
     </div>
     <ul class="nav navbar-nav">
         <li data-match-route="/$"><a href="/">Home</a></li>
@@ -31,15 +31,14 @@
 
 <div ng-view ng-if="currentUser"></div>
 
+<div class="panel-footer">
+    <p>I've done this in my own time and basically to learn stuff, so don't blame me if it doesn't work ...</p>
+</div>
 
 <!--
 <script src="app.min.js"></script>
 <script src="templates.js"></script>
 -->
-
-<script src="scripts/jquery.js"></script>
-<script src="scripts/jquery-ui.js"></script>
-<script src="scripts/script.js"></script>
 
 <script src="vendor/angular.js"></script>
 <script src="vendor/angular-strap.js"></script>
@@ -62,6 +61,8 @@
 
 <script src="services/job.js"></script>
 <script src="services/auth.js"></script>
+
+<script src="filters/date-filter.js"></script>
 
 </body>
 </html>
