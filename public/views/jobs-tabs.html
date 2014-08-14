@@ -4,11 +4,11 @@
         <li ng-class="{ active:tabCtrl.isSet(1) }">
             <a href="" ng-click="tabCtrl.setTab(1)">Summary</a>
         </li>
-        <li ng-class="{ active:tabCtrl.isSet(3) }">
-            <a href="" ng-click="tabCtrl.setTab(3)">Updates</a>
+        <li ng-class="{ active:tabCtrl.isSet(2) }">
+            <a href="" ng-click="tabCtrl.setTab(2)">Updates</a>
         </li>
-        <li ng-class="{ active:tabCtrl.isSet(4) }">
-            <a href="" ng-click="tabCtrl.setTab(4)">Billing</a>
+        <li ng-class="{ active:tabCtrl.isSet(3) }">
+            <a href="" ng-click="tabCtrl.setTab(3)">Billing</a>
         </li>
     </ul>
 
@@ -16,9 +16,9 @@
     <job-summary ng-show="tabCtrl.isSet(1)"></job-summary>
 
     <!--  Notes Tab's Content  -->
-    <job-notes ng-show="tabCtrl.isSet(3)"></job-notes>
+    <job-notes ng-show="tabCtrl.isSet(2)"></job-notes>
 
     <!-- billing information -->
-    <jobs-billing ng-show="tabCtrl.isSet(4)"></jobs-billing>
+    <jobs-billing ng-show="tabCtrl.isSet(3)"></jobs-billing>
 
 </section>

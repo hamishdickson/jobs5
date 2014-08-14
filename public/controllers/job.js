@@ -14,6 +14,11 @@
             $http.get('http://localhost:8070/jobs3/jobtest/user/' + $rootScope.currentUser.initials)
                 .success(function (data) {
                     job.jobsData = data.jobs;
+
+                    for(i = 0; i < job.jobsData.length; i++) {
+                        job.jobsData[i].notes = job.jobsData[i].notes.split('\n');
+                    }
+
                 })
                 .error(function () {
                     $alert({
