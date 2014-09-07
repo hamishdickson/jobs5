@@ -14,6 +14,8 @@ Authentication for this app is pretty much done on trust, all that is checked is
 
 IF it becomes a requirement to connect to the LDAP and confirm passwords, then let me know, I have prototyped this with passport (a node module)
 
+![alt tag](https://github.com/hamishdickson/jobs5/blob/development/login-screenshot.png)
+
 ## Technologies
 
 The back end uses a java rest server to get the jobs data from the iSeries (see hamishdickson/Jobs3RestServer). A node.js app runs this webapp (with express.js)
@@ -33,6 +35,8 @@ Run node server.js and the app should now be running on [localhost:3000](http://
 If you are keep on making changes (and perhaps submitting a pull request) I would suggest you install nodemon
 
 The port can be changed in app/config.js
+
+![alt tag](https://github.com/hamishdickson/jobs5/blob/development/singlePage-screenshot.png)
 
 ## TODO
 
