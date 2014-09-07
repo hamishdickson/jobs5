@@ -10,8 +10,8 @@
 
             $scope.jobNumber = $routeParams.id;
 
-            $http.get('http://localhost:8070/jobs3/jobtest/' + $scope.jobNumber).success(function (data) {
-            //$http.get('http://172.24.24.217:8070/jobs3/job/' + $scope.jobNumber).success(function (data) {
+            //$http.get('http://localhost:8070/jobs3/jobtest/' + $scope.jobNumber).success(function (data) {
+            $http.get('http://172.24.24.217:8070/jobs3/job/' + $scope.jobNumber).success(function (data) {
                 $scope.jobDetails = data;
             });
 

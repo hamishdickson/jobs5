@@ -16574,7 +16574,7 @@
      * </pre>
      *
      * @example
-     <example deps="angular-animate.js" animations="true" fixBase="true" module="formExample">
+     <example deps="angular-animate.min.js" animations="true" fixBase="true" module="formExample">
      <file name="index.html">
      <script>
      angular.module('formExample', [])
@@ -18760,7 +18760,7 @@
      * </pre>
      *
      * @example
-     * <example deps="angular-animate.js" animations="true" fixBase="true" module="inputExample">
+     * <example deps="angular-animate.min.js" animations="true" fixBase="true" module="inputExample">
      <file name="index.html">
      <script>
      angular.module('inputExample', [])
@@ -19773,7 +19773,7 @@
 
      The example below demonstrates how to perform animations using ngClass.
 
-     <example module="ngAnimate" deps="angular-animate.js" animations="true">
+     <example module="ngAnimate" deps="angular-animate.min.js" animations="true">
      <file name="index.html">
      <input id="setbtn" type="button" value="set" ng-click="myVar='my-class'">
      <input id="clearbtn" type="button" value="clear" ng-click="myVar=''">
@@ -20738,7 +20738,7 @@
      *     element is added to the DOM tree.
      *
      * @example
-     <example module="ngAnimate" deps="angular-animate.js" animations="true">
+     <example module="ngAnimate" deps="angular-animate.min.js" animations="true">
      <file name="index.html">
      Click me: <input type="checkbox" ng-model="checked" ng-init="checked=true" /><br/>
      Show when checked:
@@ -20860,7 +20860,7 @@
      *                  - Otherwise enable scrolling only if the expression evaluates to truthy value.
      *
      * @example
-     <example module="includeExample" deps="angular-animate.js" animations="true">
+     <example module="includeExample" deps="angular-animate.min.js" animations="true">
      <file name="index.html">
      <div ng-controller="ExampleController">
      <select ng-model="template" ng-options="t.name for t in templates">
@@ -21520,7 +21520,7 @@
      * @example
      * This example initializes the scope to a list of names and
      * then uses `ngRepeat` to display every person:
-     <example module="ngAnimate" deps="angular-animate.js" animations="true">
+     <example module="ngAnimate" deps="angular-animate.min.js" animations="true">
      <file name="index.html">
      <div ng-init="friends = [
      {name:'John', age:25, gender:'boy'},
@@ -21889,7 +21889,7 @@
      *     then the element is shown or hidden respectively.
      *
      * @example
-     <example module="ngAnimate" deps="angular-animate.js" animations="true">
+     <example module="ngAnimate" deps="angular-animate.min.js" animations="true">
      <file name="index.html">
      Click me: <input type="checkbox" ng-model="checked"><br/>
      <div>
@@ -22044,7 +22044,7 @@
      *     the element is shown or hidden respectively.
      *
      * @example
-     <example module="ngAnimate" deps="angular-animate.js" animations="true">
+     <example module="ngAnimate" deps="angular-animate.min.js" animations="true">
      <file name="index.html">
      Click me: <input type="checkbox" ng-model="checked"><br/>
      <div>
@@ -22220,7 +22220,7 @@
      *
      *
      * @example
-     <example module="switchExample" deps="angular-animate.js" animations="true">
+     <example module="switchExample" deps="angular-animate.min.js" animations="true">
      <file name="index.html">
      <div ng-controller="ExampleController">
      <select ng-model="selection" ng-options="item for item in items">

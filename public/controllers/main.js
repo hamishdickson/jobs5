@@ -5,7 +5,7 @@
 (function () {
     var app = angular.module('MyApp');
 
-    app.controller('MainController', ['$scope', 'Job', function ($scope, Job) {
+    app.controller('MainController', ['$scope', function ($scope) {
 
         // todo move All out of here and have it's on button to clear out queries
         $scope.statuss = ['A', 'B', 'H', 'W'];
@@ -30,6 +30,10 @@
             $scope.subImport = '';
             $scope.sublist = '';
             $scope.headingTitle = 'All jobs';
+        };
+
+        $scope.tooltipSearch = {
+            "title": "Use me to search jobs"
         };
     }]);
 })();

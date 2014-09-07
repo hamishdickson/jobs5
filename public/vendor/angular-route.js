@@ -676,7 +676,7 @@
      *                    as an expression yields a truthy value.
      * @example
      <example name="ngView-directive" module="ngViewExample"
-     deps="angular-route.js;angular-animate.js"
+     deps="angular-route.js;angular-animate.min.js"
      animations="true" fixBase="true">
      <file name="index.html">
      <div ng-controller="MainController as main">
