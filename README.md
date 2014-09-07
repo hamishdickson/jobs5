@@ -38,6 +38,13 @@ The port can be changed in app/config.js
 
 ![alt tag](https://github.com/hamishdickson/jobs5/blob/development/singlePage-screenshot.png)
 
+## Adding new notes, status update or response
+
+You can add a new note, update the status or response to a job using the updates tab. 
+
+![alt tag](https://github.com/hamishdickson/jobs5/blob/development/jobUpdate-screenshot.png)
+
+
 ## TODO
 
 There is still quite a lot left to do, but here is everything I can think of before this is production ready (in no specific order)
