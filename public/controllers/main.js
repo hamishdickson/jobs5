@@ -7,7 +7,7 @@
 
     app.controller('MainController', ['$scope', function ($scope) {
 
-        // todo move All out of here and have it's on button to clear out queries
+        // todo have this dynamically load
         $scope.statuss = ['A', 'B', 'H', 'W'];
 
         $scope.importances = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];

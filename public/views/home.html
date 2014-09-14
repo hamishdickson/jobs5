@@ -2,23 +2,27 @@
     <div class="container">
         <div class="col-sm-12">
             <div class="col-sm-1">
-                <h4>Filters:</h4>
-            </div>
-            <div class="col-sm-8">
                 <ul class="genres">
+                    <h4>Filters:</h4>
+
+                    <li>
+                        <span ng-click="noFilter()">No filter</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-4">
+                <ul class="genres">
+                    <h4>Status</h4>
                     <li ng-repeat="status in statuss">
                         <span ng-click="filterByStatus(status)">Status {{status}}</span>
                     </li>
                 </ul>
-
+            </div>
+            <div class="col-sm-4">
                 <ul class="genres">
+                    <h4>Priority</h4>
                     <li ng-repeat="import in importances">
                         <span ng-click="filterByImportance(import)">Priority {{import}}</span>
-                    </li>
-                </ul>
-                <ul class="genres">
-                    <li>
-                        <span ng-click="noFilter()">No filter</span>
                     </li>
                 </ul>
             </div>

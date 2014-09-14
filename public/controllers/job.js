@@ -7,7 +7,7 @@
 (function () {
     var app = angular.module('job-controller', []);
 
-    app.controller('JobsController', ['$http', '$rootScope', '$alert', '$scope', function ($http, $rootScope, $alert, $scope) {
+    app.controller('JobsController', ['$http', '$rootScope', '$alert',  function ($http, $rootScope, $alert) {
 
         var job = this;
 
@@ -17,7 +17,6 @@
 
         if ($rootScope.currentUser) {
             $http.get(url + $rootScope.currentUser.initials)
-            //$http.get('http://localhost:8070/jobs3/jobtest/user/' + $rootScope.currentUser.initials)
             //$http.get('http://172.24.24.217:8070/jobs3/job/user/' + $rootScope.currentUser.initials)
                 .success(function (data) {
                     job.jobsData = data.jobs;
