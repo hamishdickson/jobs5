@@ -11,15 +11,9 @@
 
         $scope.importances = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 
-        $scope.headingTitle = 'All users jobs';
+        $scope.headingTitle = 'All jobs';
 
         $scope.query = '';
-
-        var headingTitle = function(heading) {
-            if (heading == '') {
-
-            }
-        };
 
         $scope.filterByStatus = function (status) {
             $scope.sublist = status;
