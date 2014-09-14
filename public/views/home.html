@@ -46,6 +46,7 @@
                         <h3><a href="/detail/job/{{job.jobNumber}}">{{job.jobNumber}}</a>
 
                             <div class="pull-right">Status {{job.status}}</div>
+                            <div>Client {{job.client}}</div>
                         </h3>
                         <div>
                             <h4 ng-repeat="deliverable in job.deliverables" ng-if="$first" class="deliverable-date">Next deliverable:
