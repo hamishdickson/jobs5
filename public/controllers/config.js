@@ -11,7 +11,7 @@
         $scope.JOBS_REST_PORT = 8070;
 
         if (_LEVEL == 'DEV') {
-            $scope.JOBS_REST_HOST = "192.168.1.10";
+            $scope.JOBS_REST_HOST = "192.168.1.5";
             $scope.JOBS_USERS_JOBS_PATH = "/jobs3/jobtest/user/";
             $scope.JOBS_SPECIFIC_JOB_PATH = "/jobs3/jobtest/";
             $scope.JOBS_USERS_JOBS_FOR_STATUS_PATH = "/jobs3/jobtest/user/";
