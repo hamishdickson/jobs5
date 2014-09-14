@@ -25,9 +25,15 @@
             $scope.headingTitle = 'Only users jobs with importance ' + importance;
         };
 
+        $scope.filterByClient = function (client) {
+            $scope.subClient = client;
+            $scope.headingTitle = 'Only users jobs with client ' + client;
+        };
+
         $scope.noFilter = function () {
             $scope.subImport = '';
             $scope.sublist = '';
+            $scope.subClient = '';
             $scope.headingTitle = 'All jobs';
         };
 

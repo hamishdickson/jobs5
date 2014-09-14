@@ -10,7 +10,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <ul class="genres">
                     <h4>Status</h4>
                     <li ng-repeat="status in jobsCtrl.getStatuss()">
@@ -18,11 +18,19 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <ul class="genres">
                     <h4>Priority</h4>
                     <li ng-repeat="import in jobsCtrl.getImportances()">
                         <span ng-click="filterByImportance(import)">Priority {{import}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <ul class="genres">
+                    <h4>Client</h4>
+                    <li ng-repeat="client in jobsCtrl.getClients()">
+                        <span ng-click="filterByClient(client)">{{client}}</span>
                     </li>
                 </ul>
             </div>
@@ -46,7 +54,7 @@
             <div class="row show-list">
                 <div class="list-group">
                     <div class="list-group-item panel panel-body col-sm-6"
-                         ng-repeat="job in jobsCtrl.jobsData | filter: {status: sublist} | filter: { importance : subImport } | filter: query">
+                         ng-repeat="job in jobsCtrl.jobsData | filter: { status: sublist } | filter: { importance : subImport } | filter: {client: subClient} | filter: query">
                         <h3><a href="/detail/job/{{job.jobNumber}}">{{job.jobNumber}}</a>
 
                             <div class="pull-right">Status {{job.status}}</div>

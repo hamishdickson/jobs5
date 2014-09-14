@@ -39,6 +39,10 @@
                             if (importancess.indexOf(job.jobsData[i].importance) == -1) {
                                 importancess.push(job.jobsData[i].importance);
                             }
+
+                            if (clients.indexOf(job.jobsData[i].client) == -1) {
+                                clients.push(job.jobsData[i].client);
+                            }
                         }
 
                     })
@@ -59,6 +63,10 @@
 
             this.getImportances = function () {
                 return importancess;
+            };
+
+            this.getClients = function() {
+                return clients;
             };
         }]);
 
