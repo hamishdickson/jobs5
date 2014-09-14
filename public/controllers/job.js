@@ -7,17 +7,20 @@
 (function () {
     var app = angular.module('job-controller', []);
 
-    app.controller('JobsController', ['$http', '$rootScope', '$alert',  function ($http, $rootScope, $alert) {
+    app.controller('JobsController', ['$http', '$rootScope', '$alert', 'HOSTING_CONFIG', function ($http, $rootScope, $alert, HOSTING_CONFIG) {
 
         var job = this;
 
         job.jobsData = [];
 
-        var url = 'http://localhost:8070/jobs3/jobtest/user/';
+        var host = HOSTING_CONFIG.JOBS_REST_HOST;
+        var port = HOSTING_CONFIG.JOBS_REST_PORT;
+        var path = HOSTING_CONFIG.JOBS_USERS_JOBS_PATH;
+
+        var url = 'http://' + host + ':' + port + path;
 
         if ($rootScope.currentUser) {
             $http.get(url + $rootScope.currentUser.initials)
-            //$http.get('http://172.24.24.217:8070/jobs3/job/user/' + $rootScope.currentUser.initials)
                 .success(function (data) {
                     job.jobsData = data.jobs;
 
@@ -36,6 +39,16 @@
                     });
                 });
         }
+/*
+        this.getStatuss = function() {
+            var statusss = [];
+            for (var job in job.jobsData.jobs) {
+                if (statusss.indexOf(job.status) == 0) {
+                    statusss.add(job.status);
+                }
+            }
+            return statusss;
+        };*/
     }]);
 
 })();

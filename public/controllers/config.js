@@ -5,6 +5,18 @@
 (function () {
     var app = angular.module('config-module', []);
 
+    app.constant('HOSTING_CONFIG', {
+        JOBS_REST_PORT: 8070,
+        JOBS_REST_HOST: "192.168.1.5",
+        JOBS_USERS_JOBS_PATH: "/jobs3/jobtest/user/",
+        JOBS_SPECIFIC_JOB_PATH: "/jobs3/jobtest/",
+        JOBS_USERS_JOBS_FOR_STATUS_PATH: "/jobs3/jobtest/user/",
+        PERSONS_PERSONS_PATH: "/jobs3/jobtest/person/",
+        NOTES_PATH: "/jobs3/jobtest/jobNotes/",
+        DELIVERABLES_PATH_FOR_USER: "/jobs3/jobtest/deliverables/user/",
+        DELIVERABLES_PATH_FOR_JOB: "/jobs3/jobtest/deliverables/job/"
+    });
+/*
     app.controller('ConfigController', function() {
 
         var _LEVEL = 'DEV';
@@ -31,6 +43,6 @@
             this.JIRA_REST_HOST = "jira.jhc.co.uk";
             this.JIRA_USERS_JIRAS_PATH = "/rest/api/2/search?jql=assignee=";
         }
-    });
+    });*/
 
 })();
