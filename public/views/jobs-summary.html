@@ -1,12 +1,12 @@
 <!-- Jobs summary details -->
-<div ng-show="job.description">
+<div ng-show="job.description.trim() != ''">
     <h4>Description</h4>
     <blockquote>
         <p>{{job.description}}</p>
     </blockquote>
 </div>
 
-<div ng-show="job.response">
+<div ng-show="job.response.trim() != ''">
     <h4>Last response</h4>
     <blockquote>
         <p>{{job.response}}</p>
