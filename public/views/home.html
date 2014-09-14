@@ -10,10 +10,10 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4" ng-controller="JobsController as jobsCtrl">
                 <ul class="genres">
                     <h4>Status</h4>
-                    <li ng-repeat="status in statuss">
+                    <li ng-repeat="status in jobsCtrl.getStatuss()">
                         <span ng-click="filterByStatus(status)">Status {{status}}</span>
                     </li>
                 </ul>

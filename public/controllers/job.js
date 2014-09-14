@@ -7,7 +7,8 @@
 (function () {
     var app = angular.module('job-controller', []);
 
-    app.controller('JobsController', ['$http', '$rootScope', '$alert', 'HOSTING_CONFIG', function ($http, $rootScope, $alert, HOSTING_CONFIG) {
+    app.controller('JobsController', ['$http', '$rootScope', '$alert', 'HOSTING_CONFIG', '$scope',
+        function ($http, $rootScope, $alert, HOSTING_CONFIG, $scope) {
 
         var job = this;
 
@@ -19,6 +20,8 @@
 
         var url = 'http://' + host + ':' + port + path;
 
+        var statusss = [];
+
         if ($rootScope.currentUser) {
             $http.get(url + $rootScope.currentUser.initials)
                 .success(function (data) {
@@ -26,6 +29,12 @@
 
                     for(i = 0; i < job.jobsData.length; i++) {
                         job.jobsData[i].notes = job.jobsData[i].notes.split('\n');
+                    }
+
+                    for (i = 0; i < job.jobsData.length; i++) {
+                        if (statusss.indexOf(job.jobsData[i].status) == -1) {
+                            statusss.push(job.jobsData[i].status);
+                        }
                     }
 
                 })
@@ -39,16 +48,10 @@
                     });
                 });
         }
-/*
+
         this.getStatuss = function() {
-            var statusss = [];
-            for (var job in job.jobsData.jobs) {
-                if (statusss.indexOf(job.status) == 0) {
-                    statusss.add(job.status);
-                }
-            }
             return statusss;
-        };*/
+        };
     }]);
 
 })();

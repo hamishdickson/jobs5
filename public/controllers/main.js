@@ -3,12 +3,13 @@
  */
 
 (function () {
-    var app = angular.module('main-controller', []);
+    var app = angular.module('main-controller', ['job-controller']);
 
     app.controller('MainController', ['$scope', function ($scope) {
 
         // todo have this dynamically load
-        $scope.statuss = ['A', 'B', 'H', 'W'];
+        //$scope.statuss = $scope.getStatuss();
+        //$scope.statuss = ['A', 'B', 'H', 'W'];
 
         $scope.importances = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 
