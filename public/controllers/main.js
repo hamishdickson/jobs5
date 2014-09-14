@@ -3,7 +3,7 @@
  */
 
 (function () {
-    var app = angular.module('MyApp');
+    var app = angular.module('main-controller', []);
 
     app.controller('MainController', ['$scope', function ($scope) {
 
