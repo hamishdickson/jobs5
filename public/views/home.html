@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron" ng-controller="JobsController as jobsCtrl">
     <div class="container">
         <div class="col-sm-12">
             <div class="col-sm-1">
@@ -10,7 +10,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-sm-4" ng-controller="JobsController as jobsCtrl">
+            <div class="col-sm-4">
                 <ul class="genres">
                     <h4>Status</h4>
                     <li ng-repeat="status in jobsCtrl.getStatuss()">
@@ -21,7 +21,7 @@
             <div class="col-sm-4">
                 <ul class="genres">
                     <h4>Priority</h4>
-                    <li ng-repeat="import in importances">
+                    <li ng-repeat="import in jobsCtrl.getImportances()">
                         <span ng-click="filterByImportance(import)">Priority {{import}}</span>
                     </li>
                 </ul>

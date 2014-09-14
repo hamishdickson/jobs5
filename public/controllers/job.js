@@ -21,20 +21,21 @@
         var url = 'http://' + host + ':' + port + path;
 
         var statusss = [];
+        var importancess = [];
 
         if ($rootScope.currentUser) {
             $http.get(url + $rootScope.currentUser.initials)
                 .success(function (data) {
                     job.jobsData = data.jobs;
 
-                    for(i = 0; i < job.jobsData.length; i++) {
-                        job.jobsData[i].notes = job.jobsData[i].notes.split('\n');
-                    }
-
                     for (i = 0; i < job.jobsData.length; i++) {
+                        job.jobsData[i].notes = job.jobsData[i].notes.split('\n');
+
                         if (statusss.indexOf(job.jobsData[i].status) == -1) {
                             statusss.push(job.jobsData[i].status);
                         }
+
+                        
                     }
 
                 })

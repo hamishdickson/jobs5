@@ -7,9 +7,7 @@
 
     app.controller('MainController', ['$scope', function ($scope) {
 
-        // todo have this dynamically load
-        //$scope.statuss = $scope.getStatuss();
-        //$scope.statuss = ['A', 'B', 'H', 'W'];
+        $scope.statuss = ['A', 'B', 'C', 'I', 'H', 'W'];
 
         $scope.importances = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 
