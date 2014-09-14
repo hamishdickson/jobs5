@@ -3,8 +3,14 @@
  */
 (function () {
     angular.module('MyApp')
-        .factory('Job', ['$resource', function ($resource) {
-            //return $resource('http://172.24.24.217:8070/jobs3/job/:_id');
-            return $resource('http://localhost:8070/jobs3/jobtest/:_id');
+        .factory('Job', ['$resource', 'HOSTING_CONFIG', function ($resource, HOSTING_CONFIG) {
+
+            var host = HOSTING_CONFIG.JOBS_REST_HOST;
+            var port = HOSTING_CONFIG.JOBS_REST_PORT;
+            var path = HOSTING_CONFIG.JOBS_SPECIFIC_JOB_PATH;
+
+            var url = 'http://' + host + ':' + port + path + ':_id';
+
+            return $resource(url);
         }]);
 })();

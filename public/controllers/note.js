@@ -4,13 +4,20 @@
 (function () {
     var app = angular.module('notes-controller', []);
 
-    app.controller('NotesController', ['$rootScope', '$http', '$alert', function ($rootScope, $http, $alert) {
+    app.controller('NotesController', ['$rootScope', '$http', '$alert', 'HOSTING_CONFIG',
+        function ($rootScope, $http, $alert, HOSTING_CONFIG) {
 
         this.addNote = function (job) {
             this.note.createdOn = Date.now();
             this.note.author = $rootScope.currentUser.name;
 
             this.note.jobNumber = job.jobNumber;
+
+            var host = HOSTING_CONFIG.JOBS_REST_HOST;
+            var port = HOSTING_CONFIG.JOBS_REST_PORT;
+            var path = HOSTING_CONFIG.NOTES_PATH;
+
+            var url = 'http://' + host + ':' + port + path;
 
             if (this.note.body) {
                 var input = {
@@ -19,8 +26,7 @@
                     "softwarePackage": 0
                 };
 
-                $http.post('http://localhost:8070/jobs3/jobtest/jobNotes', input)
-                //$http.post('http://172.24.24.217:8070/jobs3/job/jobNotes', input)
+                $http.post(url, input)
                     .success(function () {
                         $alert({
                             title: 'Nice!',
