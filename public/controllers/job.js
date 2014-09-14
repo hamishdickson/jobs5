@@ -3,7 +3,7 @@
  */
 
 (function () {
-    var app = angular.module('MyApp');
+    var app = angular.module('job-controller', []);
 
     app.controller('JobsController', ['$http', '$rootScope', '$alert', function ($http, $rootScope, $alert) {
         var job = this;

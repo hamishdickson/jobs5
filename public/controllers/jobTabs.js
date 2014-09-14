@@ -3,7 +3,8 @@
  */
 
 (function () {
-    var app = angular.module('MyApp');
+    var app = angular.module('job-tabs-controller', []);
+
     app.directive('jobTabs', function () {
         return {
             restrict: 'E',

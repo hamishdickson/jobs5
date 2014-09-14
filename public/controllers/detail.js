@@ -3,7 +3,7 @@
  */
 
 (function () {
-    var app = angular.module('MyApp');
+    var app = angular.module('detail-controller', []);
 
     app.controller('DetailController', ['$scope', '$rootScope', '$routeParams', '$http',
         function ($scope, $rootScope, $routeParams, $http) {
