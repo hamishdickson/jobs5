@@ -15,19 +15,40 @@
 
         $scope.query = '';
 
+        var headingTitle = function(heading) {
+            if (heading == '') {
+
+            }
+        };
+
         $scope.filterByStatus = function (status) {
             $scope.sublist = status;
-            $scope.headingTitle = 'Only users jobs with status ' + status;
+
+            if ($scope.headingTitle == '') {
+                $scope.headingTitle = 'Only users jobs with status ' + status;
+            } else {
+                $scope.headingTitle += ' and status ' + status;
+            }
         };
 
         $scope.filterByImportance = function (importance) {
             $scope.subImport = importance;
-            $scope.headingTitle = 'Only users jobs with importance ' + importance;
+
+            if ($scope.headingTitle == '') {
+                $scope.headingTitle = 'Only users jobs with priority ' + importance;
+            } else {
+                $scope.headingTitle += ' and priority ' + importance;
+            }
         };
 
         $scope.filterByClient = function (client) {
             $scope.subClient = client;
-            $scope.headingTitle = 'Only users jobs with client ' + client;
+
+            if ($scope.headingTitle == '') {
+                $scope.headingTitle = 'Only users jobs with client ' + client;
+            } else {
+                $scope.headingTitle += ' and client ' + client;
+            }
         };
 
         $scope.noFilter = function () {
