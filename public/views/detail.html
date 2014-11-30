@@ -15,7 +15,7 @@
                 <ul>
                     <h4>Notes</h4>
 
-                    <li ng-repeat="note in jobDetails.notes">
+                    <li ng-repeat="note in jobDetails.notes track by $index">
                         <p ng-if="!note.body && !note.response && !note.status">{{note}}</p>
                         <blockquote ng-show="note.body || note.response || note.status">
                             <p ng-show="note.body">New note: {{note.body}}</p>

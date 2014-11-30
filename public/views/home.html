@@ -48,7 +48,9 @@
         </div>
         <div class="panel-body">
 
-            <div ng-show="jobsCtrl.jobsData.length === 0"><p>Loading - this can take some time if you have a lot of jobs on the go</p>
+            <div ng-show="jobsCtrl.jobsData.length === 0"><p>Loading - this can take some time if you have a lot
+                of
+                jobs on the go</p>
             </div>
 
             <div class="row show-list">
@@ -61,7 +63,9 @@
                             <div>Client {{job.client}}</div>
                         </h3>
                         <div>
-                            <h4 ng-repeat="deliverable in job.deliverables" ng-if="$first" class="deliverable-date">Next deliverable:
+                            <h4 ng-repeat="deliverable in job.deliverables" ng-if="$first"
+                                class="deliverable-date">
+                                Next deliverable:
                                 {{deliverable.promisedDate | dateFilter: deliverable.promisedDate}}</h4>
                             <h4 class="pull-right">Priority: {{job.importance}}</h4>
                         </div>

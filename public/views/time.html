@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="panel panel-body">
+        <form class="pull-left" name="timeForm" ng-submit="startTime()">
+            <fieldset class="form-group">
+                <input type="submit" class="btn btn-primary pull-right"
+                       ng-model="timer.toggle" value="{{timer.toggle}}"/>
+            </fieldset>
+        </form>
+
+        <div ng-model="timer.time">
+            {{timer.time | date:'h:mm:ss a'}}
+        </div>
+    </div>
+</div>

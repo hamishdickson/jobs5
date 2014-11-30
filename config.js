@@ -17,7 +17,7 @@ exports.LEVEL = 'DEV';
  * overrides level
  */
 if (exports.LEVEL == 'DEV') {
-    exports.JOBS_REST_HOST = "192.168.1.5";
+    exports.JOBS_REST_HOST = "192.168.1.4";
     exports.JOBS_USERS_JOBS_PATH = "/jobs3/jobtest/user/";
     exports.JOBS_SPECIFIC_JOB_PATH = "/jobs3/jobtest/";
     exports.JOBS_USERS_JOBS_FOR_STATUS_PATH = "/jobs3/jobtest/user/";
