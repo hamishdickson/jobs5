@@ -14,7 +14,7 @@ Authentication for this app is pretty much done on trust, all that is checked is
 
 IF it becomes a requirement to connect to the LDAP and confirm passwords, then let me know, I have prototyped this with passport (a node module)
 
-![alt tag](https://github.com/hamishdickson/jobs5/blob/development/login-screenshot.png)
+![alt tag](https://github.com/hamishdickson/jobs5/blob/development/screen-shots/login-screenshot.png)
 
 ## Technologies
 
@@ -36,13 +36,13 @@ If you are keep on making changes (and perhaps submitting a pull request) I woul
 
 The port can be changed in app/config.js
 
-![alt tag](https://github.com/hamishdickson/jobs5/blob/development/singlePage-screenshot.png)
+![alt tag](https://github.com/hamishdickson/jobs5/blob/development/screen-shots/singlePage-screenshot.png)
 
 ## Adding new notes, status update or response
 
-You can add a new note, update the status or response to a job using the updates tab. 
+You can add a new note, update the status or response to a job using the updates tab.
 
-![alt tag](https://github.com/hamishdickson/jobs5/blob/development/jobUpdate-screenshot.png)
+![alt tag](https://github.com/hamishdickson/jobs5/blob/development/screen-shots/jobUpdate-screenshot.png)
 
 
 ## TODO
