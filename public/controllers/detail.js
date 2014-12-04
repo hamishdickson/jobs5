@@ -18,7 +18,11 @@
 
             $http.get(url + $scope.jobNumber).success(function (data) {
                 $scope.jobDetails = data;
+<<<<<<< HEAD
                 $scope.jobDetails.notes = $scope.jobDetails.notes.split('\n');
+=======
+                $scope.jobDetails.notes = data.notes.split('\n');
+>>>>>>> 10ee0fe8f50432e8573ac28253cd4bba7ab3fc1a
             });
 
         }]);

@@ -20,7 +20,7 @@
 (function () {
     var app = angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mgcrea.ngStrap',
     'main-controller', 'job-controller', 'job-tabs-controller', 'login-controller', 'notes-controller',
-    'tabs-controller', 'config-module', 'detail-controller']);
+    'tabs-controller', 'config-module', 'detail-controller', 'time-controller']);
 
     app.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
         $locationProvider.html5Mode(true);
@@ -33,6 +33,10 @@
             .when('/detail/job/:id', {
                 templateUrl: '../views/detail.html',
                 controller: 'DetailController'
+            })
+            .when('/time', {
+                templateUrl: '../views/timer-page.html',
+                controller: 'MainController'
             })
             .otherwise({
                 redirectTo: '/'
