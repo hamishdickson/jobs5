@@ -9,9 +9,9 @@ exports.JOBS_REST_PORT = 8070;
 exports.JIRA_REST_HOST = "jira.jhc.co.uk";
 
 // default to live server
-exports.JOBS_REST_HOST = "172.24.24.217";
+exports.JOBS_REST_HOST = "172.24.24.225";
 
-exports.LEVEL = 'DEV';
+exports.LEVEL = 'TEST';
 
 /*
  * overrides level
