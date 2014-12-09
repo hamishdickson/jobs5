@@ -13,6 +13,7 @@ var session = require('express-session');
 var http = require('http');
 var compress = require('compression');
 
+
 app.set('port', process.env.PORT || config.PORT);
 app.use(compress())
 app.use(logger('dev'));
@@ -27,6 +28,7 @@ app.use(function(req, res, next) {
     }
     next();
 });
+
 
 app.post('/api/login', function(req, response) {
 
